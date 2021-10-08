@@ -53,7 +53,8 @@ class UserController extends Controller
         //where('email', $request->email )->get(); 
         if($item==null)
         {
-            return "<a href=\>back</a> empty<br>". $request->email.$request->user;//dd(403); 
+            return "<a href=\>back</a> empty<br>". $request->email.$request->user;
+            //dd(403); 
         }
         else
         {         
