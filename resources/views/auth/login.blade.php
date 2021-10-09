@@ -19,7 +19,7 @@
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>{{ $message }}</strong>Log in blade:error in email
                                     </span>
                                 @enderror
                             </div>
