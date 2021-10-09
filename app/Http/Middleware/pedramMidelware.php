@@ -18,7 +18,7 @@ class pedramMidelware
     {
         $token=$request->bearerToken();
 $item=\App\Models\User::query()->get()->where('token',$token);
-        dd($item);
+        dd($item );
          
         if ($request->user == 'pedram') {
             return redirect('home');
