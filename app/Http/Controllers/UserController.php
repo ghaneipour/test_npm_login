@@ -33,6 +33,7 @@ class UserController extends Controller
                 ->first();
             // ->firstOrFail();    
                 //where('email', $request->email )->get(); 
+                //by pedram
         if($item==null)
         {
             return "<a href=\>back</a> empty";//dd(403); 
@@ -55,7 +56,7 @@ class UserController extends Controller
         {
             return "<a href=\>back</a> empty<br>". $request->email.$request->user;
               //dd(403); 
-              //-----
+              //----- by pedram
         }
         else
         {         
