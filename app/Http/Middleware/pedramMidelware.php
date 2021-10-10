@@ -21,7 +21,7 @@ class pedramMidelware
         $item=\App\Models\User::query()->get()->where('token',$token);
 
         Mail::TO('ghaneipour@gmail.com')
-        ->send(new \App\Mail\testMail('pedram','ghaneipour'));
+        ->send(new \App\Mail\testMail('hello Mr.Pedram','ghaneipour'));
         //
         
         dd($item );

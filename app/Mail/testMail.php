@@ -21,8 +21,7 @@ class testMail extends Mailable
     public function __construct($name,$lastname)
     {
          $this->name=$name;
-         $this->lastname=$lastname;
-        //return 9;
+         $this->lastname=$lastname; 
     }
 
     /**
