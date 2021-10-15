@@ -6,6 +6,52 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+ body{
+direction: rtl;
+  background-color: olivedrab;
+  }
+  
+  .page_content{
+    background-color: #866355;
+    height: 100%;
+     
+    width: 50%;
+  }
+
+  .page_sidebar
+  {
+  width: 225px;
+  background-color: #b18c8c;
+  height: 100%;
+  position: absolute;
+  
+  }
+  
+ #sidebar_menu 
+  { 
+    padding: 0px;
+    margin-top: 20px;
+  }
+
+#sidebar_menu li a
+{
+color: white;
+text-decoration: none;
+border-bottom: 1px solid rgba(225, 225, 225, 0.27);
+display: block;
+padding: 10px;
+cursor: pointer;
+
+  }
+
+.fa-angle-left
+{
+float: left;
+font-size: 18px;
+padding-left: 5px;
+}
+
 :root {
   --blue: #3490dc;
   --indigo: #6574cd;
