@@ -7,41 +7,63 @@
     <title>پنل مدیریت</title>
     <link href="{{ url('css/app.css') }}" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="{{ url('/js/client.min.js') }}"></script>
 
 </head>
 <body>
     <div class="container-fluid">
     <div class="page_sidebar">
+        <span class="fa fa-bars" id="sidebarToggle"></span>
+        <br>
     <ul  class="list-inline" id="sidebar_menu">
+        <li> 
+            <a href="/admin"class="sidebar_menu_span">خانه  </a>
+        </li>
         <li>
-           <a  href=#> 
+           <a> 
                 <span class="fa fa-shopping-cart"></span>
-                <span class="sidebar_menu_span">
-                    home1
-                </span>
+                <span class="sidebar_menu_span">فروشگاه </span>
                 <span class="fa fa-angle-left"></span>
-            </a>
+            </a>         
+            <div  class="submenu"  >           
+                <a  href=#> افزودن محصول  </a>
+                <a  href=#> مدیریت محصول  </a>
+            </div>
+                
         </li>    
         <li  >
-        <a  href=#> 
-                <span class="fa fa-shopping-cart"></span>
-                <span class="sidebar_menu_span">
-                    page2
-                </span>
+            <a> 
+                <span class="fa fa-users"></span>
+                <span class="sidebar_menu_span">مشتری ها </span>
                 <span class="fa fa-angle-left"></span>
-            </a>
+            </a> 
+                  
+            <div  class="submenu"  >           
+                <a  href=#> افزودن مشتری  </a>
+                <a  href=#> مدیریت مشتری  </a>
+            </div>
+                
         </li>    
     </ul>
-    hello admin sider
-        </div>
+         </div>
 
         <div class="page_content">
         hello admin contex
+        
+    <h1 onmouseover="ali()">hi</h1>
+    <h1 onclick="ali2()">hi friends</h1>
+    <h1 id="pedram">hi pedram</h1>
+    <h2 style="color: blue;" onclick="change()">Hi my name is qadir</h2>
+
         </div>
 
     </div>
-<script type="text/javascript" src="{{ url('js/app.js')}}"></script>
+    <!-- -->
+    
+    <script src="{{ url('/js/app.js') }}"> </script>
+    <script src="{{ url('/js/other.js') }}">  </script> 
+    <script src="{{ url('/js/myjs.js') }}"> </script>
 
 </body>
 </html>
