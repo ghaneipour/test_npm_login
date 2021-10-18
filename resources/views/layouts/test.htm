@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onkeydown="saveKey(event)">
+    <!-- onkeydown="TVA.keyDown();"  -->
+
+    <div id="pedram" onmouseout="kkk()">hello</div>metasploit
+
+    <script>
+        document.getElementById("pedram").addEventListener("click",
+            function() {
+                alert("ppp");
+                document.getElementById("pedram").innerHTML = "<img src='http://supportco.ir/wp-content/uploads/2020/07/teltonika-FMB920-300x295.png'>"
+            });
+
+        function kkk() {
+            alert("jjjj")
+        }
+
+        function saveKey(events) {
+            document.getElementById("pedram").innerHTML =
+                "<br>--<h1>[ " + events.key + " ]</h1>--";
+
+        }
+    </script>
+
+
+</body>
+
+</html>

@@ -64,6 +64,34 @@
     <script src="{{ url('/js/app.js') }}"> </script>
     <script src="{{ url('/js/other.js') }}">  </script> 
     <script src="{{ url('/js/myjs.js') }}"> </script>
+<script>
+    var myn =10;
+    var myb =prompt("hello name:");
+    alert(myb);
+    var num = number(mynum);
+    var sss=myn.toUpperCase().replace("'","");
+var b = sss.slice(2, 4)
+ 
+
+//document.getel
+// const animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+
+// console.log(animals.slice(2));
+// // expected output: Array ["camel", "duck", "elephant"]
+
+// console.log(animals.slice(2, 4));
+// // expected output: Array ["camel", "duck"]
+
+// console.log(animals.slice(1, 5));
+// // expected output: Array ["bison", "camel", "duck", "elephant"]
+
+// console.log(animals.slice(-2));
+// // expected output: Array ["duck", "elephant"]
+
+// console.log(animals.slice(2, -1));
+// // expected output: Array ["camel", "duck"]
+
+</script>
 
 </body>
 </html>
