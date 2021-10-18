@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="sweetalert2.all.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="sweetalert2.all.min.js"></script>
     <script src="sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="sweetalert2.min.css">
+    <link rel="stylesheet" href="sweetalert2.min.css"> -->
     <title>Document</title>
 </head>
 
@@ -21,16 +21,16 @@
         document.getElementById("pedram").addEventListener("click",
             function() {
                 // alert("ppp");
-                Swal.fire(
-                    'Good job!',
-                    'You clicked the button!',
-                    'success'
-                )
+
                 document.getElementById("pedram").innerHTML = "<img src='http://supportco.ir/wp-content/uploads/2020/07/teltonika-FMB920-300x295.png'>"
             });
 
         function kkk() {
-            alert("jjjj")
+            Swal.fire(
+                'Enter is True! by pedram',
+                'You clicked the button!',
+                'success'
+            )
         }
 
         function saveKey(events) {
@@ -43,7 +43,12 @@
             // alert(navigator.geolocation.getCurrentPosition.);
             // alert(navigator.geolocation.geolocation);
             alert(navigator.onLine);
-
+            Swal.fire({
+                title: 'Error!',
+                text: 'Do you want to continue',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+            })
 
         }
 
