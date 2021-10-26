@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- 
+        refrence=
+        1-https://javascript.info/
+        2-https://developer.mozilla.org/en-US/ 
+    -->
+    <meta charset="UTF-8">
+    <meta name='author' content="pedram ghaneipour">
+    <meta name="description" content="RFID Door lock">
+    <meta name="keywords" content="RFID ,125khz ,door ,lock ,smart">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://softlock.ir/wp-content/uploads/2021/03/cropped-ls-180x180.png" type="image/x-icon"> D:\PHP~\sample\test_npm_login\public\fonts\IRANSansWeb_Bold.eot
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=fire"> -->
+    <style>
+        body {
+            font-family: "Sofia", sans-serif;
+        }
+        
+        table,
+        td,
+        th {
+            border-radius: 5px;
+            border: 1px solid rgb(85, 35, 35);
+        }
+    </style>
+    <title>PedramTest</title>
+</head>
+
+<body>
+    <div id="test">1</div>
+    <script src="js/scripts.js"></script>
+    <ul>
+        <li>
+            <a href="" class="a">milk</a>
+        </li>
+        <li>Tea
+            <ul>
+                <li>green</li>
+                <li>red</li>
+                <li>black</li>
+            </ul>
+        </li>
+        <li>
+
+            <div class="header">coffe</div>
+            <div><label>Name:</label><input placeholder="this is..."></div>
+            <p></p>
+            <div></div>
+        </li>
+    </ul>
+    <div style="margin:20px;border-radius: 10px;background-color: rgba(169, 169, 0.219);">
+        <p>
+            <a href="http://softlock.ir" target="_blank" title="welcom to my link" style="text-decoration:underline;" class="a">welcome to my site</a>
+            <img src="ajax_info.txt" alt="text" title="image">
+        </p>
+        <div>hjhkjhkj</div>
+
+        <div>hjhkh</div>
+        <div>hjhkhk</div>
+        <div>hjkhk</div>
+        <div>Lorem ipsum dolor sit.</div>
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, rerum, beatae quasi doloribus accusamus odio, a animi suscipit laudantium nemo molestias exercitationem perspiciatis consectetur aut deleniti dicta nihil aliquid architecto. Eaque adipisci
+            magnam doloribus saepe, sapiente perferendis rem? Quidem eaque nemo nam consequuntur repudiandae laudantium nobis deleniti esse in aperiam, qui veniam sed. Aliquid rem dolore deserunt nihil cupiditate voluptates. Minima voluptas necessitatibus,
+            molestiae fugit quas illum qui cum, eaque ut odit similique at quo aperiam optio, fugiat aut ratione ad excepturi possimus magni voluptate vero quia minus doloremque. Totam? Deleniti, reprehenderit. Magni adipisci unde perspiciatis illum,
+            reprehenderit dolore magnam, rem, laboriosam eum architecto voluptatum repellendus rerum dolor recusandae quis in. Quod quaerat dolorem totam deleniti unde blanditiis mollitia eveniet!</div>
+        <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium est quibusdam tempore eius soluta iure aut, sint inventore libero nam magni optio itaque nulla quasi voluptate, adipisci et rem natus. Quis sequi ab omnis dolorum ullam voluptatibus
+            quidem inventore aliquid nemo a explicabo accusamus corrupti, suscipit fugiat consectetur fugit harum earum sed ipsa quibusdam voluptas, ex distinctio iste. Quia, optio! Hic ducimus, recusandae molestiae quos error facilis deleniti quisquam
+            repellat numquam maxime consequuntur modi debitis ex dicta tempore ad maiores asperiores nisi quibusdam quam quod! Minima aperiam incidunt reprehenderit placeat! Quasi eligendi, deserunt soluta recusandae repellendus doloribus corrupti rem
+            alias illum voluptates quisquam! Placeat minima vitae quibusdam ipsa quis esse veniam recusandae consequatur, corporis reiciendis, ducimus magni. Repudiandae, eos aliquid. Eaque voluptatem hic asperiores delectus magnam ratione assumenda.
+            Maiores sequi saepe facere qui. Eos, numquam! Quaerat harum et ut dolore, distinctio eligendi vero, dicta iusto possimus rem voluptas inventore commodi. Ad enim unde minus delectus veritatis eius, ab maxime debitis id ea culpa autem amet deserunt!
+            Laborum sed sapiente error doloremque, libero sint? Eaque debitis quas nulla amet eligendi et. Ea voluptatum in tenetur reiciendis, cumque quam sed quis sunt tempore nesciunt asperiores nam repellendus voluptatibus esse, vel aspernatur explicabo
+            numquam consequatur molestiae eos vero? Numquam iste ipsum asperiores quod? Dolore in repellendus doloribus suscipit, hic facere voluptate neque cum consequuntur rem cumque ab autem animi explicabo? Nesciunt esse tempora dicta voluptatibus
+            corporis officia libero mollitia accusamus dolorem. Totam, cumque. Omnis impedit officia rem, libero alias veritatis culpa harum repellat quisquam non laudantium tempora. Repudiandae vel aperiam, temporibus deleniti exercitationem sunt molestias
+            tempora ipsam distinctio nisi possimus repellat omnis magni?</div>
+    </div>
+    <form action="." method="post" dir="ltr" style="font-family:iranyekan">
+        <fieldset>
+            <legend align="center">Login Page</legend>
+            <label for="userr">Name:</label><input id="userr" value="" placeholder="pedram" required autofocus><br>
+            <label>Password:<input type="password" required ></label><br>
+            <label for="rang">Rangee:</label>
+            <script>
+                function ddd(valuea) {
+                    document.getElementById("userr").value = valuea;
+                    // alert(valuea);
+                }
+            </script>
+            <input id="rang" type="range" min="1" max="100" oninput="ddd(this.value)"><br>
+
+            <input type="range" value="24" min="1" max="100" oninput="this.nextElementSibling.value = this.value"> <output>24</output><br>
+            <label for="rem">Remmember:<input type="checkbox" id="rem"></label> <br>
+            <label for="file">File:<input type="file" id="file"></label> <br>
+            <label for="url">url:<input type="url" id="url"></label> <br>
+            <label for="url">Citys:
+                <select name="city" id="city" dir="rtl">
+                    <optgroup label="شمال"> 
+                        <option value="01">رشت</option>
+                        <option value="02">آمل</option>
+                        <option value="03">بابل</option>
+                    </optgroup>
+                    <optgroup label="مرکز"> 
+                        <option value="04">اصفهان</option>
+                        <option value="05">یزد</option>
+                    </optgroup>
+                </select>
+            </label>
+            <br>
+            <label for="submit">Send data<input type="submit">
+        </fieldset>
+    </form>
+
+    <table style="border-radius: 5px;border: 1px solid black;" width=100%>
+        <caption>fffff</caption>
+        <colgroup style="background-color: red;"></colgroup>
+        <colgroup style="background-color: blue;"></colgroup>
+        <colgroup style="background-color: yellow;"></colgroup>
+
+        <tr><th>row</th><th>title</th> <th>name</th><th>code</th></tr>
+        <tr><td>1</td><td>2</td> <td>3</td><td>4</td></tr>
+        <tr><td>1</td><td>2</td> <td>3</td><td>4</td></tr>
+        <tr><td>1</td><td>2</td> <td>3</td><td>4</td></tr>
+    </table>
+    <!-- http://image-map.net -->
+    <!-- Image Map Generated by http://www.image-map.net/ -->
+    <figure>
+        <img src="../../../public/img/1630580209221.jpg" usemap="#image-map">
+        <figcaption>آب و دریای زیبا</figcaption>
+        <map name="image-map">
+            <area target="_blank" alt="bulding" title="bulding" href="a1.htm" coords="479,445,39,322" shape="rect">
+            <area target="_blank" alt="water" title="water" href="a2.htm" coords="396,630,125" shape="circle">
+        </map>
+    </figure>
+
+
+    <audio controls autoplay id="mp">
+        <source src="../../../public/audio/campfire-1.mp3" type="audio/mpeg">
+        not support on your browser
+    </audio>
+    <script>
+        document.getElementById("mp").load();
+    </script>
+
+    
+<video controls autoplay id="mp2">
+    <source src="../../../public/video/movie.mp4" type="audio/mpeg">
+    not support on your browser
+</video>
+
+<embed src="../../../public/img/esp01.pdf" type="" width="100%" height="500px">
+</body>
+
+</html>
+
+</html>
