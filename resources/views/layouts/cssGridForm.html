@@ -9,34 +9,46 @@
     <link rel="stylesheet" href="./myCssStyle.css">
 </head>
 
-<body>
-    <div class="grid-container">
 
-        <div class="grid-item item-header">header</div>
-        <div class="grid-item item-body">Body</div>
-        <div class="grid-item item-footer">footer</div>
+<div class="grid-container">
 
-        <div class="grid-item item-topmenu">
-            top menu
-            <div class="menu-top">
-                <ul>
-                    <li>menu1</li>
-                    <li>menu2</li>
-                    <li>menu3</li>
-                    <li>menu4</li>
-                    <li>menu5</li>
-                </ul>
-            </div>
+    <div class="grid-item item-header">header</div>
+    <div class="grid-item item-body" id="mybody">Body</div>
+    <div class="grid-item item-footer">footer</div>
+
+    <div class="grid-item item-topmenu">
+        top menu
+        <div class="menu-top">
+            <ul class="mainMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li style="float:right"><a class="active" href="#about">About</a></li>
+            </ul>
         </div>
-        <div class="grid-item item-rightmenu">right menu</div>
-
-        <div class="grid-item item-6">6</div>
-
-        <div class="grid-item item-7">7</div>
-        <div class="grid-item item-8">8</div>
     </div>
+    <div class="grid-item item-rightmenu">right menu</div>
 
+    <div class="grid-item item-6">6</div>
 
+    <div class="grid-item item-7">7</div>
+    <div class="grid-item item-8">8</div>
+</div>
+<script>
+    document.getElementById("mybody").innerHTML =
+        "<div class='main-grid-body'>" +
+        "<div class = 'grid-body grid-body-1' > 1 </div>  " +
+        "<div class = 'grid-body grid-body-2' > 2 </div> " +
+        "<div class = 'grid-body grid-body-3' > 3 </div> " +
+        "<div class = 'grid-body grid-body-4' > 4 </div> " +
+        "<div class = 'grid-body grid-body-5' > 5 </div> " +
+        "<div class = 'grid-body grid-body-6' > 6 </div> " +
+        "<div class = 'grid-body grid-body-7' > 7 </div> " +
+        "<div class = 'grid-body grid-body-8' > 8 </div> " +
+        "<div class = 'grid-body grid-body-9' > 9 </div> " +
+        "<div class = 'grid-body grid-body-10' > 10 </div> " +
+        "</div > ";
+</script>
 </body>
 
 </html>

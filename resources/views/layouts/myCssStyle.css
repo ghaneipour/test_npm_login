@@ -5,15 +5,36 @@
     box-sizing: border-box;
 }
 
+.main-grid-body {
+    border-radius: 10px;
+    text-align: center;
+    background-color: rgb(207, 209, 209);
+    width: 99%;
+    margin: 1rem auto;
+    display: grid;
+    grid-template-rows: repeat(auto-fill, 200px);
+    grid-template-columns: repeat(auto-fill, minmax(250px, 300px));
+    grid-row-gap: 10px;
+    grid-column-gap: 20px;
+}
+
+.grid-body {
+    border-radius: 10px;
+    background-color: orange;
+    border: 1px solid chartreuse;
+    font-size: 25pt;
+    padding-top: 30px;
+}
+
 .grid-container {
     border-radius: 10px;
     text-align: center;
-    background-color: rgb(226, 95, 95);
+    background-color: rgb(207, 209, 209);
     width: 100%;
     margin: 0rem auto;
     display: grid;
-    grid-template-rows: 100px 40px 350px 350px 100px;
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 180px 40px 350px 350px 150px 150px;
+    grid-template-columns: minmax(50px, 100px) 4fr minmax(100px, 150px);
     /* repeat(5, 100px); */
     /* grid-template-columns: repeat(3, 120px); */
     /* grid-template-columns: repeat(2, 120px) 200px; */
@@ -28,22 +49,25 @@
     /* margin: 1rem auto; */
     border-radius: 10px;
     background-color: orange;
-    border: 1px solid black;
+    border: 1px solid rgb(117, 112, 112);
     font-size: 25pt;
     padding-top: 30px;
 }
 
 .item-header {
     grid-area: 1/1/1/4;
+    background-color: #c5cac9;
 }
 
 .item-body {
     grid-area: 3/2/5/3;
+    background-color: #cbd5d6;
     /* start row/start col/stop row/stop col*/
 }
 
 .item-footer {
-    grid-area: 5/1/5/4;
+    grid-area: 6/1/6/4;
+    background-color: #d1d9da;
 }
 
 .item-topmenu {
@@ -54,6 +78,7 @@
     grid-row: 2/2;
     grid-column: 1/4;
     padding-top: 0px;
+    background-color: #d1d3c5;
 }
 
 .menu-top {
@@ -62,3 +87,61 @@
     position: absolute;
     left: 200px;
 }
+
+.item-rightmenu {
+    grid-area: 3/3/5/3;
+    background-color: #c5c6cc;
+}
+
+.item-6 {
+    grid-area: 5/1/5/4;
+    background-color: #d6d9da;
+}
+
+.item-7 {
+    grid-area: 3/1/4/1;
+    background-color: #d6d9da;
+}
+
+.item-8 {
+    grid-area: 4/1/5/1;
+    background-color: #d6d9da;
+}
+
+li {
+    float: none;
+    display: inline-block;
+    zoom: .56;
+    *display: inline;
+    padding: 10px;
+    margin-top: -5px;
+}
+
+ul.mainMenu {
+    /* margin-top: -45px; */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.mainMenu li {
+    float: left;
+}
+
+
+/* And so on... */
+
+.mainMenu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+/* li {
+    float: left;
+} */
