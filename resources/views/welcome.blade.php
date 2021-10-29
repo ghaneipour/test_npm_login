@@ -122,7 +122,8 @@
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
                             <div class="flex items-center">
                             <img src="{{ url('/img/setting.png')}}" width="50">
-                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Security امنیت</div>
+                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">
+                                    <a href="/food" class="fff">Security امنیت</a></div>
                             </div>
 
                             <div class="ml-12">

@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    /* background: #ff50f5; */
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 80vh repeat(5, max-content);
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.section-title {
+    margin: 20px;
+    text-align: center;
+    padding: 2%;
+    font-size: 27px;
+    color: orange;
+}
+
+.section-title:before,
+.section-title:after {
+    background-color: black;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 5%;
+}
+
+.section-title:before {
+    right: 0.5em;
+    margin-left: -50%;
+}
+
+.section-title:after {
+    left: 0.5em;
+    margin-right: -50%;
+}
+
+.testt:before {
+    content: "hello All user";
+    text-align: center;
+}
