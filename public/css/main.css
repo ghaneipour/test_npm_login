@@ -44,7 +44,18 @@ body {
     margin-right: -50%;
 }
 
-.testt:before {
-    content: "hello All user";
-    text-align: center;
+.testt {
+    visibility: hidden;
+    position: relative;
 }
+
+.testt::after {
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "NEW_CONTENT";
+}
+
+
+/* margin left >>> || padding left >>>text <<<< padding right || margin right */

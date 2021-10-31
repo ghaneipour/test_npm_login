@@ -1,8 +1,27 @@
+@font-face {
+    font-family: "iransence";
+    src: url('../../../public/fonts/IRANSansWeb.eot') format('eot'), url("/public/fonts/IRANSansWeb_Bold.eot") format('eot');
+    /* url('myfont.woff') format('woff'); */
+}
+
+@font-face {
+    font-family: "IRAN Sans Bold";
+    src: url("../../../public/fonts/IRAN Sans Bold/@font-face/766132c828a90cbecf6f7f4027d12725.eot");
+    /* IE9*/
+    src: url("../../../public/fonts/IRAN Sans Bold/@font-face/766132c828a90cbecf6f7f4027d12725.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../../../public/fonts/IRAN Sans Bold/@font-face/766132c828a90cbecf6f7f4027d12725.woff2") format("woff2"), /* chrome、firefox */
+    url("../../../public/fonts/IRAN Sans Bold/@font-face/766132c828a90cbecf6f7f4027d12725.woff") format("woff"), /* chrome、firefox */
+    url("../../../public/fonts/IRAN Sans Bold/@font-face/766132c828a90cbecf6f7f4027d12725.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("../../../public/fonts/IRAN Sans Bold/@font-face/766132c828a90cbecf6f7f4027d12725.svg#IRAN Sans Bold") format("svg");
+    /* iOS 4.1- */
+}
+
 * {
-    color: blue;
+    color: rgb(14, 14, 19);
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: "IRAN Sans Bold";
 }
 
 .main-grid-body {
@@ -33,8 +52,8 @@
     width: 100%;
     margin: 0rem auto;
     display: grid;
-    grid-template-rows: 180px 40px 350px 350px 150px 150px;
     grid-template-columns: minmax(50px, 100px) 4fr minmax(100px, 150px);
+    grid-template-rows: 180px 1fr 350px 350px 150px 150px;
     /* repeat(5, 100px); */
     /* grid-template-columns: repeat(3, 120px); */
     /* grid-template-columns: repeat(2, 120px) 200px; */
@@ -56,7 +75,9 @@
 
 .item-header {
     grid-area: 1/1/1/4;
-    background-color: #c5cac9;
+    /* background-color: #c5cac9; */
+    background-image: linear-gradient(to bottom, #5e5d50, #4442384f), url("../../../../../public/pic/headrebg.jpg");
+    background-size: cover;
 }
 
 .item-body {
@@ -65,32 +86,12 @@
     /* start row/start col/stop row/stop col*/
 }
 
+
+/* _______________ footer _______________________*/
+
 .item-footer {
     grid-area: 6/1/6/4;
     background-color: #d1d9da;
-}
-
-.item-topmenu {
-    /* grid-row-start: 2;
-    grid-row-end: 2; */
-    /* grid-column-start: 1;
-    grid-column-end: 4; */
-    grid-row: 2/2;
-    grid-column: 1/4;
-    padding-top: 0px;
-    background-color: #d1d3c5;
-}
-
-.menu-top {
-    background-color: blueviolet;
-    /* font-size: xx-small; */
-    position: absolute;
-    left: 200px;
-}
-
-.item-rightmenu {
-    grid-area: 3/3/5/3;
-    background-color: #c5c6cc;
 }
 
 .item-6 {
@@ -98,42 +99,152 @@
     background-color: #d6d9da;
 }
 
+
+/*________________ promotion _______________________*/
+
 .item-7 {
     grid-area: 3/1/4/1;
     background-color: #d6d9da;
+    padding: 0;
+    border-radius: 10px;
+}
+
+.imgsx {
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid bisque;
 }
 
 .item-8 {
     grid-area: 4/1/5/1;
     background-color: #d6d9da;
+    padding: 0;
 }
 
-li {
-    float: none;
+.imgS8 {
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid bisque;
+}
+
+
+/* ___________________Top menu_________________________ */
+
+.item-topmenu {
+    grid-row: 2/2;
+    grid-column: 1/4;
+    /* ____________________*/
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-rows: 1fr;
+    padding: 0px;
+    background-color: #d1d3c5;
+    font-size: 24px;
+}
+
+.menu_top_left {
+    background-image: linear-gradient(to bottom, #4442384f, #5e5d50);
+    border-radius: 10px;
+    padding: auto auto;
+}
+
+.menu_top_right {
+    background-image: linear-gradient(to bottom, #4442384f, #2e2b03);
+    border-radius: 10px;
+}
+
+.menu_top_div {
+    padding: 0px;
+    margin: 0px;
+    border: 0;
+    outline: 0;
+    border-radius: 10px;
+}
+
+.ULmainMenu li {
     display: inline-block;
+    /* float: none; */
+    /* display: inline-block; */
+    /* zoom: .56; */
+    /* *display: inline; */
+    /* padding: 10px; */
+    /* margin: 0px; */
+}
+
+.ULmainMenu {
+    /* ul*/
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom, #6e6b594f, #2e2b03);
+    /* margin-top: -45px; */
+    /* circle s */
+    list-style-type: none;
+    /* left to right */
+    margin: 0;
+    padding: 0 30px 0 30px;
+    outline: 0px;
+    border: 0px dashed red;
+    /* overflow: hidden; */
+    /* background-color: #333; */
+}
+
+.ULmainMenu li a {
+    /* display: block; */
+    color: white;
+    text-align: center;
+    /* padding: 14px 16px; */
+    text-decoration: none;
+}
+
+.ULmainMenu li::first-line {
+    /* content: '111'; */
+    /* display: inline-block; */
+    height: 55px;
+    width: 95px;
+    background-image: url('../../../../../public/pic/menu.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: whitesmoke;
+    /* margin-left: -35px; */
+}
+
+
+/* _________ right menu ____________ */
+
+.item-rightmenu {
+    grid-area: 3/3/5/3;
+    background-color: #c5c6cc;
+    padding: 0;
+}
+
+.menu-rights {
+    vertical-align: top;
+    margin-top: 0px;
+}
+
+.mainMenuright li::first-line {
+    content: '111';
+    display: inline-block;
+    height: 55px;
+    width: 95px;
+    background-image: url('../../../../../public/pic/menu.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    color: whitesmoke;
+    /* margin-left: -35px; */
+}
+
+.mainMenuright li {
+    font-size: 48px;
+    border-bottom: 1px dashed rgb(117, 112, 112);
+    float: none;
+    /* display: inline-block; */
     zoom: .56;
     *display: inline;
     padding: 10px;
-    margin-top: -5px;
+    margin: 0px;
 }
 
-ul.mainMenu {
-    /* margin-top: -45px; */
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-.mainMenu li {
-    float: left;
-}
-
-
-/* And so on... */
-
-.mainMenu li a {
+.mainMenuright li a {
     display: block;
     color: white;
     text-align: center;
@@ -141,7 +252,32 @@ ul.mainMenu {
     text-decoration: none;
 }
 
+ul.mainMenuright {
+    border-radius: 15px;
+    background-image: linear-gradient(to bottom, #4442384f, #2e2b03);
+    /* margin-top: -45px; */
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    overflow: hidden;
+    /* background-color: #333; */
+}
 
-/* li {
-    float: left;
-} */
+.submenurightul {
+    align-items: baseline;
+    background-image: linear-gradient(to bottom, #adaca34f, #2e2b03);
+    display: none;
+}
+
+.rightMenuSub:hover {
+    background-color: red;
+}
+
+li:nth-child(even) {
+    background-image: linear-gradient(to bottom, #443d384f, #2e2b03);
+}
+
+
+/*  */

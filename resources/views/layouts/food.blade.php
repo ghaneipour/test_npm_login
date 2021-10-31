@@ -27,23 +27,64 @@
 </head>
 
 <body>
+ 
+    <?php 
+    $status=" "; 
+    $item = \App\Models\tblmygallery::query()->get();
+    // select('select max(id),min(id),count(id) from tblmygalleries group by id')->first(); 
+    // select("SELECT * FROM tblmygalleries")->first();->where('id', '1')
+    // query()->first();
+    // ->firstOrFail();    
+        //where('email', $request->email )->get(); 
+        if($item==null)
+        {
+            $status.= "<a href=\>back</a> empty<br>";
+              //dd(403); 
+              //----- by pedram
+        }
+        else
+        {         
+            $cnter=0;
+            $cnter=count($item);
+            $status.= $item;
+        }
+        // .$item->count
+        echo(
+        "<style> 
+        .ssimage{ 
+            width: 100%;
+            height: 250px;
+            border-radius: 30px;
+            content: url('../pic/service-1.png');}
+            .age-1{
+                content: url('../pic/service-2.png');
+            }
+            </style>");
+    ?>
+
     <div class="container">
         <header class="header">
             <div class="testt">oooooooooooooooooooooooo</div>
             <h3 class="header1">Wellcome to</h3>
             <h1 class="header2"><span class="header-text">DELICIOUS </span>FOOD</h1>
-            <button class="header-btn">ORDER FOOD</button>
+            <button class="header-btn" onclick="window.open('http://www.website.com/page')">ORDER FOOD</button>
         </header>
         <section class="story">
             <div class="gg">
+                <div class="mystt">count:{{ $cnter }}</div>
+                <div class="mystt">data:{{ $status }}</div>
                 <h3 class="section-title">Our Story</h3>
                 <section class="story-images">
+                    <?php
+                    for($i=0;$i<$cnter;$i++){
+                        echo "<img class='ssimage age-".($i+1)."' src='' alt=''>";
+                    }
+                    ?>
                     <img class="image mimage-1" src="" alt="">
                     <img class="image mimage-2" src="" alt="">
                     <img class="image mimage-3" src="" alt="">
                     <img class="image mimage-4" src="" alt="">
                 </section>
-
             </div>
         </section>
         <section class="service">
