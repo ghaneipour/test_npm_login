@@ -1,20 +1,23 @@
 @font-face {
     font-family: "iransence";
-    src: url('../../../public/fonts/IRANSansWeb.eot') format('eot'), url("/public/fonts/IRANSansWeb_Bold.eot") format('eot');
+    src: url('../fonts/IRANSansWeb.eot') format('eot'), url("../fonts/IRANSansWeb_Bold.eot") format('eot');
     /* url('myfont.woff') format('woff'); */
 }
 
 @font-face {
     font-family: "IRAN Sans Bold";
-    src: url("../../../public/fonts/IRAN Sans Bold/@font-face/766132c828a90cbecf6f7f4027d12725.eot");
+    src: url("../fonts/IRAN Sans Bold/@font-face/766132c828a90cbecf6f7f4027d12725.eot");
     /* IE9*/
-    src: url("../../../public/fonts/IRAN Sans Bold/@font-face/766132c828a90cbecf6f7f4027d12725.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-    url("../../../public/fonts/IRAN Sans Bold/@font-face/766132c828a90cbecf6f7f4027d12725.woff2") format("woff2"), /* chrome、firefox */
-    url("../../../public/fonts/IRAN Sans Bold/@font-face/766132c828a90cbecf6f7f4027d12725.woff") format("woff"), /* chrome、firefox */
-    url("../../../public/fonts/IRAN Sans Bold/@font-face/766132c828a90cbecf6f7f4027d12725.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-    url("../../../public/fonts/IRAN Sans Bold/@font-face/766132c828a90cbecf6f7f4027d12725.svg#IRAN Sans Bold") format("svg");
+    src: url("../fonts/IRAN Sans Bold/@font-face/766132c828a90cbecf6f7f4027d12725.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/IRAN Sans Bold/@font-face/766132c828a90cbecf6f7f4027d12725.woff2") format("woff2"), /* chrome、firefox */
+    url("../fonts/IRAN Sans Bold/@font-face/766132c828a90cbecf6f7f4027d12725.woff") format("woff"), /* chrome、firefox */
+    url("../fonts/IRAN Sans Bold/@font-face/766132c828a90cbecf6f7f4027d12725.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("../fonts/IRAN Sans Bold/@font-face/766132c828a90cbecf6f7f4027d12725.svg#IRAN Sans Bold") format("svg");
     /* iOS 4.1- */
 }
+
+
+/* ________________________________ body ______________________________________ */
 
 * {
     color: rgb(14, 14, 19);
@@ -24,22 +27,27 @@
     font-family: "IRAN Sans Bold";
 }
 
+a {
+    text-decoration: none;
+}
+
 .main-grid-body {
     border-radius: 10px;
     text-align: center;
-    background-color: rgb(207, 209, 209);
-    width: 99%;
+    /* background-color: rgb(255, 4, 4); */
+    width: 95%;
+    padding: 1px auto;
     margin: 1rem auto;
     display: grid;
     grid-template-rows: repeat(auto-fill, 200px);
-    grid-template-columns: repeat(auto-fill, minmax(250px, 300px));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-row-gap: 10px;
     grid-column-gap: 20px;
 }
 
 .grid-body {
     border-radius: 10px;
-    background-color: orange;
+    /* background-color: orange; */
     border: 1px solid chartreuse;
     font-size: 25pt;
     padding-top: 30px;
@@ -48,7 +56,7 @@
 .grid-container {
     border-radius: 10px;
     text-align: center;
-    background-color: rgb(207, 209, 209);
+    /* background-color: rgb(207, 209, 209); */
     width: 100%;
     margin: 0rem auto;
     display: grid;
@@ -67,7 +75,7 @@
     /* padding: 10px; */
     /* margin: 1rem auto; */
     border-radius: 10px;
-    background-color: orange;
+    /* background-color: orange; */
     border: 1px solid rgb(117, 112, 112);
     font-size: 25pt;
     padding-top: 30px;
@@ -76,13 +84,13 @@
 .item-header {
     grid-area: 1/1/1/4;
     /* background-color: #c5cac9; */
-    background-image: linear-gradient(to bottom, #5e5d50, #4442384f), url("../../../../../public/pic/headrebg.jpg");
+    background-image: linear-gradient(to bottom, #fff, #4442384f), url("../pic/headrebg.jpg");
     background-size: cover;
 }
 
 .item-body {
     grid-area: 3/2/5/3;
-    background-color: #cbd5d6;
+    /* background-color: #cbd5d6; */
     /* start row/start col/stop row/stop col*/
 }
 
@@ -149,7 +157,7 @@
 }
 
 .menu_top_right {
-    background-image: linear-gradient(to bottom, #4442384f, #2e2b03);
+    background-image: linear-gradient(to bottom, #4442384f, #5e5d50);
     border-radius: 10px;
 }
 
@@ -174,7 +182,7 @@
 .ULmainMenu {
     /* ul*/
     border-radius: 10px;
-    background-image: linear-gradient(to bottom, #6e6b594f, #2e2b03);
+    background-image: linear-gradient(to bottom, #4442384f, #5e5d50);
     /* margin-top: -45px; */
     /* circle s */
     list-style-type: none;
@@ -200,7 +208,7 @@
     /* display: inline-block; */
     height: 55px;
     width: 95px;
-    background-image: url('../../../../../public/pic/menu.png');
+    background-image: url('../pic/menu.png');
     background-size: cover;
     background-repeat: no-repeat;
     color: whitesmoke;
@@ -226,7 +234,7 @@
     display: inline-block;
     height: 55px;
     width: 95px;
-    background-image: url('../../../../../public/pic/menu.png');
+    background-image: url('../pic/menu.png');
     background-size: contain;
     background-repeat: no-repeat;
     color: whitesmoke;
@@ -254,7 +262,7 @@
 
 ul.mainMenuright {
     border-radius: 15px;
-    background-image: linear-gradient(to bottom, #4442384f, #2e2b03);
+    background-image: linear-gradient(to bottom, #4442384f, #5e5d50);
     /* margin-top: -45px; */
     list-style-type: none;
     margin: 0;
@@ -267,8 +275,12 @@ ul.mainMenuright {
 
 .submenurightul {
     align-items: baseline;
-    background-image: linear-gradient(to bottom, #adaca34f, #2e2b03);
+    background-image: linear-gradient(to bottom, #4442384f, #5e5d50);
     display: none;
+}
+
+li:hover {
+    background-color: orange;
 }
 
 .rightMenuSub:hover {
@@ -276,8 +288,55 @@ ul.mainMenuright {
 }
 
 li:nth-child(even) {
-    background-image: linear-gradient(to bottom, #443d384f, #2e2b03);
+    background-image: linear-gradient(to bottom, #5e5d50, #4442384f);
 }
 
 
-/*  */
+/*  __________________________________________ */
+
+#mybody {
+    /* background-color: rgba(32, 32, 73, 0.651); */
+    overflow: auto;
+    padding: 1px auto;
+}
+
+.grid-body {
+    border: 30px solid transparent;
+    border-image: url("../pic/tag.png") round;
+    /* 30 stretch;*/
+    background-color: rgb(153, 123, 123);
+}
+
+
+/*_____________________________form________________*/
+
+input,
+select {
+    background-image: url("../pic/tag.png");
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    padding: 2px 2px 2px 50px;
+    border-radius: 15px;
+    position: absolute;
+    right: 150px;
+    border-color: #cfcfcf;
+    width: 300px;
+    margin: 30px;
+}
+
+form {
+    /* float: right; */
+    margin: 50px auto;
+    font-family: iranyekan;
+    width: 80%;
+    padding: 40px auto;
+    background-color: sandybrown;
+}
+
+fieldset,
+.formsdiv {
+    margin: 10px;
+    padding: 30px;
+    background-color: tan;
+    border-radius: 15px;
+}

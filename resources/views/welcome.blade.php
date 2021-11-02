@@ -83,12 +83,12 @@
                                  
                                     <table><tr>
                                         <td>
-                                             <a href="https://softlock.ir/sell"   
+                                             <a href="softlock"   
                                              class="underline text-gray-900 dark:text-white">
                                     <img src="{{ url('/img/shop.jpg')}}" width="100">
                                 </td>
                                     <td>
-                                        <a href="https://softlock.ir/sell"   class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">                                    
+                                        <a href="/softlock"   class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">                                    
                                             shop فروشگاه
                                         </a>
                                     </td>
@@ -123,7 +123,7 @@
                             <div class="flex items-center">
                             <img src="{{ url('/img/setting.png')}}" width="50">
                                 <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">
-                                    <a href="/food" class="fff">Security امنیت</a></div>
+                                    <a href="/food" class="fff">Food تغذیه</a></div>
                             </div>
 
                             <div class="ml-12">

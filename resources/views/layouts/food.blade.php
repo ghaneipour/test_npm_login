@@ -67,7 +67,7 @@
             <div class="testt">oooooooooooooooooooooooo</div>
             <h3 class="header1">Wellcome to</h3>
             <h1 class="header2"><span class="header-text">DELICIOUS </span>FOOD</h1>
-            <button class="header-btn" onclick="window.open('http://www.website.com/page')">ORDER FOOD</button>
+            <button class="header-btn" onclick="window.open('/','_self');window.open('http://www.website.com/page','_blank');">Home</button>
         </header>
         <section class="story">
             <div class="gg">
