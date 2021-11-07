@@ -8,6 +8,10 @@
     <title>Shop of SoftLock</title>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="{{ url('/js/jquery-3.6.0.min.js') }}"></script> 
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.rtl.min.css" integrity="sha384-+qdLaIRZfNu4cVPK/PxJJEy0B0f3Ugv8i482AKY7gwXwhaCroABd086ybrVKTa0q" crossorigin="anonymous">
+
+
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <!-- <script src="sweetalert2.all.min.js"></script>
     <script src="sweetalert2.min.js"></script>
@@ -79,8 +83,14 @@
 <div id="body_grid" style="display:none">
     SoftLock
     <div class='main-grid-body'>
-        <div class='grid-body grid-body-1'> 1 </div>
-        <div class='grid-body grid-body-2'> 2 </div>
+        <div class='grid-body grid-body-1'>  
+
+            <img src="{{ url('/pic/s1.png') }}" alt="Rotate" class="imgrot1">
+        </div>
+        <div class='grid-body grid-body-2'> 
+         <img src="{{ url('/pic/s1.png') }}" alt="skew" class="imgrot2">
+
+         </div>
         <div class='grid-body grid-body-3'> 3 </div>
         <div class='grid-body grid-body-4'> 4 </div>
         <div class='grid-body grid-body-5'> 5 </div>
@@ -166,8 +176,8 @@
 
 
 
-<form action="." method="post" dir="ltr">
-    <fieldset>
+<form action="." method="post" dir="ltr" class="form1">
+    <fieldset class="fieldset1">
         <legend align="center">Login Page</legend>
         <div class="formsdiv">
         <br><div class="pedram" id="pedram">pedram</div>
@@ -304,6 +314,19 @@
            <br><div class="demo3" id="demo3">d3</div>
            <br><div class="demo4" id="demo4">d4</div>
 
+
+ <form class="row g-3">
+    <fieldset>
+      <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        </fieldset>
+    </form>         
 </body>
 
 </html>
