@@ -36,3 +36,6 @@ Route::get('/food', function () {
 Route::get('/softlock', function () {
     return view('./layouts/softlock');
 });
+Route::get('/bs', function () {
+    return view('./bs');
+});
