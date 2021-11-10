@@ -29,3 +29,17 @@ body {
     padding: 0;
     margin: 0;
 }
+
+.listbb a {
+    color: #000;
+    text-decoration: none;
+}
+
+.listbb a :hover {
+    color: #000;
+}
+
+.borderfooter {
+    border-bottom: 3px solid #000;
+    height: 35px;
+}

@@ -17,7 +17,7 @@
 
 <body>
 
-<!-- ____________________menu navbar_________________________________ -->
+  <!-- ____________________menu navbar_________________________________ -->
   <header class="shadow">
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
       <div class="container">
@@ -58,7 +58,7 @@
       </div>
     </nav>
   </header>
-<!-- ______________________welcome_____________________________ -->
+  <!-- ______________________welcome_____________________________ -->
   <section class="my-4">
     <div class="container">
       <div class="row align-items-center">
@@ -258,11 +258,11 @@
 
   </section>
 
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220">
     <path fill="#1b2a4e" fill-opacity="1" d="M0,224L120,234.7C240,245,480,267,720,245.3C960,224,1200,160,1320,128L1440,96L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path>
   </svg>
   <!-- ________________________form_____________________________ -->
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220">
     <path fill="#f8f9fa" fill-opacity="1" d="M0,224L120,234.7C240,245,480,267,720,245.3C960,224,1200,160,1320,128L1440,96L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
   </svg>
   <section class="bg-light">
@@ -297,14 +297,62 @@
       </div>
     </div>
   </section>
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220">
     <path fill="#f8f9fa" fill-opacity="1" d="M0,224L120,234.7C240,245,480,267,720,245.3C960,224,1200,160,1320,128L1440,96L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path>
   </svg>
   <!-- _______________________footer______________________________ -->
-  <section>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220">
+    <path fill="#f8f9fa" fill-opacity="1" d="M0,224L120,234.7C240,245,480,267,720,245.3C960,224,1200,160,1320,128L1440,96L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
+  </svg>
 
+  <footer class="bg-light">
+    <div class="container  p-4 ">
+      <div class="row ">
+        <div class="col-md-4  align-items-center text-center ">
+          <h3 class="fw-bold"> Soft Lock . ir</h3>
+          <p>dlfklskjvlskjlsjflsf aldf ajd ksjad cka akdjfc ak</p>
+          <i class="bi bi-instagram fs-2"></i>
+          <i class="bi bi-telegram fs-2 mx-3"></i>
+          <i class="bi bi-facebook fs-2 me-3"></i>
+          <i class="bi bi-linkedin fs-2"></i>
+        </div>
+        <div class="col-md-7 offset-md-1  ">
+          <div class="row text-left align-items-center my-3">
+            <div class="col-md-4">
+              <h6 class="fw-bold borderfooter w-75">بخش های سامانه</h6>
 
-  </section>
+              <ul class="list-unstyled listbb">
+                <li><a href="#">عضویت</a></li>
+                <li><a href="#">درباره ما</a></li>
+                <li><a href="#">محصولات</a></li>
+                <li><a href="#">گالری</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h6 class="fw-bold borderfooter w-75">بخش های سامانه</h6>
+
+              <ul class="list-unstyled listbb">
+                <li><a href="#">عضویت</a></li>
+                <li><a href="#">درباره ما</a></li>
+                <li><a href="#">محصولات</a></li>
+                <li><a href="#">گالری</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <h6 class="fw-bold borderfooter w-75">بخش های سامانه</h6>
+
+              <ul class="list-unstyled listbb">
+                <li><a href="#">عضویت</a></li>
+                <li><a href="#">درباره ما</a></li>
+                <li><a href="#">محصولات</a></li>
+                <li><a href="#">گالری</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
   <!-- _____________________________________________________ -->
   <div>
 
