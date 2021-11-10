@@ -22,3 +22,10 @@ body {
     color: #fff;
     background-color: #1b2a4e;
 }
+
+.main-section {
+    background-color: #1b2a4e;
+    color: fff;
+    padding: 0;
+    margin: 0;
+}
