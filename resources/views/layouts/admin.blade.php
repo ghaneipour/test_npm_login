@@ -28,83 +28,48 @@
                                 <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">خانه</span>
                             </a>
                         </li>
-<!-- show -->
+                        <!-- show -->
 
-                        <li >
-                            <a href="#submenu1"  data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">ریاضی</span> </a>
+                        <li>
+                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">تعاریف</span> </a>
                             <ul class="collapse  nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">ضرب</span>  </a>
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">قراردادها</span> </a>
                                 </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">کسر</span>   </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">کسر2</span>   </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">کسر3</span>   </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">کسر4</span>   </a>
-                                </li>
+
                             </ul>
                         </li>
 
                         <li>
                             <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                                <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">علوم</span></a>
+                                <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">محصولات</span></a>
                             <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">انرژی</span>  </a>
+                                    <a href="/admin/category/create" class="nav-link px-0"> <span class="d-none d-sm-inline">تعریف</span> </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">برق</span>  </a>
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش</span> </a>
                                 </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">برق</span>  </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">برق</span>  </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">برق</span>  </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">برق</span>  </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">برق</span>  </a>
-                                </li>
-                            </ul>
-                        </li>
-                        
-                        <li>
-                            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">انگلیسی</span> </a>
-                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                                <li class="w-100">
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">معرفی افراد</span>  </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">ایام هفته</span>  </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">ماه سال</span>  </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">حیوانات خانگی</span>  </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">حیوانات خانگی</span>  </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">حیوانات خانگی</span>  </a>
-                                </li>
+
                             </ul>
                         </li>
 
+                        <li>
+                            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">کاربران</span> </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">معرفی افراد</span> </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش</span> </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">گزارش</span> </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li>
                             <a href="#" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">سفارشات</span></a>
@@ -113,6 +78,35 @@
                             <a href="#" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">مشتریان</span> </a>
                         </li>
+                        <li>
+                            <?php
+                            $xi = 0;
+                            foreach ($catlist as $val) {
+                                if($val=='دسته اصلی'){
+
+                                }
+                                else{
+
+                                    $xi++;
+                                    
+                                    if (!str_contains($val, "<")) {
+                                        if ($xi > 1) {
+                                            echo (' </li></ul>');
+                                        }
+                                        
+                                        echo (' <a href="#submenuq' . $xi . '" data-bs-toggle="collapse" class="nav-link px-0 align-middle">');
+                                        echo (' <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">' . $val . '</span> </a>');
+                                        echo ('<ul class="collapse nav flex-column ms-1" id="submenuq' . $xi . '" data-bs-parent="#menu">');
+                                    } else {
+                                        echo (' <li class="w-100 bg-info">');
+                                        echo (' <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">' . $val . '</span>  </a>');
+                                        echo (' </li>');
+                                    }
+                                }
+                            }
+                            ?>
+                        </li>
+
                     </ul>
                     <hr>
                     <div class="dropdown pb-4">
@@ -121,7 +115,7 @@
                             <span class="d-none d-sm-inline mx-1">پروفایل من</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                            <li><a class="dropdown-item" href="#">سبد خریدس</a></li>
+                            <li><a class="dropdown-item" href="#">سبد خرید</a></li>
                             <li><a class="dropdown-item" href="#">سفارش جدید</a></li>
                             <li><a class="dropdown-item" href="#">سابقه سفارش ها</a></li>
                             <li>
@@ -132,28 +126,32 @@
                     </div>
                 </div>
             </div>
-            <div class="col py-3"> 
+            <div class="col py-3">
                 @yield('content')
+                <hr>
+
+
             </div>
         </div>
     </div>
 
-<style>
-    ul li ul li{
-        background-color: #454545;
-        padding:0 20px;
-        border-bottom: 1px solid #333;
-        margin-left: 20px;
-        width: 100%;
-    }
-    ul{
-        border-bottom: 1px solid #B6B7B8;
-    }
-     
-    .nav-link{
-        color:antiquewhite;
-    }
-</style>
+    <style>
+        ul li ul li {
+            background-color: #454545;
+            padding: 0 20px;
+            border-bottom: 1px solid #333;
+            margin-left: 20px;
+            width: 100%;
+        }
+
+        ul {
+            border-bottom: 1px solid #B6B7B8;
+        }
+
+        .nav-link {
+            color: antiquewhite;
+        }
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </body>
