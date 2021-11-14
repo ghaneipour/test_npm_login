@@ -27,8 +27,8 @@ Route::prefix("admin")->group(function(){
     });
     
     Route::resource('category','App\Http\Controllers\categorycontroller')->except("show");
-    Route::get('/category/update',[App\Http\Controllers\categorycontroller::class,'update']);
-    Route::get('/category/edit',[App\Http\Controllers\categorycontroller::class,'edit']);
+    Route::any('/category/update',[App\Http\Controllers\categorycontroller::class,'update']);
+    Route::any('/category/edit',[App\Http\Controllers\categorycontroller::class,'edit']);
 
 });
 

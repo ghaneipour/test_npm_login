@@ -10,8 +10,20 @@
     </div>
     <div class="w-50 form-control">
 
-        {{ Form::open(['url'=>'admin/category','files'=>true])}}
 
+
+
+        {{ Form::open(['url'=>'admin/category/edit','files'=>true])}}
+        <div class="form-control bg-dark text-warning">
+            <div class="feild-group  m-2">
+                {{ Form::label('id','نام دسته برای ویرایش:')}}
+                {{ Form::select('id',$catlist,0 , array('class' => 'form-select','size=5')) }}
+                @if($errors->has('id'))
+                <span>{{ $errors->First('id') }}</span>
+                @endif
+            </div>
+        </div>
+        <hr>
         <div class="feild-group  m-2">
             {{ Form::label('category_parentid','زیر دسته')}}
             {{ Form::select('category_parentid',$catlist,0 , array('class' => 'form-select')) }}
@@ -46,7 +58,8 @@
     </div>
 </div>
 @endsection
- 
+
+
 <style>
     .feild-group span {
         color: red;

@@ -67,7 +67,7 @@
                             <div class="flex items-center">
                             <img src="{{ url('/img/doc.png')}}" width="50">
                                 <div class="ml-4 text-lg leading-7 font-semibold">
-                                    <a href="https://softlock.ir" class="underline text-gray-900 dark:text-white">Documentation مستندات</a></div>
+                                    <a href="/admin/category" class="underline text-gray-900 dark:text-white">Documentation مستندات</a></div>
                             </div>
 
                             <div class="ml-12">
