@@ -10,14 +10,16 @@ use App\Models\category;
 
 class categorycontroller extends Controller
 {
+    // $catlist="-";
     public function index()
     {
+        $catlist=category::getCatList();
+        return  view("layouts.admin",['catlist'=>$catlist ]);
     }
     public function create()
     {
-        $catlist=category::getCatList();
-
-        return view("category.category",['catlist'=>$catlist]);
+        $catlist=category::getCatList(); 
+        return view("category.category",['catlist'=>$catlist ]);
     }
     public function store(categoryRQ $request)
     {
@@ -29,13 +31,21 @@ class categorycontroller extends Controller
         $category->save();
         return redirect('admin/category/create');
     }
-    public function edit()
+    public function edit(request $request)
     {
+        // document.write( "edit1");
+        $catlist=category::getCatList(); 
+        return view("category.categoryed",['catlist'=>$catlist ]);
     }
-    public function update()
+    public function update(request $request)
     {
+        // document.write( "update1");
+        $catlist=category::getCatList(); 
+        return view("category.categoryed",['catlist'=>$catlist ]);
     }
     public function destroy()
     {
     }
+
+     
 }

@@ -46,10 +46,13 @@
                                 <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">محصولات</span></a>
                             <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="/admin/category/create" class="nav-link px-0"> <span class="d-none d-sm-inline">تعریف</span> </a>
+                                    <a href="/admin/category/create#submenu2" class="nav-link px-0"> <span class="d-none d-sm-inline">تعریف</span> </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش</span> </a>
+                                    <a href="/admin/category/update#submenu2" class="nav-link px-0"> <span class="d-none d-sm-inline">بروزرسانی</span> </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/category/edit#submenu2" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش</span> </a>
                                 </li>
 
                             </ul>
@@ -103,7 +106,7 @@
                                         echo (' </li>');
                                     }
                                 }
-                            }
+                            } 
                             ?>
                         </li>
 

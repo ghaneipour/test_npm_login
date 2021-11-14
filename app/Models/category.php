@@ -29,4 +29,5 @@ class category extends Model
     {
         return $this->hasMany(category::class,'category_parentid','id');
     }
+
 }
