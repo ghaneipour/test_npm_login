@@ -3,7 +3,7 @@
 @section('content')
 <div class="panel form-control p-3">
     <div class="header">
-        <h3>edit گروه بندی ها</h3>
+        <h3>ویرایش گروه بندی ها</h3>
     </div>
     <div class="panel_content">
         لیست گروه ها عبارتند از:
@@ -15,12 +15,16 @@
 
         {{ Form::open(['url'=>'admin/category/edit','files'=>true])}}
         <div class="form-control bg-dark text-warning">
-            <div class="feild-group  m-2">
-                {{ Form::label('id','نام دسته برای ویرایش:')}}
-                {{ Form::select('id',$catlist,0 , array('class' => 'form-select','size=5')) }}
-                @if($errors->has('id'))
-                <span>{{ $errors->First('id') }}</span>
-                @endif
+            {{ Form::label('id','نام دسته برای ویرایش:')}}
+            <div class="feild-group p-2 m-2 bg-light text-dark">
+                <br>
+                <?php
+                foreach ($catlist as $catlist1 => $p) { 
+                    // dd($catlist1);
+                    // dd($catlist );
+                    echo "<input type=radio name=id value='" . ($catlist1)  . "' onchange='rdoch(\"".$p."\");'>" . $p . "<br>";
+                }
+                ?>
             </div>
         </div>
         <hr>
@@ -59,9 +63,27 @@
 </div>
 @endsection
 
+<script>
+    function rdoch(this1) {
+        document.getElementById('category_name').value = this1.replace('<' ,'').replace('>' ,'');
+    }
 
+    function chclk(this1) {
+        document.getElementById('category_name').value = this1.value;
+    }
+</script>
 <style>
     .feild-group span {
         color: red;
     }
 </style>
+
+@if ($errors->any())
+   <div class="alert alert-danger">
+     <ul>
+     @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+     @endforeach
+     </ul>
+   </div>
+@endif
