@@ -48,7 +48,7 @@
 
                         <li>
                             <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                                <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">گروه بندی</span></a>
+                                <i class="fs-4 bi-card-checklist"></i> <span class="ms-1 d-none d-sm-inline">گروه بندی</span></a>
                             <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                 <li class="w-100">
                                     <a href="/admin/category/create#submenu2" class="nav-link px-0"> <span class="d-none d-sm-inline">تعریف</span> </a>
@@ -63,13 +63,29 @@
 
                         <li>
                             <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">کاربران</span> </a>
+                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">کاربران</span> </a>
                             <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">معرفی افراد</span> </a>
+                                    <a href="/admin/customers/create#submenu3" class="nav-link px-0"> <span class="d-none d-sm-inline">معرفی افراد</span> </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش</span> </a>
+                                    <a href="/admin/customers/update#submenu3" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش</span> </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">گزارش</span> </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#submenu5" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">محصول ها</span></a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu5" data-bs-parent="#menu">
+
+                                <li class="w-100">
+                                    <a href="/admin/goods/create#submenu5" class="nav-link px-0"> <span class="d-none d-sm-inline">معرفی محصول</span> </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/goods/update#submenu5" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش</span> </a>
                                 </li>
                                 <li>
                                     <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">گزارش</span> </a>
@@ -78,19 +94,26 @@
                         </li>
                         <li>
                             <a href="#" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">سفارشات</span></a>
+                                <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">مشتریان</span> </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">مشتریان</span> </a>
-                        </li>
-                        <li>
-                            <h4 class="bg-light text-dark">محصولات</h4>
 
-                            <?php
+
+                        <?php    
+                            if (str_contains($_SERVER['REQUEST_URI'], 'category')) {
+                                echo '<h4 class="bg-light text-dark">گروه</h4>';
+                            }
+                            if (str_contains($_SERVER['REQUEST_URI'], 'customers')) {
+                                echo '<h4 class="bg-light text-dark">مشتری</h4>';
+                            }
+                            if (str_contains($_SERVER['REQUEST_URI'], 'goods')) {
+                                echo '<h4 class="bg-light text-dark">محصولات</h4>';
+                            }
+
+
                             $xi = 0;
                             foreach ($catlist as $valno => $val) {
-                                if ($val == 'دسته اصلی') {
+                                if (str_contains($val, 'دسته اصلی')) {
                                 } else {
 
                                     $xi++;
@@ -100,8 +123,17 @@
                                             echo (' </li></ul>');
                                         }
 
+                                        $target_file = "";
                                         echo (' <a href="#submenuq' . $xi . '" data-bs-toggle="collapse" class="nav-link px-0 align-middle">');
-                                        $target_file = "./upload/" . $valno . ".png";
+                                        if (str_contains($_SERVER['REQUEST_URI'], 'category')) {
+                                            $target_file = "./uploadcat/" . $valno . ".png";
+                                        }
+                                        if (str_contains($_SERVER['REQUEST_URI'], 'customers')) {
+                                            $target_file = "./uploadcus/" . $valno . ".png";
+                                        }
+                                        if (str_contains($_SERVER['REQUEST_URI'], 'goods')) {
+                                            $target_file = "./uploadgood/" . $valno . ".png";
+                                        }
                                         if (file_exists($target_file)) {
                                             echo (' <img src="../.' . $target_file . '" width="30px" style="border-radius:5px;">');
                                         } else {

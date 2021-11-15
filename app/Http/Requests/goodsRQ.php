@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class categoryRQ extends FormRequest
+class goodsRQ extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,18 +24,18 @@ class categoryRQ extends FormRequest
     public function rules()
     {
         return [
-             'category_name'=>'required',
-             'category_url'=>'required',
-             'category_ico'=>'image'
+             'goods_name'=>'required',
+             'goods_url'=>'required',
+             'goods_ico'=>'image'
         ];
     }
 
     public function Attributes()
     {
         return [
-            'category_name'=>'نام دسته',
-            'category_url'=>'آدرس دسته',
-            'category_ico'=>'آیکون دسته',
+            'goods_name'=>'نام محصول',
+            'goods_url'=>'آدرس محصول',
+            'goods_ico'=>'آیکون محصول',
        ];
     }
 }

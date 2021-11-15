@@ -30,6 +30,14 @@ Route::prefix("admin")->group(function(){
     Route::any('/category/update',[App\Http\Controllers\categorycontroller::class,'update']);
     Route::any('/category/edit',[App\Http\Controllers\categorycontroller::class,'edit']);
 
+    Route::resource('customers','App\Http\Controllers\customerscontroller')->except("show");
+    Route::any('/customers/update',[App\Http\Controllers\customerscontroller::class,'update1']);
+    Route::any('/customers/edit',[App\Http\Controllers\customerscontroller::class,'edit']);
+
+    Route::resource('goods','App\Http\Controllers\goodscontroller')->except("show");
+    Route::any('/goods/update',[App\Http\Controllers\goodscontroller::class,'update1']);
+    Route::any('/goods/edit',[App\Http\Controllers\goodscontroller::class,'edit']);
+
 });
 
 Auth::routes();

@@ -3,7 +3,7 @@
 @section('content')
 <div class="panel form-control p-3">
     <div class="header">
-        <h3>گروه بندی ها</h3>
+        <h3><i class="fs-4 bi-card-checklist m-2 p-2"></i>گروه بندی ها</h3>
     </div>
     <div class="panel_content">
         لیست گروه ها عبارتند از:

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Category extends Migration
+class CreateCustomersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,14 @@ class Category extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('category', function (Blueprint $table) {
+    { 
+
+        Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('category_name');
-            $table->string('category_url')->unique();            
-            $table->string('category_icon')->nullable();        
-            $table->integer('category_parentid');
+            $table->string('customers_name');
+            $table->string('customers_url')->unique();            
+            $table->string('customers_icon')->nullable();        
+            $table->integer('customers_parentid');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -31,6 +32,6 @@ class Category extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category');
+        Schema::dropIfExists('customers');
     }
 }

@@ -38,7 +38,7 @@ class categorycontroller extends Controller
                 'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
             ]);
 
-            $target_dir = "./upload/";
+            $target_dir = "./uploadcat/";
             $target_file = $target_dir . basename($_FILES["category_ico"]["name"]);
             $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -69,6 +69,7 @@ class categorycontroller extends Controller
             $catid =  category::where('id', $request->id)->update([
                 'category_name' => $request->category_name,
                 'category_parentid' => $request->category_parentid,
+                // 'category_url' => $request->category_url,
 
             ]);
 
@@ -80,7 +81,7 @@ class categorycontroller extends Controller
                     'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
                 ]);
 
-                $target_dir = "./upload/";
+                $target_dir = "./uploadcat/";
                 $target_file = $target_dir . basename($_FILES["category_ico"]["name"]);
                 $uploadOk = 1;
                 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
