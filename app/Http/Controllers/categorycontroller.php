@@ -31,27 +31,31 @@ class categorycontroller extends Controller
         $category->save();
 
 
-        // $request->validate([
-        //     'name' => 'required',
-        // ]);
+        //  ensure the request has a file before we attempt anything else.
+        if ($request->hasFile('category_ico')) {
 
-        // // ensure the request has a file before we attempt anything else.
-        // if ($request->hasFile('file')) {
+            $request->validate([
+                'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+            ]);
 
-        //     $request->validate([
-        //         'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
-        //     ]);
+            $target_dir = "./upload/";
+            $target_file = $target_dir . basename($_FILES["category_ico"]["name"]);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            // Check if image file is a actual image or fake image
 
-        //     // Save the file locally in the storage/public/ folder under a new folder named /product
-        //     $request->file->store('product', 'public');
-
-        //     // Store the record, using the new file hashname which will be it's new filename identity.
-        //     $product = new category([
-        //         "name" => $request->get('name'),
-        //         "file_path" => $request->file->hashName()
-        //     ]);
-        //     $product->save(); // Finally, save the record.
-        // }
+            $check = getimagesize($_FILES["category_ico"]["tmp_name"]);
+            if ($check !== false) {
+                echo "<br>File is an image - " . $check["mime"] . ".";
+                echo "<BR>" . $target_file;
+                echo "<BR>" . $_FILES["category_ico"]["size"];
+                move_uploaded_file($_FILES["category_ico"]["tmp_name"],$target_dir.$category->id.".png");// $target_file);
+                $uploadOk = 1;
+            } else {
+                echo "<br>File is not an image.";
+                $uploadOk = 0;
+            }
+        }
         return redirect('admin/category/create');
     }
 
@@ -59,23 +63,39 @@ class categorycontroller extends Controller
     public function edit(request $request)
     {
         // $catid = category::find($request->id); 
-        $catid=  category::where('id', $request->id)->update([
-            'category_name'=>$request->category_name,
-            'category_parentid'=>$request->category_parentid,
+        $catid =  category::where('id', $request->id)->update([
+            'category_name' => $request->category_name,
+            'category_parentid' => $request->category_parentid,
 
-            ]) ;
-        // ([
-        //     'name' => $data['name'],
-        //     'email' => $data['email'],
-        //     'password' => Hash::make($data['password']),
-        // ]);
-        // make('category.createOrUpdate')->with('id', $catid);
-        // category::where('id', $catid)
-    // ->chunkById(200, function ($request) {
-    //     $flights->each->update(['id' => $catid]);
-    // }, $column = 'id');
-        // dd($catid);
-        // 
+        ]);
+
+
+        //  ensure the request has a file before we attempt anything else.
+        if ($request->hasFile('category_ico')) {
+
+            $request->validate([
+                'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+            ]);
+
+            $target_dir = "./upload/";
+            $target_file = $target_dir . basename($_FILES["category_ico"]["name"]);
+            $uploadOk = 1;
+            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            // Check if image file is a actual image or fake image
+
+            $check = getimagesize($_FILES["category_ico"]["tmp_name"]);
+            if ($check !== false) {
+                echo "<br>File is an image - " . $check["mime"] . ".";
+                echo "<BR>" . $target_file;
+                echo "<BR>" . $_FILES["category_ico"]["size"];
+                move_uploaded_file($_FILES["category_ico"]["tmp_name"],$target_dir.$request->id.".png");// $target_file);
+                $uploadOk = 1;
+            } else {
+                echo "<br>File is not an image.";
+                $uploadOk = 0;
+            }
+        }
+
         $catlist = category::getCatList();
         return view("category.categoryed", ['catlist' => $catlist]);
     }

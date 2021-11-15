@@ -22,7 +22,7 @@
                 foreach ($catlist as $catlist1 => $p) { 
                     // dd($catlist1);
                     // dd($catlist );
-                    echo "<input type=radio name=id value='" . ($catlist1)  . "' onchange='rdoch(\"".$p."\");'>" . $p . "<br>";
+                    echo "<input type=radio class='p-2 m-2' name=id value='" . ($catlist1)  . "' onchange='rdoch(\"".$p."\");'>" . $p . "<br>";
                 }
                 ?>
             </div>
