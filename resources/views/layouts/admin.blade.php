@@ -98,7 +98,7 @@
                                         echo (' <a href="#submenuq' . $xi . '" data-bs-toggle="collapse" class="nav-link px-0 align-middle">');
                                         $target_file="./upload/".$valno.".png";
                                         if (file_exists($target_file)) {
-                                        echo (' <img src="../.'.$target_file.'" width="30px" >');
+                                        echo (' <img src="../.'.$target_file.'" width="30px" style="border-radius:5px;">');
                                     } else{
                                             echo (' <i class="fs-4 bi-grid"></i>');
 
@@ -113,6 +113,7 @@
                                 }
                             } 
                             ?>
+                            
                         </li>
 
                     </ul>

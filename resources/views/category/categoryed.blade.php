@@ -26,6 +26,7 @@
                 }
                 ?>
             </div>
+            <input id="dell" name="dell" value="حذف" type=submit> 
         </div>
         <hr>
         <div class="feild-group  m-2">
