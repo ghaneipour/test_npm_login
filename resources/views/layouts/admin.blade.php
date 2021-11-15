@@ -82,7 +82,7 @@
                         <li><h4 class="bg-light text-dark">محصولات</h4>
                             <?php
                             $xi = 0;
-                            foreach ($catlist as $val) {
+                            foreach ($catlist as $valno=>$val) {
                                 if($val=='دسته اصلی'){
 
                                 }
@@ -96,7 +96,14 @@
                                         }
                                         
                                         echo (' <a href="#submenuq' . $xi . '" data-bs-toggle="collapse" class="nav-link px-0 align-middle">');
-                                        echo (' <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">' . $val . '</span> </a>');
+                                        $target_file="./upload/".$valno.".png";
+                                        if (file_exists($target_file)) {
+                                        echo (' <img src="../.'.$target_file.'" width="30px" >');
+                                    } else{
+                                            echo (' <i class="fs-4 bi-grid"></i>');
+
+                                        }
+                                        echo (' <span class="ms-1 d-none d-sm-inline">' . $val . '</span> </a>');
                                         echo ('<ul class="collapse nav flex-column ms-1" id="submenuq' . $xi . '" data-bs-parent="#menu">');
                                     } else {
                                         echo (' <li class="w-100 bg-info">');
@@ -130,8 +137,7 @@
             <div class="col py-3">
                 @yield('content')
                 <hr>
-
-
+ 
             </div>
         </div>
     </div>
