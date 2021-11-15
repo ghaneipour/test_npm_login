@@ -1,0 +1,18 @@
+body{
+
+background-color: olivedrab;
+}
+
+.page_sidebar
+{
+width: 225px;
+background-color: #dd0c0c;
+height: 100%;
+position: absolute;
+
+}
+
+.page_content{
+
+}
+

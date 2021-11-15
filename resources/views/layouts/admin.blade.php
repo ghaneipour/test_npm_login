@@ -18,7 +18,12 @@
     <div class="container-fluid">
         <div class="row flex-nowrap">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+
+
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                    @if (Route::has('login'))
+
+                    @auth
                     <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <span class="fs-5 d-none d-sm-inline">SoftLock.ir</span>
                     </a>
@@ -51,7 +56,7 @@
                                 <li>
                                     <a href="/admin/category/update#submenu2" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش</span> </a>
                                 </li>
-                                
+
 
                             </ul>
                         </li>
@@ -79,29 +84,28 @@
                             <a href="#" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">مشتریان</span> </a>
                         </li>
-                        <li><h4 class="bg-light text-dark">محصولات</h4>
+                        <li>
+                            <h4 class="bg-light text-dark">محصولات</h4>
+
                             <?php
                             $xi = 0;
-                            foreach ($catlist as $valno=>$val) {
-                                if($val=='دسته اصلی'){
-
-                                }
-                                else{
+                            foreach ($catlist as $valno => $val) {
+                                if ($val == 'دسته اصلی') {
+                                } else {
 
                                     $xi++;
-                                    
+
                                     if (!str_contains($val, "<")) {
                                         if ($xi > 1) {
                                             echo (' </li></ul>');
                                         }
-                                        
-                                        echo (' <a href="#submenuq' . $xi . '" data-bs-toggle="collapse" class="nav-link px-0 align-middle">');
-                                        $target_file="./upload/".$valno.".png";
-                                        if (file_exists($target_file)) {
-                                        echo (' <img src="../.'.$target_file.'" width="30px" style="border-radius:5px;">');
-                                    } else{
-                                            echo (' <i class="fs-4 bi-grid"></i>');
 
+                                        echo (' <a href="#submenuq' . $xi . '" data-bs-toggle="collapse" class="nav-link px-0 align-middle">');
+                                        $target_file = "./upload/" . $valno . ".png";
+                                        if (file_exists($target_file)) {
+                                            echo (' <img src="../.' . $target_file . '" width="30px" style="border-radius:5px;">');
+                                        } else {
+                                            echo (' <i class="fs-4 bi-grid"></i>');
                                         }
                                         echo (' <span class="ms-1 d-none d-sm-inline">' . $val . '</span> </a>');
                                         echo ('<ul class="collapse nav flex-column ms-1" id="submenuq' . $xi . '" data-bs-parent="#menu">');
@@ -111,9 +115,9 @@
                                         echo (' </li>');
                                     }
                                 }
-                            } 
+                            }
                             ?>
-                            
+
                         </li>
 
                     </ul>
@@ -134,11 +138,20 @@
                         </ul>
                     </div>
                 </div>
+                @else
+                <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+
+                @if (Route::has('register'))
+                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                @endif
+                @endauth
+
+                @endif
             </div>
             <div class="col py-3">
                 @yield('content')
                 <hr>
- 
+
             </div>
         </div>
     </div>
