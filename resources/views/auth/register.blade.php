@@ -40,6 +40,20 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="user_lss" class="col-md-4 col-form-label text-md-right">{{ __('user_lss') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="user_lss" type="text" class="form-control @error('user_lss') is-invalid @enderror" name="user_lss" value="{{ old('user_lss') }}" required autocomplete="user_lss">
+
+                                @error('user_lss')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">

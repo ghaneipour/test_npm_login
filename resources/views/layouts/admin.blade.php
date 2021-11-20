@@ -92,8 +92,8 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">درباره ما</span> </a>
+                            <a href="/admin/users/update#submenu5" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">کاربران سیستم</span> </a>
                         </li>
                         <li>
 
@@ -107,6 +107,9 @@
                             }
                             if (str_contains($_SERVER['REQUEST_URI'], 'goods')) {
                                 echo '<h4 class="bg-light text-dark">محصولات</h4>';
+                            }
+                            if (str_contains($_SERVER['REQUEST_URI'], 'user')) {
+                                echo '<h4 class="bg-light text-dark">کاربران</h4>';
                             }
 
 
@@ -126,6 +129,9 @@
                                     if (str_contains($_SERVER['REQUEST_URI'], 'goods')) {
                                         $target_file = "./uploadgood/" . $valno . ".png";
                                     }
+                                    // if (str_contains($_SERVER['REQUEST_URI'], 'user')) {
+                                    //     $target_file = "./uploadgood/" . $valno . ".png";
+                                    // }
 
                                     if (!str_contains($val, "<")) {
                                         if ($xi > 1) {
@@ -138,8 +144,15 @@
                                         } else {
                                             echo (' <i class="fs-4 bi-grid"></i>');
                                         }
+                                        if (str_contains($_SERVER['REQUEST_URI'], 'user')) {
+                                            echo (' <span class="ms-1 d-none d-sm-inline">' . $val->name . '</span> </a>');
+                                            echo ('<ul class="collapse nav flex-column ms-1" id="submenuq' . $xi . '" data-bs-parent="#menu">');
+                                            
+                                        }
+                                        else{
                                         echo (' <span class="ms-1 d-none d-sm-inline">' . $val . '</span> </a>');
                                         echo ('<ul class="collapse nav flex-column ms-1" id="submenuq' . $xi . '" data-bs-parent="#menu">');
+                                        }
                                     } else {
                                         echo (' <li class="w-100 bg-info"> <a href="#" class="nav-link px-0">');
                                         if (file_exists($target_file)) {
@@ -164,13 +177,20 @@
                             <span class="d-none d-sm-inline mx-1">پروفایل من</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                            <li class="p-1 bg-warning text-dark text-center ">{{ Auth::user()->name }}</li>
                             <li><a class="dropdown-item" href="#">سبد خرید</a></li>
-                            <li><a class="dropdown-item" href="#">سفارش جدید</a></li>
                             <li><a class="dropdown-item" href="#">سابقه سفارش ها</a></li>
+                            <li><a class="dropdown-item" href="/admin/users/update">پروفابل من</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                            <li>                                
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                Sign out</a></li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </ul>
                     </div>
                 </div>

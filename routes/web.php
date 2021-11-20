@@ -38,6 +38,9 @@ Route::prefix("admin")->group(function(){
     Route::any('/goods/update',[App\Http\Controllers\goodscontroller::class,'update1']);
     Route::any('/goods/edit',[App\Http\Controllers\goodscontroller::class,'edit']);
 
+    Route::any('/users/update',[App\Http\Controllers\userscontrollers::class,'update1']);
+    Route::any('/users/edit'  ,[App\Http\Controllers\userscontrollers::class,'edit']);
+ 
 });
 
 Auth::routes();

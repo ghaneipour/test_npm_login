@@ -24,20 +24,20 @@
                     // dd($catlist );
                     if (str_contains($p ,'دسته اصلی')) {
                     } else {
-                    echo "<input type=radio class='p-2 m-2' name=id value='" . ($catlist1)  . "' onchange='rdoch(\"".$p."\");'>" . $p . "<br>";
+                    echo "<input type=radio class='p-2 m-2' name='id' id='id" . ($catlist1)  . "' value='" . ($catlist1)  . "' onchange='rdoch(\"".$p."\");'> <label for='id" . ($catlist1)  . "' class='text-dark' >".$p."</label><br>";
                     }
                 }
                 ?> --> 
            <?php
         foreach($getgoods as $goodli =>$gdl)
         {
-            echo("<input type=radio class='p-2 m-2' name=id value='".$gdl->id."' onchange='rdoch(\"");
+            echo("<input type=radio class='p-2 m-2'  name='id' id='id" . ($gdl->id)  . "'  value='".$gdl->id."' onchange='rdoch(\"");
             echo( $gdl->goods_name.",".$gdl->goods_url.",".$gdl->id."\");'>");
             if($gdl->goods_parentid==0){
-            echo( $gdl->goods_name."<br>");
+            echo("<label for='id" . ($gdl->id)  . "' class='text-dark' >".$gdl->goods_name."</label><br>");
         }
         else{
-                echo("< ". $gdl->goods_name." ><br>");
+                echo("< <label for='id" . ($gdl->id)  . "' class='text-dark' >".$gdl->goods_name."</label> ><br>");
 
             }
         }
