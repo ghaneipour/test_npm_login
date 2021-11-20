@@ -13,13 +13,13 @@ class goodscontroller extends Goods
     // $catlist="-";
     public function index()
     {
-        $catlist = goods::getCatList();
-        return  view("layouts.admin", ['catlist' => $catlist]);
+        $catlistg = goods::getCatListgood();
+        return  view("layouts.admin", ['catlist' => $catlistg,'getgoods'=>goods::getgoods()]);
     }
     public function create()
     {
-        $catlist = goods::getCatList();
-        return view("goods.goods", ['catlist' => $catlist]);
+        $catlistg = goods::getCatListgood();
+        return view("goods.goods", ['catlist' => $catlistg,'getgoods'=>goods::getgoods()]);
     }
     public function store(goodsRQ $request)
     {
@@ -70,7 +70,9 @@ class goodscontroller extends Goods
                 'goods_name' => $request->goods_name,
                 'goods_parentid' => $request->goods_parentid,
                 'goods_url' => $request->goods_url,
-
+                'goods_price' => $request->goods_price,
+                'goods_discount' => $request->goods_discount,
+                'goods_quanty' => $request->goods_quanty,
             ]);
 
 
@@ -100,16 +102,16 @@ class goodscontroller extends Goods
                 }
             }
         }
-        $catlist = goods::getCatList();
-        return view("goods.goodsed", ['catlist' => $catlist]);
+        $catlistg = goods::getCatListgood();
+        return view("goods.goodsed", ['catlist' => $catlistg,'getgoods'=>goods::getgoods()]);
     }
 
     public function update1()
     {
 
         // document.write( "update1");D:\PHP~\sample\test_npm_login\resources\views\category\categoryed..blade.php
-        $catlist = goods::getCatList();
-        return view("goods.goodsed", ['catlist' => $catlist]);
+        $catlistg = goods::getCatListgood();
+        return view("goods.goodsed", ['catlist' => $catlistg,'getgoods'=>goods::getgoods()]);
     }
      
 }

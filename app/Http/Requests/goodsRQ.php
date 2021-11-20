@@ -26,7 +26,10 @@ class goodsRQ extends FormRequest
         return [
              'goods_name'=>'required',
              'goods_url'=>'required',
-             'goods_ico'=>'image'
+             'goods_ico'=>'image',
+             'goods_price' => 'required',
+             'goods_discount' => 'required',
+             'goods_quanty' => 'required',
         ];
     }
 
@@ -36,6 +39,9 @@ class goodsRQ extends FormRequest
             'goods_name'=>'نام محصول',
             'goods_url'=>'آدرس محصول',
             'goods_ico'=>'آیکون محصول',
-       ];
+            'goods_price' => 'قیمت محصول',
+            'goods_discount' => 'تخفیف',
+            'goods_quanty' => 'تعداد موجود انبار',
+      ];
     }
 }

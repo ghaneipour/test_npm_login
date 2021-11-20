@@ -9,8 +9,8 @@ class goods extends Model
 {
     use HasFactory;
     protected $table = 'goods';
-    protected $fillable = ['goods_name', 'goods_url', 'goods_icon', 'goods_parentid', 'remember_token'];
-    public static function getCatList()
+    protected $fillable = ['goods_name', 'goods_url', 'goods_icon', 'goods_parentid', 'remember_token','id','goods_price','goods_discount','goods_quanty'];
+    public static function getCatListgood()
     {
         $array = array();
         $array[0]="دسته اصلی";
@@ -23,6 +23,11 @@ class goods extends Model
             }
         }
         return $array;
+    }
+    public static function getgoods()
+    {
+             return  goods::query()->get();       
+         
     }
 
     public function getchild()

@@ -17,8 +17,7 @@
 <body>
     <div class="container-fluid">
         <div class="row flex-nowrap">
-            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-
+            <div class="col-auto col-md-3 col-xl-3 px-sm-2 px-0 bg-dark">
 
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                     @if (Route::has('login'))
@@ -63,22 +62,22 @@
 
                         <li>
                             <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">کاربران</span> </a>
+                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">مشتری ها</span> </a>
                             <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="/admin/customers/create#submenu3" class="nav-link px-0"> <span class="d-none d-sm-inline">معرفی افراد</span> </a>
+                                    <a href="/admin/customers/create#submenu3" class="nav-link px-0"> <span class="d-none d-sm-inline">معرفی مشتری </span> </a>
                                 </li>
                                 <li>
                                     <a href="/admin/customers/update#submenu3" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش</span> </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">گزارش</span> </a>
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"><i class="fs-4 bi-table"></i>گزارش</span> </a>
                                 </li>
                             </ul>
                         </li>
                         <li>
                             <a href="#submenu5" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">محصول ها</span></a>
+                                <i class="fs-4 bi-basket2"></i> <span class="ms-1 d-none d-sm-inline">محصول ها</span></a>
                             <ul class="collapse nav flex-column ms-1" id="submenu5" data-bs-parent="#menu">
 
                                 <li class="w-100">
@@ -88,20 +87,20 @@
                                     <a href="/admin/goods/update#submenu5" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش</span> </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">گزارش</span> </a>
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"><i class="fs-4 bi-table"></i>گزارش</span> </a>
                                 </li>
                             </ul>
                         </li>
                         <li>
                             <a href="#" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">مشتریان</span> </a>
+                                <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">درباره ما</span> </a>
                         </li>
                         <li>
 
 
-                        <?php    
+                            <?php
                             if (str_contains($_SERVER['REQUEST_URI'], 'category')) {
-                                echo '<h4 class="bg-light text-dark">گروه</h4>';
+                                echo '<h4 class="bg-light text-dark">گروه بندی</h4>';
                             }
                             if (str_contains($_SERVER['REQUEST_URI'], 'customers')) {
                                 echo '<h4 class="bg-light text-dark">مشتری</h4>';
@@ -117,33 +116,38 @@
                                 } else {
 
                                     $xi++;
+                                    $target_file = "";
+                                    if (str_contains($_SERVER['REQUEST_URI'], 'category')) {
+                                        $target_file = "./uploadcat/" . $valno . ".png";
+                                    }
+                                    if (str_contains($_SERVER['REQUEST_URI'], 'customers')) {
+                                        $target_file = "./uploadcus/" . $valno . ".png";
+                                    }
+                                    if (str_contains($_SERVER['REQUEST_URI'], 'goods')) {
+                                        $target_file = "./uploadgood/" . $valno . ".png";
+                                    }
 
                                     if (!str_contains($val, "<")) {
                                         if ($xi > 1) {
                                             echo (' </li></ul>');
                                         }
 
-                                        $target_file = "";
                                         echo (' <a href="#submenuq' . $xi . '" data-bs-toggle="collapse" class="nav-link px-0 align-middle">');
-                                        if (str_contains($_SERVER['REQUEST_URI'], 'category')) {
-                                            $target_file = "./uploadcat/" . $valno . ".png";
-                                        }
-                                        if (str_contains($_SERVER['REQUEST_URI'], 'customers')) {
-                                            $target_file = "./uploadcus/" . $valno . ".png";
-                                        }
-                                        if (str_contains($_SERVER['REQUEST_URI'], 'goods')) {
-                                            $target_file = "./uploadgood/" . $valno . ".png";
-                                        }
                                         if (file_exists($target_file)) {
-                                            echo (' <img src="../.' . $target_file . '" width="30px" style="border-radius:5px;">');
+                                            echo (' <img src="../.' . $target_file . '" width="30px" height="30px" style="border-radius:5px;">');
                                         } else {
                                             echo (' <i class="fs-4 bi-grid"></i>');
                                         }
                                         echo (' <span class="ms-1 d-none d-sm-inline">' . $val . '</span> </a>');
                                         echo ('<ul class="collapse nav flex-column ms-1" id="submenuq' . $xi . '" data-bs-parent="#menu">');
                                     } else {
-                                        echo (' <li class="w-100 bg-info">');
-                                        echo (' <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">' . $val . '</span>  </a>');
+                                        echo (' <li class="w-100 bg-info"> <a href="#" class="nav-link px-0">');
+                                        if (file_exists($target_file)) {
+                                            echo (' <img src="../.' . $target_file . '" width="30px" height="30px" style="border-radius:5px;">');
+                                        } else {
+                                            echo (' <i class="fs-4 bi-grid"></i>');
+                                        }
+                                        echo (' <span class="d-none d-sm-inline">' . $val . '</span>  </a>');
                                         echo (' </li>');
                                     }
                                 }
@@ -181,6 +185,18 @@
                 @endif
             </div>
             <div class="col py-3">
+                @if($errors->any())
+                <div class="card">
+                    <div class="card-body">
+                        <div class="alert alert-danger" role="alert">
+                            @foreach($errors->all() as $err)
+                            <p>{{$err}}</p>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                @endif
+
                 @yield('content')
                 <hr>
 

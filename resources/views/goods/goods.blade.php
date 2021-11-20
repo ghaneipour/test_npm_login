@@ -3,7 +3,7 @@
 @section('content')
 <div class="panel form-control p-3">
     <div class="header">
-        <h3><i class="fs-4 bi-people m-2 p-2"></i> گروه محصول ها</h3>
+        <h3><i class="fs-4 bi-basket2 m-2 p-2"></i>   محصول ها</h3>
     </div>
     <div class="panel_content">
         لیست محصول ها عبارتند از:
@@ -36,6 +36,32 @@
             @endif
         </div>
 
+        <div class="feild-group m-2">
+            {{ Form::label('goods_price','قیمت محصول')}}
+            {{ Form::text('goods_price',null, array('class' => 'form-control'))}}
+            @if($errors->has('goods_price'))
+            <span>{{ $errors->First('goods_price') }}</span>
+            @endif
+        </div>
+ 
+
+        <div class="feild-group m-2">
+            {{ Form::label('goods_discount','تخفیف محصول')}}
+            {{ Form::text('goods_discount',null, array('class' => 'form-control'))}}
+            @if($errors->has('goods_discount'))
+            <span>{{ $errors->First('goods_discount') }}</span>
+            @endif
+        </div>
+  
+
+        <div class="feild-group m-2">
+            {{ Form::label('goods_quanty','تعداد موجود انبار')}}
+            {{ Form::text('goods_quanty',null, array('class' => 'form-control'))}}
+            @if($errors->has('goods_quanty'))
+            <span>{{ $errors->First('goods_quanty') }}</span>
+            @endif
+        </div>
+   
         <div class="form-control p-2">
             <div class="feild-group m-2">
 
@@ -51,6 +77,7 @@
             <button class="btn btn-success">ذخیره</button>
         </div>
         {{ Form::close()}}
+       
     </div>
 </div>
 @endsection

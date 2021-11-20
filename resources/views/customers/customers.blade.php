@@ -3,7 +3,7 @@
 @section('content')
 <div class="panel form-control p-3">
     <div class="header">
-        <h3><i class="fs-4 bi-people m-2 p-2"></i> گروه مشتری ها</h3>
+        <h3><i class="fs-4 bi-people m-2 p-2"></i>   مشتری ها</h3>
     </div>
     <div class="panel_content">
         لیست مشتری ها عبارتند از:
