@@ -26,10 +26,14 @@
                     } else {
                     echo "<input type=radio class='p-2 m-2' name='id' id='id" . ($catlist1)  . "' value='" . ($catlist1)  . "' onchange='rdoch(\"".$p."\");'> <label for='id" . ($catlist1)  . "' class='text-dark' >".$p."</label><br>";
                     }
+                    
                 }
+                $lss_delete =  explode('_', Auth::user()->user_lss)[3];
                 ?>
             </div>
+            @if($lss_delete==1)
             <input id="dell" name="dell" value="حذف" type=submit> 
+            @endif
         </div>
         <hr>
         <div class="feild-group  m-2">

@@ -19,7 +19,6 @@ class goods extends Model
             $array[$value->id] = $value->goods_name;
             foreach($value->getchild as $key2=>$value2 ){
                 $array[$value2->id] ='< ' . $value2->goods_name.' >';
-
             }
         }
         return $array;

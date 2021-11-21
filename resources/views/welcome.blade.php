@@ -19,6 +19,9 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="https://softlock.ir/wp-content/uploads/2021/03/cropped-ls-180x180.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.rtl.min.css" integrity="sha384-+qdLaIRZfNu4cVPK/PxJJEy0B0f3Ugv8i482AKY7gwXwhaCroABd086ybrVKTa0q" crossorigin="anonymous">
 
     <!-- Styles -->
     <style>
@@ -418,46 +421,122 @@
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
             <div class="collapse navbar-collapse" id="navbarNav">
-                     
-                        <a id="navbarDropdown2" 
-                            class="inline bg-dark p-2 m-2"
-                            href="#" 
-                            role="button2" 
-                            data-toggle="dropdown2" 
-                            aria-haspopup="true2" 
-                            aria-expanded="false2" 
-                            v-pre>
-                            {{ Auth::user()->name }}
-                        </a>
-                    - 
-                        <span class="bg-dark inline" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </span>
-                     
+                <a id="navbarDropdown2" class="inline bg-dark p-2 m-2" href="#" role="button2" data-toggle="dropdown2" aria-haspopup="true2" aria-expanded="false2" v-pre>
+                    {{ Auth::user()->name }}
+                    <?php
+                    $lss_login =  explode('_', Auth::user()->user_lss)[0];
+                    $lss_new =  explode('_', Auth::user()->user_lss)[1];
+                    $lss_edit =  explode('_', Auth::user()->user_lss)[2];
+                    $lss_delete =  explode('_', Auth::user()->user_lss)[3];
+                    $lss_resource =  explode('_', Auth::user()->user_lss)[4];
+                    ?>
+                </a>
+                -
+                <span class="bg-dark inline" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </span>
+
             </div>
             @else
             <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
+            <?php
+            $lss_login = 0;
+            $lss_new = 0;
+            $lss_edit = 0;
+            $lss_delete = 0;
+            ?>
             @if (Route::has('register'))
             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
             @endif
             @endauth
         </div>
         @endif
-
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-            <!-- logo laravel    -->
-            <div>
-                <img src="https://softlock.ir/wp-content/uploads/2021/03/cropped-ls-180x180.png">
-            </div>
 
+            <!-- logo laravel    -->
+            <div class="   p-2 m-2   w-100 row justify-content-between align-items-center">
+                <div class="d-inline-block p-2   col-2 align-self-center">
+                    <img src="https://softlock.ir/wp-content/uploads/2021/03/cropped-ls-180x180.png">
+                </div>
+
+                <div class="d-inline-block p-2 text-center   col-2 align-self-center">
+                    <h3 class=" text-center">آروین فنآور</h3>
+                </div>
+            </div>
+            <div class="  w-100" dir="rtl">
+                <h4 class="text-justify">
+
+                    <p class="text-justify">
+                        با هدف حمایت و توسعه بازار محصولات و خدمات ایرانی فعالیت دارد. بدینوسیله از تمام افراد حقیقی و حقوقی که فکر می کنند بستر موجود می تواند قدم کوچکی در بازار محصولات آنها داشته باشد دعوت می نماید.
+                    </p>
+                    <p class="text-justify"> آیا شده تا برای شما هم اتفاق افتاده باشه که: کلید در منزل یا محل کار را گم کرده باشید؟ نگرانید که الان کجاست و حالا چیکار کنید؟ اولین موردی که به نظرتون می­رسد تعویض مغزی در است؟ آیا برای شما هم پیش آمده باشد که برای مدتی کلید در منزل یا محل کار را به کسی داده باشید که به مواردی که مد نظر شماست رسیدگی کند؟ اما به هر دلیل آن کلید به شما برگشت نشده باشد. حالا چی؟ دوباره می­خواهید مغزی در را عوض کنید؟ شاید برای خیلی از شما ها پیش آمده باشد که پرسنلی را به ساختار سازمانی خوداضافه کرده اید که به هر دلیلی با آن پرسنل قطع همکاری شده ولی کلید دفتر یا محل کار شما به شما برگشت نشده باشد. مطمنا بازهم باید به تعویض مغزی در فکر کنید. ما برای شما یک پیشنهاد خوب داریم. به جای اینکه هر بار هزینه این موارد بکنی بیایید یک بار هزینه اندکی بکنید و تازه از حمل این همه دسته کلید خودتون را راحت کنید. پس در صفحه بعدی منتظر پیشنهاد ما باشید.
+                        ما برای شما یک پیشنهاد خوب داریم. به جای اینکه هر بار هزینه این موارد بکنی بیایید یک بار هزینه اندکی بکنید و تازه از حمل این همه دسته کلید خودتون را راحت کنید. پس در صفحه بعدی منتظر پیشنهاد ما باشید.
+                    </p>
+                    <p class="text-justify">مدار hmi-1
+                        ما به شما HMI-1 را پیشنهاد میکنیم. با نصب این دستگاه شما قادر خواهید بود انواع در از جمله خانه، اداره، منزل (حیاط دار یا آپارتمان)، شرکت، پارکینگ، کارگاه یا هر دری را با استفاده از کارت کلید یا تگ باز نمایید. یکی از مزایای استفاده از این دستگاه بی نیاز شدن از حمل تعداد زیاد کلید است. اگه کارت یا تگ در شما به هر دلیلی از دسترس شما خارج شد دیگه لازم نیست ساختار فیزیکی مدار یا قفل خونه را عوض کنید بلکه به راحتی می تونید دسترسی برای کارت گم شده را حذف کنید.
+                        ویژگی HMI-1:
+                        قابل نصب بر روی تمامی انواع قفل های برقی
+                        برای استفاده در درهای آپارتمانی نیاز به یک قفل برقی و یک آداپتور برای تغذیه می باشد
+                        قابل نصب بر روی تمامی انواع آیفون های صوتی و تصویری با هر برندی
+                        نصب بسیار آسان و سریع
+                        مدیریت بسیار آسان کارت کلید (تگ)
+                        عملکرد کاملا مستقل از مدار آیفون
+                        قیمت بسیار مناسب
+                        یک عدد تگ جاسویچی تردد رایگان
+                        بدون نیاز به هیچ سیم کشی
+                        قابلیت اتصال به گوشی موبایل و کامپیوتر در صورت خرید کارت شبکه
+                        تعریف ۲۵۰ کارت کلید مجاز
+                        ثبت تعداد ۲۵۰ رویداد آخر بدون تاریخ
+                        قابل اتصال به انواع سیستم های فرمان جهت باز شدن با ثبت در حافظه مثل ریموت، آیفون، اعلام حریق
+                        قابلیت تشخیص تغییر وضعیت باز یا بسته بودن مکانیک در و ثبت در حافظه
+
+                        با مدار درب بازکن HMI-1 می توانید در مورد نظر و حتی آیفون منزل را به آسانی و با هزینه بسیار اندک به سیستم کارت کلید (تگ) مجهز نمایید. بدون استفاده از کلید و با نزدیک کردن کارت کلید (تگ) به دستگاه در را باز کنید. تاریکی شب و زمان هایی که همراه داشتن وسایل زیاد، استفاده از کلید را مشکل می کند، بسیار مفید و کارآمد است. آیفون یا جک برقی از هر مدل و برندی باشد فرقی ندارد، می توانید با استفاده از مدار درب بازکن HMI-1 در یا آیفون خود را کارتی کنید. با افزودن این ویژگی در ساختمان همچنان با کلید نیز باز می شود. لازم به ذکر است این مدار داخل پنل آیفون قرار می گیرد و نیازی به هیچ گونه تغییر بنای ساختمان یا سیم کشی اضافه نیست. نصبی بسیار راحت با راهنمای همراه با دستگاه برای مشاهده این محصول با محصولات مشابه دیگر ما را در سافت لاک همراهی کنید.
+                    </p>
+                </h4>
+            </div>
+            <!-- ________________________________________________ -->
+            <div class="bg-black text-dark p-1 m-1 g-1" style="width:100%;border-radius:15px;">
+                <div class="card-group1 bg-white p-1 m-1 g-1 text-center">
+                    <?php
+
+                    $catlist = App\Models\goods::getCatListgood();
+                    foreach ($catlist as $catlist1 => $p) {
+                        if (str_contains($p, 'دسته اصلی')) {
+                        } else {
+                            if (!str_contains($p, ">")) {
+                                echo "<div style='display:block;width:100%;' class='bg-light'>";
+                                echo "<label for='id" . ($catlist1)  . "' class='text-dark' >";
+                                echo $p . "</label><br>";
+                                echo "</div>";
+                            } else {
+                                $target_file = "./uploadgood/" . $catlist1 . ".png";
+                                echo "<div class='card1 bg-white m-3 p-2 shadow'  style='display:inline-block;width:245px;border:1px solid #ececec;border-radius:15px; '>";
+                                if (file_exists($target_file)) {
+                                    echo "<img class='card-img-top m-2 p-2' style=' height:170px;border-radius:15px;' 
+                                             src='../." . $target_file . "' alt='" . $p . "'>";
+                                }
+                                echo "  <div class='card-body'>";
+                                echo '   <h5 class="card-title">' . $p . '</h5>';
+                                echo "   <p class='card-text'>" . $catlist1 . $p . " </p>";
+                                // echo '   <p class="card-text"><small class="text-muted">'.$catlist1.'</small></p>';
+                                echo ' <button class="btn btn-outline-info text-center">سفارش </button>';
+                                echo "  </div>";
+                                echo "</div>";
+                            }
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+            <!-- _______________________________ -->
             <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                 <div class="grid grid-cols-1 md:grid-cols-2">
                     <div class="p-6">
@@ -465,7 +544,11 @@
                         <div class="flex items-center">
                             <img src="{{ url('/img/doc.png')}}" width="50">
                             <div class="ml-4 text-lg leading-7 font-semibold">
-                                <a href="/admin/category" class="underline text-gray-900 dark:text-white">Documentation مستندات</a>
+                                @if( $lss_login==1)
+                                <a href="/admin/category/create" class="underline text-gray-900 dark:text-white">Documentation مستندات</a>
+                                @else
+                                برای استفاده لاگین بفرمایید
+                                @endif
                             </div>
                         </div>
 
@@ -483,13 +566,18 @@
                             <table>
                                 <tr>
                                     <td>
-                                        <a href="softlock" class="underline text-gray-900 dark:text-white">
-                                            <img src="{{ url('/img/shop.jpg')}}" width="100">
+                                        <img src="{{ url('/img/shop.jpg')}}" width="70px" height="40px">
                                     </td>
                                     <td>
-                                        <a href="/softlock" class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">
-                                            shop فروشگاه
-                                        </a>
+                                        <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">
+                                            @if( $lss_login==1)
+                                            <a href="/softlock">
+                                                shop فروشگاه
+                                            </a>
+                                            @else
+                                            برای استفاده لاگین بفرمایید
+                                            @endif
+                                        </div>
                                     </td>
                                 </tr>
                             </table>
@@ -508,7 +596,11 @@
                             <img src="{{ url('/img/news.png')}}" width="50">
 
                             <div class="ml-4 text-lg leading-7 font-semibold">
+                                @if( $lss_resource==1)
                                 <a href="/bs" class="underline text-gray-900 dark:text-white">Softlock News</a>
+                                @else
+                                برای استفاده لاگین بفرمایید
+                                @endif
                             </div>
                         </div>
 
@@ -524,7 +616,11 @@
                         <div class="flex items-center">
                             <img src="{{ url('/img/setting.png')}}" width="50">
                             <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">
+                                @if( $lss_login==1)
                                 <a href="/food" class="fff">Food تغذیه</a>
+                                @else
+                                برای استفاده لاگین بفرمایید
+                                @endif
                             </div>
                         </div>
 

@@ -21,7 +21,14 @@
 
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                     @if (Route::has('login'))
+                    <?php
 
+                    $lss_login =  explode('_', Auth::user()->user_lss)[0];
+                    $lss_new =  explode('_', Auth::user()->user_lss)[1];
+                    $lss_edit =  explode('_', Auth::user()->user_lss)[2];
+                    $lss_delete =  explode('_', Auth::user()->user_lss)[3];
+                    $lss_resource =  explode('_', Auth::user()->user_lss)[4];
+                    ?>
                     @auth
                     <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <span class="fs-5 d-none d-sm-inline">SoftLock.ir</span>
@@ -49,13 +56,19 @@
                             <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
                                 <i class="fs-4 bi-card-checklist"></i> <span class="ms-1 d-none d-sm-inline">گروه بندی</span></a>
                             <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                                @if($lss_new==1)
                                 <li class="w-100">
                                     <a href="/admin/category/create#submenu2" class="nav-link px-0"> <span class="d-none d-sm-inline">تعریف</span> </a>
                                 </li>
+                                @endif
+                                @if($lss_edit==1)
                                 <li>
                                     <a href="/admin/category/update#submenu2" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش</span> </a>
                                 </li>
-
+                                @endif
+                                <li>
+                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"><i class="fs-4 bi-table"></i>گزارش</span> </a>
+                                </li>
 
                             </ul>
                         </li>
@@ -64,12 +77,16 @@
                             <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">مشتری ها</span> </a>
                             <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                                @if($lss_new==1)
                                 <li class="w-100">
                                     <a href="/admin/customers/create#submenu3" class="nav-link px-0"> <span class="d-none d-sm-inline">معرفی مشتری </span> </a>
                                 </li>
+                                @endif
+                                @if($lss_edit==1)
                                 <li>
                                     <a href="/admin/customers/update#submenu3" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش</span> </a>
                                 </li>
+                                @endif
                                 <li>
                                     <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"><i class="fs-4 bi-table"></i>گزارش</span> </a>
                                 </li>
@@ -80,12 +97,16 @@
                                 <i class="fs-4 bi-basket2"></i> <span class="ms-1 d-none d-sm-inline">محصول ها</span></a>
                             <ul class="collapse nav flex-column ms-1" id="submenu5" data-bs-parent="#menu">
 
+                                @if($lss_new==1)
                                 <li class="w-100">
                                     <a href="/admin/goods/create#submenu5" class="nav-link px-0"> <span class="d-none d-sm-inline">معرفی محصول</span> </a>
                                 </li>
+                                @endif
+                                @if($lss_edit==1)
                                 <li>
                                     <a href="/admin/goods/update#submenu5" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش</span> </a>
                                 </li>
+                                @endif
                                 <li>
                                     <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"><i class="fs-4 bi-table"></i>گزارش</span> </a>
                                 </li>
@@ -147,11 +168,9 @@
                                         if (str_contains($_SERVER['REQUEST_URI'], 'user')) {
                                             echo (' <span class="ms-1 d-none d-sm-inline">' . $val->name . '</span> </a>');
                                             echo ('<ul class="collapse nav flex-column ms-1" id="submenuq' . $xi . '" data-bs-parent="#menu">');
-                                            
-                                        }
-                                        else{
-                                        echo (' <span class="ms-1 d-none d-sm-inline">' . $val . '</span> </a>');
-                                        echo ('<ul class="collapse nav flex-column ms-1" id="submenuq' . $xi . '" data-bs-parent="#menu">');
+                                        } else {
+                                            echo (' <span class="ms-1 d-none d-sm-inline">' . $val . '</span> </a>');
+                                            echo ('<ul class="collapse nav flex-column ms-1" id="submenuq' . $xi . '" data-bs-parent="#menu">');
                                         }
                                     } else {
                                         echo (' <li class="w-100 bg-info"> <a href="#" class="nav-link px-0">');
@@ -178,20 +197,25 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                             <li class="p-1 bg-warning text-dark text-center ">{{ Auth::user()->name }}</li>
+                            <li class="p-1 bg-warning text-dark text-center ">{{ Auth::user()->user_lss }}</li>
                             <li><a class="dropdown-item" href="#">سبد خرید</a></li>
                             <li><a class="dropdown-item" href="#">سابقه سفارش ها</a></li>
                             <li><a class="dropdown-item" href="/admin/users/update">پروفابل من</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li>                                
+                            <li>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                Sign out</a></li>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    Sign out</a>
+                            </li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
+
                         </ul>
+
+                        ------- <br>
                     </div>
                 </div>
                 @else
@@ -218,30 +242,75 @@
                 @endif
 
                 @yield('content')
-                <hr>
+                @if(str_contains($_SERVER['REQUEST_URI'], 'user'))
+                salam user
+                @elseif(str_contains($_SERVER['REQUEST_URI'], 'goods'))
+                صفحه مربوط به محصولات
+                <br>
+                <div class="bg-black text-dark p-1 m-1 g-1" style="width:100%;border-radius:15px;"> 
+                    <div class="card-group1 bg-white p-1 m-1 g-1 text-center">
+                       <?php 
+                        // foreach ($getgoods as $goodli => $gdl) {
+                       foreach ($catlist as $catlist1 => $p) { 
+                            if (str_contains($p ,'دسته اصلی')) {
+                            } else {
+                            if (!str_contains($p,">") ) {
+                                echo "<div style='display:block;width:100%;' class='bg-light'>";
+                                echo "<label for='id" . ($catlist1)  . "' class='text-dark' >" ;
+                                echo $p . "</label><br>";
+                                echo "</div>";
+                            } else {
+                                $target_file = "./uploadgood/" .$catlist1 . ".png";
+                                echo "<div class='card1 bg-white m-2 p-2 shadow'  style='display:inline-block;width:245px;border:1px solid #ececec;border-radius:15px; '>";
+                                if (file_exists($target_file)) {
+                                 echo "<img class='card-img-top m-2 p-2' style=' height:170px;border-radius:15px;' src='../." . $target_file . "' alt='". $gdl->goods_name ."'>"; }
+                                echo "  <div class='card-body'>";
+                                echo '   <h5 class="card-title">'. $p .'</h5>';
+                                echo "   <p class='card-text'>". $catlist1 .$p . " </p>";
+                                // echo '   <p class="card-text"><small class="text-muted">'.$catlist1.'</small></p>';
+                                echo ' <button class="btn btn-outline-info text-center">سفارش </button>';
+                                echo "  </div>";
+                                echo "</div>";
+                            }
+                        }     
+                    }               
+                        ?> 
+                    </div>
+                </div>
 
+                <hr>
+               
+                    @elseif(str_contains($_SERVER['REQUEST_URI'], 'customers'))
+                    صفحه مربوط به مشتری ها
+                    @elseif(str_contains($_SERVER['REQUEST_URI'], 'category'))
+                    صفحه مربوط به گروه ها
+                    @else
+                    salam click on menu
+                    @endif
+                    <hr>
+
+                </div>
             </div>
         </div>
-    </div>
 
-    <style>
-        ul li ul li {
-            background-color: #454545;
-            padding: 0 20px;
-            border-bottom: 1px solid #333;
-            margin-left: 20px;
-            width: 100%;
-        }
+        <style>
+            ul li ul li {
+                background-color: #454545;
+                padding: 0 20px;
+                border-bottom: 1px solid #333;
+                margin-left: 20px;
+                width: 100%;
+            }
 
-        ul {
-            border-bottom: 1px solid #B6B7B8;
-        }
+            ul {
+                border-bottom: 1px solid #B6B7B8;
+            }
 
-        .nav-link {
-            color: antiquewhite;
-        }
-    </style>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+            .nav-link {
+                color: antiquewhite;
+            }
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </body>
 
