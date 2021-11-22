@@ -28,6 +28,11 @@ class goods extends Model
              return  goods::query()->get();       
          
     }
+    public static function getgoodsid($id)
+    {
+             return  goods::query()->where('id',$id)->first();       
+         
+    }
 
     public function getchild()
     {
