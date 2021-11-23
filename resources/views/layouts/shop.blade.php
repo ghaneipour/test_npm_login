@@ -594,6 +594,7 @@
                     <input name='order_goods_discount' id='order_goods_discount' value='' type='hidden'>
                     <input name='page_url' id='page_url' value='' type='hidden'>
                     <input name='order_no' id='order_no' value='' type='hidden'>
+                    <input name='ticketdone' id='ticketdone' value='0' type='hidden'>
                     <input name='order_goods_cnt' id='order_goods_cnt' value='' type="hidden">
                     @if (Route::has('login'))
                     @auth

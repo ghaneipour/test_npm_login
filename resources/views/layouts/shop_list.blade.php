@@ -477,7 +477,7 @@
         <br>
         <br>
         <br>
-        نام خریدار :  
+         
         <br>
         <?php
         $shplist = App\Http\Controllers\shopcontroller::get_list_order_id(Auth::user()->id);
@@ -485,11 +485,15 @@
  
     try {
         $order_no = $shplist[0]->order_no;
+        $order_nm = $shplist[0]->name;
+
     } catch (Throwable $e) {
         //echo($e);
         $order_no = 0;
+        $order_nm ="X";
     }
-    //dd($shplist);
+    // dd($shplist);
+    echo '<br><lable>مشتری  : ' . $order_nm . '</lable>'; 
     echo '<br><lable>شماره سفارش : ' . $order_no . '</lable>'; 
         echo '<div class="table-responsive">';
         echo "<table    class='table  table-striped  table-hover m-2 p-2'>";

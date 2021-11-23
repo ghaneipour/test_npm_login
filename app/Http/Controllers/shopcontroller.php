@@ -47,11 +47,14 @@ class shopcontroller extends Controller
     {
         $ono = shopcontroller::get_order_no($uid);
 
-        $sh = shop::query()
-            ->where('customer_id', '=', $uid)
-            ->where('order_no', '=', $ono)
-            ->get();
-        //dd($ono." ".$sh);
+        // $sh = shop::query()
+        //     ->where('customer_id', '=', $uid)
+        //     ->where('order_no', '=', $ono)
+        //     ->get();
+            $sh = shop::join('users', 'users.id', '=', 'shop.customer_id')
+            ->where('shop.order_no', '=', $ono)
+            ->where('shop.customer_id', '=', $uid)
+            ->get(['shop.*', 'users.name']);
         return $sh;
     }
     public function save(request $request)

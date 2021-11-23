@@ -18,7 +18,9 @@ class shop extends Model
     'page_url',
     'customer_ip',
     'order_no',
-    'order_date',];
+    'order_date',
+    'ticketdone',
+];
     
     
 
