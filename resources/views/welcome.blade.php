@@ -435,7 +435,7 @@
  
             <div class="bg-light d-inline-block" aria-labelledby="navbarDropdown1">
                 <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" 
-                href="shop"   >
+                href="loads_shop"   >
                 سبد خرید
                <!-- </span> <span> -->
                 <i class="bi bi-cart3">

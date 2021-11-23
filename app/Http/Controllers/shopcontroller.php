@@ -15,14 +15,43 @@ class shopcontroller extends Controller
         return $request;
     }
 
-    static function getorderid($uid)
+    static function shop_end(request $request)
     {
-        
+        $uid = $request->customer_id;
+        $sell =  shop::query()->where('customer_id', $uid)->get();
+        $usr =  user::query()
+            ->where('id', $uid)
+            ->where('ticketdone', 0)
+            ->first();
+        if ($usr) {
+            $usr->ticketdone = 1;
+            $usr->update();
+            //dd($usr);
+        }
+        return  redirect('loads_shop');
+    }
+
+    static function get_order_id($uid)
+    {
+
         $ono = shopcontroller::createorder($uid);
+        //dd($ono);
         $sh = shop::query()
             ->where('customer_id', '=', $uid)
             ->where('order_no', '=', $ono)
             ->get();
+        return $sh;
+    }
+
+    static function get_list_order_id($uid)
+    {
+        $ono = shopcontroller::get_order_no($uid);
+
+        $sh = shop::query()
+            ->where('customer_id', '=', $uid)
+            ->where('order_no', '=', $ono)
+            ->get();
+        //dd($ono." ".$sh);
         return $sh;
     }
     public function save(request $request)
@@ -33,15 +62,14 @@ class shopcontroller extends Controller
         $y = shopcontroller::createordercurrent($request->customer_id, $request->order_goods_id, $s);
         if ($y) {
             //dd($request->order_goods_cnt+$y->order_goods_cnt);
-            if($request->order_goods_cnt>0){
-            $y->order_goods_cnt = $request->order_goods_cnt; //+$y->order_goods_cnt;
-            $y->order_goods_price = $request->order_goods_price;
-            $y->order_goods_discount = $request->order_goods_discount;
-            $y->page_url = $request->page_url;
-            $y->customer_ip = $_SERVER['REMOTE_ADDR'];
-            $y->update();
-            } else
-            {
+            if ($request->order_goods_cnt > 0) {
+                $y->order_goods_cnt = $request->order_goods_cnt; //+$y->order_goods_cnt;
+                $y->order_goods_price = $request->order_goods_price;
+                $y->order_goods_discount = $request->order_goods_discount;
+                $y->page_url = $request->page_url;
+                $y->customer_ip = $_SERVER['REMOTE_ADDR'];
+                $y->update();
+            } else {
                 $y->delete();
             }
         } else {
@@ -68,6 +96,53 @@ class shopcontroller extends Controller
         return $sh;
     }
 
+    static function createorder($id)
+    {
+        $maxordeid = shopcontroller::neworder();
+        $userorder = user::query()->where('id', $id)->first();
+        if ($userorder->ticket == null) {
+            $userorder->ticket = 0;
+            $userorder->save();
+        }
+
+        if ($userorder->ticketdone == null) {
+            $userorder->ticketdone = 0;
+            $userorder->save();
+        }
+
+
+        if ($userorder->ticketdone == 2) {
+            $s = $maxordeid + 1;
+            $userorder->ticketdone = 0;
+            // dd("a:".$s);
+        } else  
+        if ($userorder->ticketdone == 1) {
+            $s = $userorder->ticket;
+        } else  
+        if ($userorder->ticketdone == 0) {
+            $s = $userorder->ticket;
+            // dd("c:".$s);
+        }
+
+        $userorder->ticket = $s;
+        $userorder->save();
+        return $s;
+    }
+    static function get_order_no($id)
+    {
+        $userorder = user::query()->where('id', $id)->first();
+        if ($userorder->ticket) {
+            if ($userorder->ticketdone == 2) {
+                return 0;
+            } else {
+                return  $userorder->ticket;
+            }
+        }
+
+        $userorder->ticketdone = 0;
+        return 0;
+    }
+
     static function createordercurrent($uid, $gid, $ono)
     {
         $sh = shop::query()
@@ -85,31 +160,5 @@ class shopcontroller extends Controller
         // 'customer_ip',
         // '',
         return $sh;
-    }
-
-    static function createorder($id)
-    {
-        $maxordeid = shopcontroller::neworder();
-        $userorder = user::query()->where('id', $id)->first();
-        if (!$userorder->ticket) {
-            $userorder->ticket = 0;
-            $userorder->save();
-        }
-
-        if (!$userorder->ticketdone) {
-            $userorder->ticketdone = 0;
-            $userorder->save();
-        }
-
-        if ($userorder->ticketdone == 0) {
-            $s = $userorder->ticket;
-        } else {
-            $s = $maxordeid + 1;
-        }
-
-        $userorder->ticket = $s;
-        $userorder->ticketdone = 0;
-        $userorder->save();
-        return $s;
     }
 }

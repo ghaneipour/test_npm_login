@@ -25,6 +25,8 @@ Route::any('shop', function () {
     return view('layouts\shop');
 });
 
+ 
+
 Route::prefix("admin")->group(function(){
     Route::get('/', function () {
         return view('layouts\admin');
@@ -51,8 +53,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::post('/shop_end', [App\Http\Controllers\shopcontroller::class, 'shop_end']);
 Route::post('/saveorder', [App\Http\Controllers\shopcontroller::class, 'Save']);
 Route::get('/saveorder', [App\Http\Controllers\shopcontroller::class, 'load'])->name('loadsshop');
+Route::get('/loads_shop' , function () {
+    return view('./layouts/shop_list');
+})->name('loads_shop');
 
 Route::post('/savepage', [App\Http\Controllers\sitepagecontroller::class, 'Save']);
 Route::get('/savepage', [App\Http\Controllers\sitepagecontroller::class, 'load'])->name('loadspage');

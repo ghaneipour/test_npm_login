@@ -427,7 +427,7 @@
 
         <div class="bg-light d-inline-block" aria-labelledby="navbarDropdown1">
             <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="/">
-                ادامه خرید
+                بازگشت سایت
                 <!-- </span> <span> -->
                 <i class="bi bi-cart3">
                 </i>
@@ -466,128 +466,91 @@
         </div>@endif
         @endauth
 
+        @endif
     </div>
-    @endif
     <!-- ------- / menu ------- -->
     <!-- _______ basket ____________  -->
     <h4 class="form-group">
-        @if (Route::has('login'))
-        @auth
-        <br>سبد خرید <i class="bi bi-cart3">
+       
+        <br>سبدهای خرید <i class="bi bi-cart3">
         </i>
         <br>
         <br>
         <br>
-        نام خریدار : {{ Auth::user()->name}}
+        نام خریدار :  
         <br>
         <?php
-        $shplist = App\Http\Controllers\shopcontroller::get_order_id(Auth::user()->id);
-        if ($shplist) {
-            try {
-                $order_no = $shplist[0]->order_no;
-            } catch (Throwable $e) {
-                //echo($e);
-                $order_no = 0;
+        $shplist = App\Http\Controllers\shopcontroller::get_list_order_id(Auth::user()->id);
+//dd($shplist);
+ 
+    try {
+        $order_no = $shplist[0]->order_no;
+    } catch (Throwable $e) {
+        //echo($e);
+        $order_no = 0;
+    }
+    //dd($shplist);
+    echo '<br><lable>شماره سفارش : ' . $order_no . '</lable>'; 
+        echo '<div class="table-responsive">';
+        echo "<table    class='table  table-striped  table-hover m-2 p-2'>";
+        echo '<thead class="thead-dark">';
+        echo '<tr>';
+        echo '  <th scope="col">#</th>';
+        echo '  <th scope="col">کد کالا</th>';
+        echo '  <th scope="col">تعداد </th>';
+        echo '  <th scope="col">قیمت تومان</th>';
+        echo '  <th scope="col">تخفیف%</th>';
+        echo '  <th scope="col">جمع  تومان</th>';
+        echo '  <th scope="col"> تاریخ سفارش</th>';
+        echo '</tr>';
+        echo '</thead>';
+        echo '<tbody>';
+        $i = 1;
+        $sum3 = 0;
+
+        foreach ($shplist as $catlist1) {
+            echo '<tr >';
+            echo '<th scope="row">';
+            echo $i++;
+            //echo '<button class="btn btn-outline-info text-center" onclick="submitedr_delit(' . $catlist1->order_goods_id . ')">' . $i++ . '&nbsp;&nbsp;&nbsp;<i class="bi bi-pencil-square"></i>'.'</button >';
+            //echo '<button class="btn btn-danger mx-2 text-center" onclick="submited_edit(' . $catlist1->order_goods_id . ',' . $catlist1->customer_id . ',' . $catlist1->order_no . ')">X&nbsp;&nbsp;&nbsp;<i class="bi bi-eraser"></i></button >';
+            echo '</th>';
+            echo '<td>';
+            $target_file = "./uploadgood/" . $catlist1->order_goods_id . ".png";
+            if (file_exists($target_file)) {
+                echo '<img style=" height:40px;width:50px;border-radius:10px;" class="shadow p-0 ml-2 mr-2 mt-0 mb-0" ';
+                echo "src='../." . $target_file . "' alt='" . $catlist1->order_goods_id  . "'>";
             }
-            //dd($shplist);
-            echo '<br><lable>شماره سفارش : ' . $order_no . '</lable>';
-            echo '<div class="table-responsive">';
-            echo "<table    class='table  table-striped  table-hover m-2 p-2'>";
-            echo '<thead class="thead-dark">';
-            echo '<tr>';
-            echo '  <th scope="col">#</th>';
-            echo '  <th scope="col">کد کالا</th>';
-            echo '  <th scope="col">تعداد </th>';
-            echo '  <th scope="col">قیمت تومان</th>';
-            echo '  <th scope="col">تخفیف%</th>';
-            echo '  <th scope="col">جمع  تومان</th>';
-            echo '  <th scope="col"> تاریخ سفارش</th>';
+            echo  $catlist1->order_goods_id . '</td>';
+            echo '<td>' . $catlist1->order_goods_cnt . '</td>';
+            echo '<td>' . number_format($catlist1->order_goods_price, 0, '.', ',') . '</td>';
+            echo '<td>' . $catlist1->order_goods_discount . '%</td>';
+            $sum1 = ($catlist1->order_goods_price *  $catlist1->order_goods_cnt);
+            $sum2 = ($sum1 * $catlist1->order_goods_discount) / 100;
+            $sum3 += ($sum1 - $sum2);
+            echo '<td> ' . number_format(($sum1 - $sum2), 0, '.', ',') . '</td>';
+            echo '<td> ';
+            echo $catlist1->order_date;
+
+            echo '</td>';
             echo '</tr>';
-            echo '</thead>';
-            echo '<tbody>';
-            $i = 1;
-            $sum3 = 0;
-
-            foreach ($shplist as $catlist1) {
-                echo '<tr >';
-                echo '<th scope="row">';
-                echo '<button class="btn btn-outline-info text-center" onclick="submitedr_delit(' . $catlist1->order_goods_id . ')">' . $i++ . '&nbsp;&nbsp;&nbsp;<i class="bi bi-pencil-square"></i>' . '</button >';
-                echo '<button class="btn btn-danger mx-2 text-center" onclick="submited_edit(' . $catlist1->order_goods_id . ',' . $catlist1->customer_id . ',' . $catlist1->order_no . ')">X&nbsp;&nbsp;&nbsp;<i class="bi bi-eraser"></i></button >';
-                echo '</th>';
-                echo '<td>';
-                $target_file = "./uploadgood/" . $catlist1->order_goods_id . ".png";
-                if (file_exists($target_file)) {
-                    echo '<img style=" height:40px;width:50px;border-radius:10px;" class="shadow p-0 ml-2 mr-2 mt-0 mb-0" ';
-                    echo "src='../." . $target_file . "' alt='" . $catlist1->order_goods_id  . "'>";
-                }
-                echo  $catlist1->order_goods_id . '</td>';
-                echo '<td>' . $catlist1->order_goods_cnt . '</td>';
-                echo '<td>' . number_format($catlist1->order_goods_price, 0, '.', ',') . '</td>';
-                echo '<td>' . $catlist1->order_goods_discount . '%</td>';
-                $sum1 = ($catlist1->order_goods_price *  $catlist1->order_goods_cnt);
-                $sum2 = ($sum1 * $catlist1->order_goods_discount) / 100;
-                $sum3 += ($sum1 - $sum2);
-                echo '<td> ' . number_format(($sum1 - $sum2), 0, '.', ',') . '</td>';
-                echo '<td> ';
-                echo $catlist1->order_date;
-
-                echo '</td>';
-                echo '</tr>';
-                // echo '<td>' . $catlist1->customer_id . '</td>';
-                // echo '<td>' . $catlist1->page_url . '</td>';
-                // echo '<td>' . $catlist1->customer_ip . '</td>';
-            }
-            echo '</tbody>';
-            echo '<tfoot>';
-            echo '<tr><td> </td><td> </td><td> </td><td> </td><td>جمع</td><td>' . number_format($sum3, 0, '.', ',') . '</td><td></td></tr>';
-            echo '</tfoot>';
-            echo '</table>';
-            echo '</div>';
-            echo '<br>';
-
-            // dd($shplist);
+            // echo '<td>' . $catlist1->customer_id . '</td>';
+            // echo '<td>' . $catlist1->page_url . '</td>';
+            // echo '<td>' . $catlist1->customer_ip . '</td>';
         }
+        echo '</tbody>';
+        echo '<tfoot>';
+        echo '<tr><td> </td><td> </td><td> </td><td> </td><td>جمع</td><td>' . number_format($sum3, 0, '.', ',') . '</td><td></td></tr>';
+        echo '</tfoot>';
+        echo '</table>';
+        echo '</div>';
+        echo '<br>';
+if($order_no > 0){ 
+        //dd($order_no);
         ?>
-        <form action="shop" method="post" name="form11" id="form11">
-            @csrf
-            <input id='id' name='id' value=''>
-        </form>
-
-        @endauth
-        @endif
-        خرید محصول :
-        <div class="row g-0" style="border-radius:15px;">
-            <?php
-            // use Illuminate\Foundation\Auth\User as Authenticatable;
-            $ispost = 0;
-            $fff = 0;
-            foreach ($_REQUEST as $gg => $ff) {
-                //dd($gg . " - " . $ff);
-                if ($gg == 'id') {
-                    $ispost = 1;
-                    $fff = $ff;
-                    break;
-                }
-            }
-
-
-            $catlist = App\Models\goods::getgoodsid($fff);
-            echo '<div class="col-md-4 bg-info" style="border-radius:15px;">';
-            if ($ispost == 1) {
-                echo "   <img  alt='" . $catlist->goods_name . "' style='border-radius:15px;' class='card-img-top' src='./uploadgood/" . $catlist->id . ".png'>";
-            }
-            echo '</div>';
-            echo '<div class="col-md-8  bg-warning" style="border-radius:15px;">';
-            echo ' <div class="card-body">';
-            if ($ispost == 1) {
-                echo "  <br><h5 class='card-title'>نام محصول :" . $catlist->goods_name . "</h5>";
-                echo "  <p class='card-text'>قیمت محصول :" . $catlist->goods_price . " تومان";
-                echo "  <br>میزان تخفیف :" . $catlist->goods_discount;
-                echo "  <br>تعداد موجودی انبار :" . $catlist->goods_quanty;
-            }
-            ?>
-            <div class="card mb-3 p-2 bg-secondary text-center" style="max-width: 70%;border-radius:15px;">
-                <form method="post" action="saveorder" id="form1" name="form1">
+        
+           
+        <form method="post" action="saveorder" id="form1" name="form1">
                     @csrf
                     <input name='order_goods_id' id='order_goods_id' value='' type='hidden'>
                     <input name='order_goods_price' id='order_goods_price' value='' type='hidden'>
@@ -595,62 +558,31 @@
                     <input name='page_url' id='page_url' value='' type='hidden'>
                     <input name='order_no' id='order_no' value='' type='hidden'>
                     <input name='order_goods_cnt' id='order_goods_cnt' value='' type="hidden">
-                    @if (Route::has('login'))
-                    @auth
-                    @if($ispost==1)
-                    <br>تعداد سفارش
-                    <input name='order_goods_cnt' id='order_goods_cnt' value='1'>
-                    @endif
+                              
                     <input name='customer_id' id='customer_id' value='{{ Auth::user()->id }}' type='hidden'>
-                    @endauth
-                    @endif
+                  
             </div>
             </form>
-            @if (Route::has('login'))
-            @auth
-            @if($ispost==1)
+            
             <br>
-            <a onclick="submite_add('{{$catlist->id }}' ,'{{ $catlist->goods_price}}','{{$catlist->goods_discount}}')" class="btn btn-primary w-25">قرار دادن در سبد خرید </a>
-            @endif
+             
             <a onclick="submite_end()" class="btn btn-success w-25">اتمام و تسویه حساب </a>
-            @endauth
-            @endif
+            
         </div>
         </div>
-        <?php
 
-        ?>
-        <a href="\" class="btn btn-danger">ادامه خرید</a><br>
+        <a href="\" class="btn btn-danger">بازگشت به سایت  </a><br>
         </div>
         </div>
         <script>
-            function submite_end() {
-                document.getElementById('form1').action = 'shop_end';
+            function submite_end(    )
+            {   
+                document.getElementById('form1').action='shop_end';
                 document.getElementById('form1').submit();
-
-            }
-
-            function submite_add(id, pr, ds) {
-                document.getElementById('order_goods_id').value = id;
-                document.getElementById('order_goods_price').value = pr;
-                document.getElementById('order_goods_discount').value = ds;
-                document.getElementById('page_url').value = window.location.href;
-                document.getElementById('form1').submit();
-            }
-
-            function submitedr_delit(id) {
-                document.getElementById('id').value = id;
-                document.getElementById('form11').submit();
-            }
-
-            function submited_edit(idd, ac, ono) {
-                document.getElementById('order_goods_id').value = idd;
-                document.getElementById('order_goods_cnt').value = 0;
-                document.getElementById('customer_id').value = ac;
-                document.getElementById('order_no').value = ono;
-                document.getElementById('form1').submit();
-            }
+               
+            }   
         </script>
+        <?php } ?>
     </h4>
 </body>
 
