@@ -21,7 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('shop', function () {
+Route::any('shop', function () {
     return view('layouts\shop');
 });
 

@@ -410,55 +410,222 @@
 
 
 <body class="antialiased m-2 p-5">
-    <h4>
-        <a href="\">Back</a><br>
-        خرید محصول نهایی شود:
-        <div class="row g-0">
+    <!-- ------ top menu ------- -->
+    <div class="d-flex fixed top-0 right-0 px-3 py-2 sm:block bg-light shadow w-100 flex-row-reverse">
+        @if (Route::has('login'))
+        @auth
+
+
+        <div class="bg-light d-inline-block " aria-labelledby="navbarDropdown1">
+            <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="\">
+                {{ Auth::user()->name }}
+                <!-- </span> <span> -->
+                <i class="bi bi-person-check">
+                </i>
+            </a>
+        </div>
+
+        <div class="bg-light d-inline-block" aria-labelledby="navbarDropdown1">
+            <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="/">
+                ادامه خرید
+                <!-- </span> <span> -->
+                <i class="bi bi-cart3">
+                </i>
+            </a>
+        </div>
+
+        <div class="bg-light d-inline-block " aria-labelledby="navbarDropdown1">
+            <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+                <!-- </span> <span> -->
+                <i class="bi bi-webcam">
+                </i>
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+        </div>
+
+
+        @else
+
+        <div class="bg-light d-inline-block " aria-labelledby="navbarDropdown1">
+            <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="{{ route('login') }}">Log in</a>
+        </div>
+        <div class="bg-light d-inline-block" aria-labelledby="navbarDropdown1">
+            <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="/">
+                ادامه خرید
+                <!-- </span> <span> -->
+                <i class="bi bi-cart3">
+                </i>
+            </a>
+        </div>
+        @if (Route::has('register'))
+        <div class="bg-light d-inline-block " aria-labelledby="navbarDropdown1">
+            <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="{{ route('register') }}">Register</a>
+        </div>@endif
+        @endauth
+
+    </div>
+    @endif
+    <!-- ------- / menu ------- -->
+    <!-- _______ basket ____________  -->
+    <h4 class="form-group">
+        @if (Route::has('login'))
+        @auth
+        <br>سبد خرید <i class="bi bi-cart3">
+        </i>
+        <br>
+        <br>
+        <br>
+        نام خریدار : {{ Auth::user()->name}}
+        <br>
+        <?php
+        $shplist = App\Http\Controllers\shopcontroller::getorderid(Auth::user()->id);
+
+        echo '<br><lable>شماره سفارش : ' . $shplist[0]->order_no . '</lable>';
+        echo '<div class="table-responsive">';
+        echo "<table    class='table  table-striped  table-hover m-2 p-2'>";
+        echo '<thead class="thead-dark">';
+        echo '<tr>';
+        echo '  <th scope="col">#</th>';
+        echo '  <th scope="col">کد کالا</th>';
+        echo '  <th scope="col">تعداد </th>';
+        echo '  <th scope="col">قیمت تومان</th>';
+        echo '  <th scope="col">تخفیف%</th>';
+        echo '  <th scope="col">جمع  تومان</th>';
+        echo '  <th scope="col"> تاریخ سفارش</th>';
+        echo '</tr>';
+        echo '</thead>';
+        echo '<tbody>';
+        $i = 1;
+        $sum3 = 0;
+
+        foreach ($shplist as $catlist1) {
+            echo '<tr >';
+            echo '<th scope="row">';
+            echo '<button class="btn btn-outline-info text-center" onclick="submitedrx(' . $catlist1->order_goods_id . ')">' . $i++ . '</button >';
+            echo '</th>';
+            echo '<td>';
+            $target_file = "./uploadgood/" . $catlist1->order_goods_id . ".png";
+            if (file_exists($target_file)) {
+                echo '<img style=" height:40px;width:50px;border-radius:10px;" class="shadow p-0 ml-2 mr-2 mt-0 mb-0" ';
+                echo "src='../." . $target_file . "' alt='" . $catlist1->order_goods_id  . "'>";
+            }
+            echo  $catlist1->order_goods_id . '</td>';
+            echo '<td>' . $catlist1->order_goods_cnt . '</td>';
+            echo '<td>' . number_format($catlist1->order_goods_price, 0, '.', ',') . '</td>';
+            echo '<td>' . $catlist1->order_goods_discount . '%</td>';
+            $sum1 = ($catlist1->order_goods_price *  $catlist1->order_goods_cnt);
+            $sum2 = ($sum1 * $catlist1->order_goods_discount) / 100;
+            $sum3 += ($sum1 - $sum2);
+            echo '<td> ' . number_format(($sum1 - $sum2), 0, '.', ',') . '</td>';
+            echo '<td> ';
+            echo $catlist1->order_date;
+            echo '<button class="btn btn-danger mx-2 text-center" onclick="submitedrdel(' . $catlist1->order_goods_id . ',' . $catlist1->customer_id . ',' . $catlist1->order_no . ')">X</button >';
+
+            echo '</td>';
+            echo '</tr>';
+            // echo '<td>' . $catlist1->customer_id . '</td>';
+            // echo '<td>' . $catlist1->page_url . '</td>';
+            // echo '<td>' . $catlist1->customer_ip . '</td>';
+        }
+        echo '</tbody>';
+        echo '<tfoot>';
+        echo '<tr><td> </td><td> </td><td> </td><td> </td><td>جمع</td><td>' . number_format($sum3, 0, '.', ',') . '</td><td></td></tr>';
+        echo '</tfoot>';
+        echo '</table>';
+        echo '</div>';
+        echo '<br>';
+
+        // dd($shplist);
+        ?>
+        <form action="shop" method="post" name="form11" id="form11">
+            @csrf
+            <input id='id' name='id' value=''>
+        </form>
+        <script>
+            function submitedrx(id) {
+                document.getElementById('id').value = id;
+                document.getElementById('form11').submit();
+            }
+
+            function submitedrdel(idd, ac, ono) {
+                document.getElementById('order_goods_id').value = idd;
+                document.getElementById('order_goods_cnt').value = 0;
+                document.getElementById('customer_id').value = ac;
+                document.getElementById('order_no').value = ono;
+                document.getElementById('form1').submit();
+            }
+        </script>
+        @endauth
+        @endif
+        خرید محصول  :
+        <div class="row g-0" style="border-radius:15px;">
             <?php
             // use Illuminate\Foundation\Auth\User as Authenticatable;
+            $ispost = 0;
+            $fff = 0;
+            foreach ($_REQUEST as $gg => $ff) {
+                //dd($gg . " - " . $ff);
+                if ($gg == 'id') {
+                    $ispost = 1;
+                    $fff = $ff;
+                    break;
+                }
+            }
 
-            $catlist = App\Models\goods::getgoodsid($_REQUEST['id']);
-            echo '<div class="col-md-4 bg-info">';
-            echo "   <img  alt='" . $catlist->goods_name . "' class='card-img-top' src='./uploadgood/" . $catlist->id . ".png'>";
+
+            $catlist = App\Models\goods::getgoodsid($fff);
+            echo '<div class="col-md-4 bg-info" style="border-radius:15px;">';
+            if ($ispost == 1) {
+                echo "   <img  alt='" . $catlist->goods_name . "' style='border-radius:15px;' class='card-img-top' src='./uploadgood/" . $catlist->id . ".png'>";
+            }
             echo '</div>';
-            echo '<div class="col-md-8  bg-warning">';
+            echo '<div class="col-md-8  bg-warning" style="border-radius:15px;">';
             echo ' <div class="card-body">';
-            echo "  <br><br><h5 class='card-title'>نام محصول :" . $catlist->goods_name . "</h5>";
-            echo "  <p class='card-text'>قیمت محصول :" . $catlist->goods_price . " تومان";
-            echo "  <br>میزان تخفیف :" . $catlist->goods_discount;
-            echo "  <br>تعداد موجودی انبار :" . $catlist->goods_quanty;
+            if ($ispost == 1) {
+                echo "  <br><h5 class='card-title'>نام محصول :" . $catlist->goods_name . "</h5>";
+                echo "  <p class='card-text'>قیمت محصول :" . $catlist->goods_price . " تومان";
+                echo "  <br>میزان تخفیف :" . $catlist->goods_discount;
+                echo "  <br>تعداد موجودی انبار :" . $catlist->goods_quanty;
+            }
             ?>
-            @if (Route::has('login'))
-            @auth
-            <form method="post" action="saveorder" id="form1" name="form1">
-                <div class="card mb-3 p-2 bg-secondary text-center" style="max-width: 70%;border-radius:15px;">
+            <div class="card mb-3 p-2 bg-secondary text-center" style="max-width: 70%;border-radius:15px;">
+                <form method="post" action="saveorder" id="form1" name="form1">
                     @csrf
-                    <br>تعداد سفارش
-                    <input name='order_goods_cnt' id='order_goods_cnt' value='1'>
                     <input name='order_goods_id' id='order_goods_id' value='' type='hidden'>
                     <input name='order_goods_price' id='order_goods_price' value='' type='hidden'>
                     <input name='order_goods_discount' id='order_goods_discount' value='' type='hidden'>
                     <input name='page_url' id='page_url' value='' type='hidden'>
-                    <input name='customer_id' id='customer_id' value='{{ Auth::user()->id }}' type='hidden'> {{ Auth::user()->name}}
-
+                    <input name='order_no' id='order_no' value='' type='hidden'>
+                    <input name='order_goods_cnt' id='order_goods_cnt' value='' type="hidden">
+                    @if (Route::has('login'))
+                    @auth
+                    @if($ispost==1)
+                    <br>تعداد سفارش
+                    <input name='order_goods_cnt' id='order_goods_cnt' value='1'>
+                    @endif
+                    <input name='customer_id' id='customer_id' value='{{ Auth::user()->id }}' type='hidden'>
+                    @endauth
+                    @endif
+            </div>
             </form>
-            <br><br><a onclick="submitedr('{{$catlist->id }}' ,'{{ $catlist->goods_price}}','{{$catlist->goods_discount}}')" class="btn btn-primary">نهایی شدن خرید </a>
-
-
-            @else
-
-
-            <br><a href=" {{ route('login') }}" class='text-sm text-gray-700 dark:text-gray-500 underline' \>Log in</a>
-            @if (Route::has('register'))
-            <a href=' {{ route("register") }}' class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+            @if (Route::has('login'))
+            @auth
+            @if($ispost==1)
+            <br>
+            <a onclick="submitedr('{{$catlist->id }}' ,'{{ $catlist->goods_price}}','{{$catlist->goods_discount}}')" class="btn btn-primary w-25">قرار دادن در سبد خرید </a>
             @endif
+            <a onclick="submitedrtt()" class="btn btn-success w-25">اتمام و تسویه حساب </a>
             @endauth
             @endif
         </div>
         </div>
+
+        <a href="\" class="btn btn-danger">ادامه خرید</a><br>
         </div>
         </div>
-        <a href="\">Back</a><br>
         <script>
             function submitedr(id, pr, ds) {
                 document.getElementById('order_goods_id').value = id;

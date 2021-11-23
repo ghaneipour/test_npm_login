@@ -23,6 +23,12 @@ class goods extends Model
         }
         return $array;
     }
+    public static function getCatListgood2($id)
+    {  
+        $cat = goods::query()->where('id', $id)->first();     
+        //dd($cat); 
+        return $cat;
+    }
     public static function getgoods()
     {
              return  goods::query()->get();       
