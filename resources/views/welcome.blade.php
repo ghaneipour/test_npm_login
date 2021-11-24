@@ -418,45 +418,41 @@
 
 <body class="antialiased">
     <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-        <div class="d-flex fixed top-0 right-0 px-3 py-2 sm:block bg-light shadow w-100 flex-row-reverse">
+        <div style="background-color:#f1f4fc" class="d-flex fixed top-0 right-0 px-3 py-2 sm:block bg-light shadow w-100 flex-row-reverse ">
             @if (Route::has('login'))
             @auth
-
-
+            
+            
             <div class="bg-light d-inline-block " aria-labelledby="navbarDropdown1">
-                <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" 
-                href="\" >
-                {{ Auth::user()->name }}
-                <!-- </span> <span> -->
-                    <i class="bi bi-person-check">
-                    </i>
-                </a>
-            </div>
- 
-            <div class="bg-light d-inline-block" aria-labelledby="navbarDropdown1">
-                <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" 
-                href="loads_shop"   >
-                سبد خرید
-               <!-- </span> <span> -->
-                <i class="bi bi-cart3">
-                    </i>
-                </a>
-            </div>
- 
-            <div class="bg-light d-inline-block " aria-labelledby="navbarDropdown1">
-                <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none"
-                 href="{{ route('logout') }}" 
-                 onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                 {{ __('Logout') }}
-                 <!-- </span> <span> -->
-                 <i class="bi bi-webcam">
-                    </i>
-                </a>
+                <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="\">
+                    {{ Auth::user()->name }}
+                    <!-- </span> <span> -->
+                        <i class="bi bi-person-check">
+                            </i>
+                        </a>
+                    </div>
+                    
+                    <div class="bg-light d-inline-block" aria-labelledby="navbarDropdown1">
+                        <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="loads_shop">
+                            سبد خرید
+                            <!-- </span> <span> -->
+                                <i class="bi bi-cart3">
+                                    </i>
+                                </a>
+                            </div>
+                            
+                            <div class="bg-light d-inline-block " aria-labelledby="navbarDropdown1">
+                                <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                    <!-- </span> <span> -->
+                                        <i class="bi bi-webcam">
+                                            </i>
+                                        </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
             </div>
-
+            
             <?php
             $lss_login =  explode('_', Auth::user()->user_lss)[0];
             $lss_new =  explode('_', Auth::user()->user_lss)[1];
@@ -465,14 +461,11 @@
             $lss_resource =  explode('_', Auth::user()->user_lss)[4];
             ?>
 
-            @else
-            <div class="bg-light d-inline-block " aria-labelledby="navbarDropdown1">
-                <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none"
-             
-                href="{{ route('login') }}" 
-                 >Log in</a>
-            </div>
-            <?php
+@else
+<div class="bg-light d-inline-block " aria-labelledby="navbarDropdown1">
+    <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="{{ route('login') }}">Log in</a>
+</div>
+<?php
             $lss_login = 0;
             $lss_new = 0;
             $lss_edit = 0;
@@ -481,18 +474,18 @@
             ?>
             @if (Route::has('register'))
             <div class="bg-light d-inline-block " aria-labelledby="navbarDropdown1">
-                <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none"
-             href="{{ route('register') }}"  >Register</a>
+                <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="{{ route('register') }}">Register</a>
             </div>
             @endif
             @endauth
             @endif
         </div>
-        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-
+        <div style="background-color:#ffffff" class="max-w-6xl mx-auto sm:px-1 lg:px-1 shadow">
+            
             <!-- logo laravel    -->
             <div class="   p-2 m-2   w-100 row justify-content-between align-items-center">
                 <div class="d-inline-block p-2   col-2 align-self-center">
+                    <br>
                     <img src="https://softlock.ir/wp-content/uploads/2021/03/cropped-ls-180x180.png">
                 </div>
 
@@ -500,7 +493,7 @@
                     <h3 class=" text-center">آروین فنآور</h3>
                 </div>
             </div>
-            <div class="  w-100" dir="rtl">
+            <div class=" p-5 w-100" dir="rtl">
 
                 <h3>
                     {{App\Models\sitepage::getsitepage(['id'=>1,'page'=>'1'])->page_title}}
@@ -559,19 +552,22 @@
             </script>
 
             <!-- ______________________welcome_____________________________ -->
-            <section class="my-4">
+            <section class="my-4 ">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-6 text-center mt-3 p-2 text-warning">
                             <h4 class="fw-bold">
-                                روژینا قانعی پور</h4>
-
+                                {{App\Models\sitepage::getsitepage(['id'=>7,'page'=>'7'])->page_title}}
+                            </h4>
                             <h5 class="fw-bold my-4">
                                 <a href="#"> softlock.ir</a>
                             </h5>
                             <p class="text-black">
-                                مجموعه روژینا، دانشگاهی آنلاین است که آموزش‌های ویدئویی کاربردی، دانشگاهی و عمومی را ارائه می‌دهد. در همین راستا ، با ارائه بیش از ۱۵,۰۰۰ ساعت آموزش آنلاین، در زمینه‌‌ها و رشته‌های مختلف، این آموزش‌ها در اختیار بیش از یک میلیون دانشجوی آنلاین خود در سراسر ایران و خارج از کشور قرار داده است. </p>
-                            <p>تدریس در مجموعه روژینا به دانش و تخصص شما دایره اثری به وسعت کل کشور می‌بخشد. دانش و تجربه‌ای که تاکنون محدود به زمان و جغرافیا بود، در این مجموعه اوج گرفته و فارغ از هر گونه مرزی می‌شود. تدریس در مجموعه روژینا، تدریس برای آرمان «دانش بدون مرز» است.</p>
+                                {{App\Models\sitepage::getsitepage(['id'=>7,'page'=>'7'])->page_str1}}
+                            </p>
+                            <p>
+                                {{App\Models\sitepage::getsitepage(['id'=>7,'page'=>'7'])->page_str2}}
+                            </p>
                             <button type="button" class="btn btn-danger mx-2">Info</button>
                             <button type="button" class="btn btn-outline-dark mx-2">Dark</button>
                         </div>
@@ -587,20 +583,24 @@
             <!-- ______________________sample____________________________ -->
 
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#f8f9fa" fill-opacity="1" d="M0,224L120,234.7C240,245,480,267,720,245.3C960,224,1200,160,1320,128L1440,96L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
+                <path fill="#f1f4fc" fill-opacity="1" d="M0,224L120,234.7C240,245,480,267,720,245.3C960,224,1200,160,1320,128L1440,96L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
             </svg>
 
-            <section class="bg-light">
+            <section style="background-color:#f1f4fc">
 
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-4 text-center">
+                <div class="container" style="background-color:#f1f4fc">
+                    <div class="row align-items-center" style="background-color:#f1f4fc">
+                        <div class="col-md-4 text-center" style="background-color:#f1f4fc">
                             <i class="bi bi-stack fs-2 icon"></i>
-                            <h4 class="fw-bold my-4" style="color: #e6a00a;">عضویت در مجموعه روژینا</h4>
-                            <p>با عضویت در این مجموعه ، شما میتوانید به مطالب بسیار جالب و مهمی دسترسی داشته و با مطالعه آنها به معلومات خود بیافزایید</p>
+                            <h4 class="fw-bold my-4" style="color: #f5ac0d;">
+                                {{App\Models\sitepage::getsitepage(['id'=>6,'page'=>'6'])->page_title}}
+                            </h4>
+                            <p>
+                                {{App\Models\sitepage::getsitepage(['id'=>6,'page'=>'6'])->page_str1}}
+                            </p>
                             <button class="btn btn-outline-dark">عضویت</button>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8" style="background-color:#f1f4fc">
                             <div class="row g-4">
 
                                 <div class="col-md-6">
@@ -608,16 +608,24 @@
                                     <div class="card text-center shadow my-2">
                                         <div class="card-body">
                                             <i class="bi bi-graph-up fs-2 icon"></i>
-                                            <h5 class="card-title my-4 ">آشنایی با علوم</h5>
-                                            <p class="card-text text-muted">در این سامانه میتوانید به بهترین منابع آموزشی در زمینه علوم دست بیابید...</p>
+                                            <h5 class="card-title my-4 ">
+                                                {{App\Models\sitepage::getsitepage(['id'=>2,'page'=>'2'])->page_title}}
+                                            </h5>
+                                            <p class="card-text text-muted">
+                                                {{App\Models\sitepage::getsitepage(['id'=>2,'page'=>'2'])->page_str1}}
+                                            </p>
                                         </div>
                                     </div>
 
                                     <div class="card text-center shadow my-2">
                                         <div class="card-body">
                                             <i class="bi bi-grid-1x2-fill fs-2 icon"></i>
-                                            <h5 class="card-title my-4 ">آشنایی با ریاضی</h5>
-                                            <p class="card-text text-muted">در این سامانه میتوانید به بهترین منابع آموزشی در زمینه علوم دست بیابید...</p>
+                                            <h5 class="card-title my-4 ">
+                                                {{App\Models\sitepage::getsitepage(['id'=>3,'page'=>'3'])->page_title}}
+                                            </h5>
+                                            <p class="card-text text-muted">
+                                                {{App\Models\sitepage::getsitepage(['id'=>3,'page'=>'3'])->page_str1}}
+                                            </p>
                                         </div>
                                     </div>
 
@@ -628,16 +636,24 @@
                                     <div class="card text-center shadow mb-2 mt-5">
                                         <div class="card-body">
                                             <i class="bi bi-menu-button-wide-fill fs-2 icon"></i>
-                                            <h5 class="card-title my-4 ">آشنایی با انگلیسی</h5>
-                                            <p class="card-text text-muted">در این سامانه میتوانید به بهترین منابع آموزشی در زمینه علوم دست بیابید...</p>
+                                            <h5 class="card-title my-4 ">
+                                                {{App\Models\sitepage::getsitepage(['id'=>4,'page'=>'4'])->page_title}}
+                                            </h5>
+                                            <p class="card-text text-muted">
+                                                {{App\Models\sitepage::getsitepage(['id'=>4,'page'=>'4'])->page_str1}}
+                                            </p>
                                         </div>
                                     </div>
 
                                     <div class="card text-center shadow my-2">
                                         <div class="card-body">
                                             <i class="bi bi-bar-chart-line-fill fs-2 icon"></i>
-                                            <h5 class="card-title my-4 ">آشنایی با عربی</h5>
-                                            <p class="card-text text-muted">در این سامانه میتوانید به بهترین منابع آموزشی در زمینه علوم دست بیابید...</p>
+                                            <h5 class="card-title my-4 ">
+                                                {{App\Models\sitepage::getsitepage(['id'=>5,'page'=>'5'])->page_title}}
+                                            </h5>
+                                            <p class="card-text text-muted">
+                                                {{App\Models\sitepage::getsitepage(['id'=>5,'page'=>'5'])->page_str1}}
+                                            </p>
                                         </div>
                                     </div>
 
@@ -650,7 +666,7 @@
                 </div>
             </section>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#f8f9fa" fill-opacity="1" d="M0,224L120,234.7C240,245,480,267,720,245.3C960,224,1200,160,1320,128L1440,96L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path>
+                <path fill="#f1f4fc" fill-opacity="1" d="M0,224L120,234.7C240,245,480,267,720,245.3C960,224,1200,160,1320,128L1440,96L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path>
             </svg>
             <!-- ______________________slider_______________________________  -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -660,8 +676,13 @@
             <section class="main-section">
                 <div class="container ">
                     <div class="row text-center text-light">
-                        <h4>محصولات</h4>
-                        <p>یستبشتسیبنتاتثر ثلصثق لصث قلثعل صتاث بقلخ ثقابل ثا قعث ل</p>
+                        <h4>
+                        {{App\Models\sitepage::getsitepage(['id'=>8,'page'=>'8'])->page_title}}
+
+                        </h4>
+                        <p>
+                        {{App\Models\sitepage::getsitepage(['id'=>8,'page'=>'8'])->page_str1}}
+</p>
                     </div>
                     <div class="row text-center ">
 
@@ -675,32 +696,35 @@
                                 <div class="carousel-item active">
                                     <img src="../img/img_2.jpg" class="d-block w-100" alt="...">
                                     <div class="carousel-caption d-none d-md-block">
-                                        <h5>First slide label</h5>
-                                        <p>Some representative placeholder content for the first slide.</p>
+                                        <h5>{{App\Models\sitepage::getsitepage(['id'=>9,'page'=>'9'])->page_title}}</h5>
+                                        <p>{{App\Models\sitepage::getsitepage(['id'=>9,'page'=>'9'])->page_str1}}.</p>
                                     </div>
                                 </div>
                                 <div class="carousel-item">
                                     <img src="../img/img_3.jpg" class="d-block w-100" alt="...">
                                     <div class="carousel-caption d-none d-md-block">
-                                        <h5>Second slide label</h5>
-                                        <p>Some representative placeholder content for the second slide.</p>
+                                        <h5>{{App\Models\sitepage::getsitepage(['id'=>10,'page'=>'10'])->page_title}}</h5>
+                                        <p>{{App\Models\sitepage::getsitepage(['id'=>10,'page'=>'10'])->page_str1}}.</p>
+                                        
                                     </div>
                                 </div>
                                 <div class="carousel-item">
                                     <img src="../img/img_4.jpg" class="d-block w-100" alt="...">
                                     <div class="carousel-caption d-none d-md-block">
-                                        <h5>Third slide label</h5>
-                                        <p>Some representative placeholder content for the third slide.</p>
+                                        <h5>{{App\Models\sitepage::getsitepage(['id'=>11,'page'=>'11'])->page_title}}</h5>
+                                        <p>{{App\Models\sitepage::getsitepage(['id'=>11,'page'=>'11'])->page_str1}}.</p>
+                                        
+                                    
                                     </div>
                                 </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
+                                <span class="visually-hidden">قبل</span>
                             </button>
                             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
+                                <span class="visually-hidden">بعد</span>
                             </button>
                         </div>
                     </div>
@@ -723,7 +747,9 @@
                             <img src="{{ url('/img/doc.png')}}" width="50">
                             <div class="ml-4 text-lg leading-7 font-semibold">
                                 @if( $lss_login==1)
-                                <a href="/admin/category/create" class="underline text-gray-900 dark:text-white">Documentation مستندات</a>
+                                <a href="/admin/category/create" class="underline text-gray-900 dark:text-white">
+                                {{App\Models\sitepage::getsitepage(['id'=>14,'page'=>'14'])->page_title}}
+                                </a>
                                 @else
                                 برای استفاده لاگین بفرمایید
                                 @endif
@@ -732,8 +758,8 @@
 
                         <div class="ml-12">
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                RFID Door Lock system. this is best solution for our product.
-                                قفل های هوشمند بهترین پیشنهاد برای شما
+                            {{App\Models\sitepage::getsitepage(['id'=>14,'page'=>'14'])->page_str1}}
+
                             </div>
                         </div>
                     </div>
@@ -750,7 +776,7 @@
                                         <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">
                                             @if( $lss_login==1)
                                             <a href="/softlock">
-                                                shop فروشگاه
+                                            {{App\Models\sitepage::getsitepage(['id'=>13,'page'=>'13'])->page_title}}
                                             </a>
                                             @else
                                             برای استفاده لاگین بفرمایید
@@ -763,8 +789,7 @@
 
                         <div class="ml-12">
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                به اولین فروشگاه محصول های تحقیقاتی کشور خوش آمدید
-                                در این فروشگاه همه میتوانند به محصول مورد نیاز خود دست بیابند
+                            {{App\Models\sitepage::getsitepage(['id'=>13,'page'=>'13'])->page_str1}}
                             </div>
                         </div>
                     </div>
@@ -775,7 +800,9 @@
 
                             <div class="ml-4 text-lg leading-7 font-semibold">
                                 @if( $lss_resource==1)
-                                <a href="/bs" class="underline text-gray-900 dark:text-white">Softlock News</a>
+                                <a href="/bs" class="underline text-gray-900 dark:text-white">
+                                {{App\Models\sitepage::getsitepage(['id'=>16,'page'=>'16'])->page_title}}
+                                </a>
                                 @else
                                 برای استفاده لاگین بفرمایید
                                 @endif
@@ -784,8 +811,7 @@
 
                         <div class="ml-12">
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                اعضا و افرادی که ما را در این طرح کمک و راهنمایی نموده اند در سراسر دنیا به کار مشغول میباشند. از امریکا و کانادا تا استرالیا و ژاپن
-                                <br>همیشه آخرین دانش این عزیزان میتواند راه را برای ما رهنمون باشد
+                            {{App\Models\sitepage::getsitepage(['id'=>16,'page'=>'16'])->page_str1}}
                             </div>
                         </div>
                     </div>
@@ -795,7 +821,9 @@
                             <img src="{{ url('/img/setting.png')}}" width="50">
                             <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">
                                 @if( $lss_login==1)
-                                <a href="/food" class="fff">Food تغذیه</a>
+                                <a href="/food" class="fff">
+                                {{App\Models\sitepage::getsitepage(['id'=>15,'page'=>'15'])->page_title}}
+                                </a>
                                 @else
                                 برای استفاده لاگین بفرمایید
                                 @endif
@@ -804,7 +832,8 @@
 
                         <div class="ml-12">
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                امنیت سامانه های ما برای همه دنیا از قدیم چشم نواز بوده است. شما هم قبول خواهید کرد که ما بهترین هستیم. ولی کسی تا بحال برخلاف این صحبت چیزی مطرح نکرده است<div class=""></div>.
+                            {{App\Models\sitepage::getsitepage(['id'=>15,'page'=>'15'])->page_str1}}    
+                            <div class=""></div>.
                             </div>
                         </div>
                     </div>
@@ -840,6 +869,103 @@
             </div>
         </div>
     </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220">
+                <path fill="#f8f9fa" fill-opacity="1" d="M0,224L120,234.7C240,245,480,267,720,245.3C960,224,1200,160,1320,128L1440,96L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path>
+            </svg>
+   <!-- _____________________________________________________ -->
+     <div>
+        <div style="display:flex;flex-direction:column; padding:10px;">
+            <div class="container ">
+                <div class="row row-cols-2 row-cols-lg-5  row-cols-sm-3 g-2 g-lg-3">
+                    <div class="col">
+                        <div class="p-3 border bg-light">.</div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border bg-light">.</div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border bg-light">.</div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border bg-light">.</div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border bg-light">.</div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border bg-light">.</div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border bg-light">.</div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border bg-light">.</div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border bg-light">.</div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border bg-light">.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <!-- _______________________footer______________________________ -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220">
+        <path fill="#f8f9fa" fill-opacity="1" d="M0,224L120,234.7C240,245,480,267,720,245.3C960,224,1200,160,1320,128L1440,96L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
+    </svg>
+
+    <footer class="bg-light">
+        <div class="container  p-4 ">
+            <div class="row ">
+                <div class="col-md-4  align-items-center text-center ">
+                    <h3 class="fw-bold"> {{App\Models\sitepage::getsitepage(['id'=>12,'page'=>'12'])->page_title}}</h3>
+                    <p>{{App\Models\sitepage::getsitepage(['id'=>12,'page'=>'12'])->page_str1}}</p>
+                    <i class="bi bi-instagram fs-2"></i>
+                    <i class="bi bi-telegram fs-2 mx-3"></i>
+                    <i class="bi bi-facebook fs-2 me-3"></i>
+                    <i class="bi bi-linkedin fs-2"></i>
+                </div>
+                <div class="col-md-7 offset-md-1  ">
+                    <div class="row text-left align-items-center my-3">
+                        <div class="col-md-4">
+                            <h6 class="fw-bold borderfooter w-75">بخش های سامانه</h6>
+
+                            <ul class="list-unstyled listbb">
+                                <li><a href="#">عضویت</a></li>
+                                <li><a href="#">درباره ما</a></li>
+                                <li><a href="#">محصولات</a></li>
+                                <li><a href="#">گالری</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="fw-bold borderfooter w-75">بخش های سامانه</h6>
+
+                            <ul class="list-unstyled listbb">
+                                <li><a href="#">عضویت</a></li>
+                                <li><a href="#">درباره ما</a></li>
+                                <li><a href="#">محصولات</a></li>
+                                <li><a href="#">گالری</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="fw-bold borderfooter w-75">بخش های سامانه</h6>
+
+                            <ul class="list-unstyled listbb">
+                                <li><a href="#">عضویت</a></li>
+                                <li><a href="#">درباره ما</a></li>
+                                <li><a href="#">محصولات</a></li>
+                                <li><a href="#">گالری</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- _____________________________________________________ -->
+   <!-- _____________________________________________________  -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 

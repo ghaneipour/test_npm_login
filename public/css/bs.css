@@ -11,7 +11,7 @@ body {
 }
 
 .icon {
-    color: #e6a00a;
+    color: #f5ac0d;
     background-color: #ebeafb;
     display: inline-flex;
     padding: 15px;
@@ -25,7 +25,7 @@ body {
 
 .main-section {
     background-color: #1b2a4e;
-    color: fff;
+    color: #fff;
     padding: 0;
     margin: 0;
 }
