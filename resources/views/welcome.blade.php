@@ -421,38 +421,38 @@
         <div style="background-color:#f1f4fc" class="d-flex fixed top-0 right-0 px-3 py-2 sm:block bg-light shadow w-100 flex-row-reverse ">
             @if (Route::has('login'))
             @auth
-            
-            
+
+
             <div class="bg-light d-inline-block " aria-labelledby="navbarDropdown1">
                 <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="\">
                     {{ Auth::user()->name }}
                     <!-- </span> <span> -->
-                        <i class="bi bi-person-check">
-                            </i>
-                        </a>
-                    </div>
-                    
-                    <div class="bg-light d-inline-block" aria-labelledby="navbarDropdown1">
-                        <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="loads_shop">
-                            سبد خرید
-                            <!-- </span> <span> -->
-                                <i class="bi bi-cart3">
-                                    </i>
-                                </a>
-                            </div>
-                            
-                            <div class="bg-light d-inline-block " aria-labelledby="navbarDropdown1">
-                                <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                    <!-- </span> <span> -->
-                                        <i class="bi bi-webcam">
-                                            </i>
-                                        </a>
+                    <i class="bi bi-person-check">
+                    </i>
+                </a>
+            </div>
+
+            <div class="bg-light d-inline-block" aria-labelledby="navbarDropdown1">
+                <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="loads_shop">
+                    سبد خرید
+                    <!-- </span> <span> -->
+                    <i class="bi bi-cart3">
+                    </i>
+                </a>
+            </div>
+
+            <div class="bg-light d-inline-block " aria-labelledby="navbarDropdown1">
+                <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                    <!-- </span> <span> -->
+                    <i class="bi bi-webcam">
+                    </i>
+                </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
             </div>
-            
+
             <?php
             $lss_login =  explode('_', Auth::user()->user_lss)[0];
             $lss_new =  explode('_', Auth::user()->user_lss)[1];
@@ -461,11 +461,11 @@
             $lss_resource =  explode('_', Auth::user()->user_lss)[4];
             ?>
 
-@else
-<div class="bg-light d-inline-block " aria-labelledby="navbarDropdown1">
-    <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="{{ route('login') }}">Log in</a>
-</div>
-<?php
+            @else
+            <div class="bg-light d-inline-block " aria-labelledby="navbarDropdown1">
+                <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="{{ route('login') }}">Log in</a>
+            </div>
+            <?php
             $lss_login = 0;
             $lss_new = 0;
             $lss_edit = 0;
@@ -481,7 +481,7 @@
             @endif
         </div>
         <div style="background-color:#ffffff" class="max-w-6xl mx-auto sm:px-1 lg:px-1 shadow">
-            
+
             <!-- logo laravel    -->
             <div class="   p-2 m-2   w-100 row justify-content-between align-items-center">
                 <div class="d-inline-block p-2   col-2 align-self-center">
@@ -493,6 +493,7 @@
                     <h3 class=" text-center">آروین فنآور</h3>
                 </div>
             </div>
+            <!-- ___________________ Main text ______________________ -->
             <div class=" p-5 w-100" dir="rtl">
 
                 <h3>
@@ -502,7 +503,8 @@
                     {{App\Models\sitepage::getsitepage(['id'=>1,'page'=>'1'])->page_str1}}
                 </h5>
             </div>
-            <!-- ________________________________________________ -->
+            <!-- ______________________Shop__________________________ -->
+            <h3 dir=rtl class="align-middle m-2 p-2 align-self-center bg-dark text-light">فروشگاه</h3>
             <div class="  text-dark p-1 m-1 g-1" style="background:#6b7280;width:100%;border-radius:15px;">
                 <div class="card-group1 bg-white p-1 m-1 g-1 text-center" style="border-radius:15px;">
                     <?php
@@ -551,6 +553,83 @@
                 }
             </script>
 
+            <!-- ______________________ Advertising1 _____________________________ -->
+            <h3 dir=rtl class="align-middle m-2 p-2 align-self-center bg-dark text-light">{{App\Models\sitepage::getsitepage(['id'=>17,'page'=>'17'])->page_title}}</h3>
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#1b2a4e" fill-opacity="1" d="M0,224L120,234.7C240,245,480,267,720,245.3C960,224,1200,160,1320,128L1440,96L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
+            </svg>
+
+            <section class="main-section">
+                <div class="container ">
+                    <div class="row text-center text-light">
+                        <h4>
+                            {{App\Models\sitepage::getsitepage(['id'=>17,'page'=>'17'])->page_title}}
+
+                        </h4>
+                        <p>
+                            {{App\Models\sitepage::getsitepage(['id'=>17,'page'=>'1'])->page_str1}}
+                        </p>
+                    </div>
+                    <div class="row text-center ">
+
+                        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <?php
+                                $req = App\Models\Advertising::getAdvertising1();
+                                $xi = 0;
+                                // dd(1);
+                                foreach ($req as $rex) {
+                                    echo '<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="';
+                                    echo $xi;
+                                    echo '" aria-label="Slide ';
+                                    $xi++;
+                                    echo $xi;
+                                    echo '" ';
+                                    if ($xi == 1) {
+                                        echo 'class="active" aria-current="true"';
+                                    }
+                                    echo '></button>';
+                                }
+                                ?>
+
+                            </div>
+
+                            <div class="carousel-inner">
+                                <?php
+                                $xi = 0;
+                                foreach ($req as $rec1) {
+                                    // @dd($rec1);
+                                ?>
+                                    <div class="carousel-item {{($xi==0?'active':'')}}">
+                                        <img src="../img/img_{{ $rec1->id}}.jpg" class="d-block w-100" style="height:350px;" alt="...">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>{{$rec1->Advertising_title}}</h5>
+                                            <p>{{$rec1->Advertising_str1}}.</p>
+                                        </div>
+                                    </div>
+                                <?php $xi++;} ?>
+
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">قبل</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">بعد</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220">
+                <path fill="#1b2a4e" fill-opacity="1" d="M0,224L120,234.7C240,245,480,267,720,245.3C960,224,1200,160,1320,128L1440,96L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path>
+            </svg>
+            <!-- ________________ / Advert1. _______________ -->
+
             <!-- ______________________welcome_____________________________ -->
             <section class="my-4 ">
                 <div class="container">
@@ -560,7 +639,7 @@
                                 {{App\Models\sitepage::getsitepage(['id'=>7,'page'=>'7'])->page_title}}
                             </h4>
                             <h5 class="fw-bold my-4">
-                                <a href="#"> softlock.ir</a>
+                                <a href="http://softlock.ir"> softlock.ir</a>
                             </h5>
                             <p class="text-black">
                                 {{App\Models\sitepage::getsitepage(['id'=>7,'page'=>'7'])->page_str1}}
@@ -579,6 +658,82 @@
                 </div>
 
             </section>
+  <!-- ______________________ Advertising2 _____________________________ -->
+  <h3 dir=rtl class="align-middle m-2 p-2 align-self-center bg-dark text-light">{{App\Models\sitepage::getsitepage(['id'=>18,'page'=>'18'])->page_title}}</h3>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path fill="#1b2a4e" fill-opacity="1" d="M0,224L120,234.7C240,245,480,267,720,245.3C960,224,1200,160,1320,128L1440,96L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
+</svg>
+
+<section class="main-section">
+    <div class="container ">
+        <div class="row text-center text-light">
+            <h4>
+            {{App\Models\sitepage::getsitepage(['id'=>18,'page'=>'17'])->page_title}}
+
+</h4>
+<p>
+    {{App\Models\sitepage::getsitepage(['id'=>18,'page'=>'1'])->page_str1}}
+</p>
+        </div>
+        <div class="row text-center ">
+
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <?php
+                    $req = App\Models\Advertising::getAdvertising2();
+                    $xi = 0;
+                    // dd(1);
+                    foreach ($req as $rex) {
+                        echo '<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="';
+                        echo $xi;
+                        echo '" aria-label="Slide ';
+                        $xi++;
+                        echo $xi;
+                        echo '" ';
+                        if ($xi == 1) {
+                            echo 'class="active" aria-current="true"';
+                        }
+                        echo '></button>';
+                    }
+                    ?>
+
+                </div>
+
+                <div class="carousel-inner">
+                    <?php
+                    $xi = 0;
+                    foreach ($req as $rec1) {
+                        // @dd($rec1);
+                    ?>
+                        <div class="carousel-item {{($xi==0?'active':'')}}">
+                            <img src="../img/img_{{ $rec1->id}}.jpg" class="d-block w-100" style="height:350px;" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>{{$rec1->Advertising_title}}</h5>
+                                <p>{{$rec1->Advertising_str1}}.</p>
+                            </div>
+                        </div>
+                    <?php $xi++;} ?>
+
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">قبل</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">بعد</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220">
+    <path fill="#1b2a4e" fill-opacity="1" d="M0,224L120,234.7C240,245,480,267,720,245.3C960,224,1200,160,1320,128L1440,96L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path>
+</svg>
+<!-- ________________ / Advert2 _______________ -->
 
             <!-- ______________________sample____________________________ -->
 
@@ -598,7 +753,7 @@
                             <p>
                                 {{App\Models\sitepage::getsitepage(['id'=>6,'page'=>'6'])->page_str1}}
                             </p>
-                            <button class="btn btn-outline-dark">عضویت</button>
+                            <a href="/register" class="btn btn-outline-dark">عضویت</a>
                         </div>
                         <div class="col-md-8" style="background-color:#f1f4fc">
                             <div class="row g-4">
@@ -677,12 +832,12 @@
                 <div class="container ">
                     <div class="row text-center text-light">
                         <h4>
-                        {{App\Models\sitepage::getsitepage(['id'=>8,'page'=>'8'])->page_title}}
+                            {{App\Models\sitepage::getsitepage(['id'=>8,'page'=>'8'])->page_title}}
 
                         </h4>
                         <p>
-                        {{App\Models\sitepage::getsitepage(['id'=>8,'page'=>'8'])->page_str1}}
-</p>
+                            {{App\Models\sitepage::getsitepage(['id'=>8,'page'=>'8'])->page_str1}}
+                        </p>
                     </div>
                     <div class="row text-center ">
 
@@ -705,7 +860,7 @@
                                     <div class="carousel-caption d-none d-md-block">
                                         <h5>{{App\Models\sitepage::getsitepage(['id'=>10,'page'=>'10'])->page_title}}</h5>
                                         <p>{{App\Models\sitepage::getsitepage(['id'=>10,'page'=>'10'])->page_str1}}.</p>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="carousel-item">
@@ -713,8 +868,8 @@
                                     <div class="carousel-caption d-none d-md-block">
                                         <h5>{{App\Models\sitepage::getsitepage(['id'=>11,'page'=>'11'])->page_title}}</h5>
                                         <p>{{App\Models\sitepage::getsitepage(['id'=>11,'page'=>'11'])->page_str1}}.</p>
-                                        
-                                    
+
+
                                     </div>
                                 </div>
                             </div>
@@ -748,7 +903,7 @@
                             <div class="ml-4 text-lg leading-7 font-semibold">
                                 @if( $lss_login==1)
                                 <a href="/admin/category/create" class="underline text-gray-900 dark:text-white">
-                                {{App\Models\sitepage::getsitepage(['id'=>14,'page'=>'14'])->page_title}}
+                                    {{App\Models\sitepage::getsitepage(['id'=>14,'page'=>'14'])->page_title}}
                                 </a>
                                 @else
                                 برای استفاده لاگین بفرمایید
@@ -758,7 +913,7 @@
 
                         <div class="ml-12">
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                            {{App\Models\sitepage::getsitepage(['id'=>14,'page'=>'14'])->page_str1}}
+                                {{App\Models\sitepage::getsitepage(['id'=>14,'page'=>'14'])->page_str1}}
 
                             </div>
                         </div>
@@ -776,7 +931,7 @@
                                         <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">
                                             @if( $lss_login==1)
                                             <a href="/softlock">
-                                            {{App\Models\sitepage::getsitepage(['id'=>13,'page'=>'13'])->page_title}}
+                                                {{App\Models\sitepage::getsitepage(['id'=>13,'page'=>'13'])->page_title}}
                                             </a>
                                             @else
                                             برای استفاده لاگین بفرمایید
@@ -789,7 +944,7 @@
 
                         <div class="ml-12">
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                            {{App\Models\sitepage::getsitepage(['id'=>13,'page'=>'13'])->page_str1}}
+                                {{App\Models\sitepage::getsitepage(['id'=>13,'page'=>'13'])->page_str1}}
                             </div>
                         </div>
                     </div>
@@ -801,7 +956,7 @@
                             <div class="ml-4 text-lg leading-7 font-semibold">
                                 @if( $lss_resource==1)
                                 <a href="/bs" class="underline text-gray-900 dark:text-white">
-                                {{App\Models\sitepage::getsitepage(['id'=>16,'page'=>'16'])->page_title}}
+                                    {{App\Models\sitepage::getsitepage(['id'=>16,'page'=>'16'])->page_title}}
                                 </a>
                                 @else
                                 برای استفاده لاگین بفرمایید
@@ -811,7 +966,7 @@
 
                         <div class="ml-12">
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                            {{App\Models\sitepage::getsitepage(['id'=>16,'page'=>'16'])->page_str1}}
+                                {{App\Models\sitepage::getsitepage(['id'=>16,'page'=>'16'])->page_str1}}
                             </div>
                         </div>
                     </div>
@@ -822,7 +977,7 @@
                             <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">
                                 @if( $lss_login==1)
                                 <a href="/food" class="fff">
-                                {{App\Models\sitepage::getsitepage(['id'=>15,'page'=>'15'])->page_title}}
+                                    {{App\Models\sitepage::getsitepage(['id'=>15,'page'=>'15'])->page_title}}
                                 </a>
                                 @else
                                 برای استفاده لاگین بفرمایید
@@ -832,8 +987,8 @@
 
                         <div class="ml-12">
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                            {{App\Models\sitepage::getsitepage(['id'=>15,'page'=>'15'])->page_str1}}    
-                            <div class=""></div>.
+                                {{App\Models\sitepage::getsitepage(['id'=>15,'page'=>'15'])->page_str1}}
+                                <div class=""></div>.
                             </div>
                         </div>
                     </div>
@@ -870,10 +1025,10 @@
         </div>
     </div>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220">
-                <path fill="#f8f9fa" fill-opacity="1" d="M0,224L120,234.7C240,245,480,267,720,245.3C960,224,1200,160,1320,128L1440,96L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path>
-            </svg>
-   <!-- _____________________________________________________ -->
-     <div>
+        <path fill="#f8f9fa" fill-opacity="1" d="M0,224L120,234.7C240,245,480,267,720,245.3C960,224,1200,160,1320,128L1440,96L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path>
+    </svg>
+    <!-- _____________________________________________________ -->
+    <div>
         <div style="display:flex;flex-direction:column; padding:10px;">
             <div class="container ">
                 <div class="row row-cols-2 row-cols-lg-5  row-cols-sm-3 g-2 g-lg-3">
@@ -910,7 +1065,7 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
     <!-- _______________________footer______________________________ -->
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220">
         <path fill="#f8f9fa" fill-opacity="1" d="M0,224L120,234.7C240,245,480,267,720,245.3C960,224,1200,160,1320,128L1440,96L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
@@ -965,7 +1120,7 @@
         </div>
     </footer>
     <!-- _____________________________________________________ -->
-   <!-- _____________________________________________________  -->
+    <!-- _____________________________________________________  -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
