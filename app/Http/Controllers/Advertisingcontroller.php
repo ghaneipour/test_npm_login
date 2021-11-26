@@ -54,6 +54,7 @@ class Advertisingcontroller extends Controller
 
       }
       
+      
     public function edit(request $request)
     {
         if ($request->dell) {
