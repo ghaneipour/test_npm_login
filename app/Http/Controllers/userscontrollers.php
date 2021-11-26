@@ -39,6 +39,9 @@ class userscontrollers extends Controller
                 'email' => $request->email,
                 // 'password' =>Hash::make( $request->password),
                 'user_lss' => $request->user_lss,
+                'lss_grp1' => ($request->lss_grp1=='on'?1:0),
+                'lss_grp2' => ($request->lss_grp2=='on'?1:0),
+                'lss_grp3' => ($request->lss_grp3=='on'?1:0),
             ]);
         }        
         

@@ -46,6 +46,8 @@ Route::prefix("admin")->group(function(){
 
     Route::any('/users/update',[App\Http\Controllers\userscontrollers::class,'update1']);
     Route::any('/users/edit'  ,[App\Http\Controllers\userscontrollers::class,'edit']);
+
+    Route::any('/titels/edit'  ,[App\Http\Controllers\titelscontrollers::class,'edit']);
  
 });
 

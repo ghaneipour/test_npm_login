@@ -49,6 +49,18 @@ class Advertising extends Model
              ->get(); 
             // dd($rq);
              return $rq; 
+             
+    }
+     
+    public static function getAdvertising3()
+    {
+         //dd($request['id']);
+             $rq=   Advertising::query()
+             ->where('Advertising_grp3', 1)
+             ->get(); 
+            // dd($rq);
+             return $rq; 
+             
     }
 
    

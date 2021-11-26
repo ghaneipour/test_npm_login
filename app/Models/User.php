@@ -25,6 +25,9 @@ class User extends Authenticatable
         'user_lss',
         'ticket',
         'ticketdone',
+        'lss_grp1',
+        'lss_grp2',
+        'lss_grp3',
     ];
 
     /**

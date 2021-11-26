@@ -23,7 +23,7 @@
                 if ($catlist) {
                     foreach ($catlist as $catlist1 => $gdl) {
                         echo ("<input type=radio class='p-2 m-2' name='id' id='id" . $gdl->id . "' value='" . $gdl->id . "' onchange='rdoch(\"");
-                        echo ($gdl->name . "," . $gdl->email . "," . $gdl->id . "," . $gdl->user_lss . "\");'>");
+                        echo ($gdl->name . "," . $gdl->email . "," . $gdl->id . "," . $gdl->user_lss . "," . $gdl->lss_grp1 . "," . $gdl->lss_grp2 . "," . $gdl->lss_grp3 . "\");'>");
                         echo ("<label for='id" . $gdl->id . "' class='text-dark' >" . $gdl->name . "</label><br>");
                     }
                 }
@@ -72,6 +72,18 @@
             <label for='user_lss5' class='checkbox-inline'>
                 <input type=checkbox name='user_lss5' id='user_lss5'>
                 دسترسی به منابع </label><br>
+<hr>
+            <label for='lss_grp1' class='checkbox-inline'>
+                <input type=checkbox name='lss_grp1' id='lss_grp1'>
+                سرمایه گذار </label><br>
+
+            <label for='lss_grp2' class='checkbox-inline'>
+                <input type=checkbox name='lss_grp2' id='lss_grp2'>
+                کارآفرین </label><br>
+
+            <label for='lss_grp3' class='checkbox-inline'>
+                <input type=checkbox name='lss_grp3' id='lss_grp3'>
+                مشاور و منتور </label><br>
 
 
         </div>
@@ -113,6 +125,9 @@
         document.getElementById('user_lss3').checked = (((this1.replace('<', '').replace('>', '')).split(',')[3]).split('_')[2] == 1 ? true : false);
         document.getElementById('user_lss4').checked = (((this1.replace('<', '').replace('>', '')).split(',')[3]).split('_')[3] == 1 ? true : false);
         document.getElementById('user_lss5').checked = (((this1.replace('<', '').replace('>', '')).split(',')[3]).split('_')[4] == 1 ? true : false);
+        document.getElementById('lss_grp1').checked = (((this1.replace('<', '').replace('>', '')).split(',')[4]) == 1 ? true : false);
+        document.getElementById('lss_grp2').checked = (((this1.replace('<', '').replace('>', '')).split(',')[5]) == 1 ? true : false);
+        document.getElementById('lss_grp3').checked = (((this1.replace('<', '').replace('>', '')).split(',')[6]) == 1 ? true : false);
     }
 
     function chclk(this1) {

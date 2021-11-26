@@ -69,6 +69,9 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'user_lss' => $data['user_lss'],
+            'lss_grp1' => ($data['lss_grp1']=='on'?1:0),
+            'lss_grp2' => ($data['lss_grp2']=='on'?1:0),
+            'lss_grp3' => ($data['lss_grp3']=='on'?1:0),
             'password' => Hash::make($data['password']),
         ]);
     }

@@ -48,6 +48,9 @@
                                 <li class="w-100">
                                     <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">قراردادها</span> </a>
                                 </li>
+                                <li class="w-100">
+                                    <a href="/titels" class="nav-link px-0"> <span class="d-none d-sm-inline">عناوین سمت ها</span> </a>
+                                </li>
 
                             </ul>
                         </li>
