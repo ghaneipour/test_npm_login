@@ -506,7 +506,7 @@
             <a id="products"></a>
             <!-- ______________________Shop__________________________ -->
             <h3 dir=rtl class="align-middle m-2 p-2 align-self-center bg-dark text-light">{{App\Models\sitepage::getsitepage(['id'=>17,'page'=>'1'])->page_title}}</h3>
-            {{App\Models\sitepage::getsitepage(['id'=>17,'page'=>'1'])->page_str1}
+            <h6 class="m-3" dir=rtl>{{App\Models\sitepage::getsitepage(['id'=>17,'page'=>'1'])->page_str1}}</h6>
             <div class="  text-dark p-1 m-1 g-1" style="background:#6b7280;width:100%;border-radius:15px;">
                 <div class="card-group1 bg-white p-1 m-1 g-1 text-center" style="border-radius:15px;">
                     <?php

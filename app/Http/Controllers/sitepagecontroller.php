@@ -59,7 +59,7 @@ class sitepagecontroller extends Controller
                 'page_seo'=> $request->page_seo,   
             ]);
         }
-        return view("page.page");
+        return view("page.pageed");
     }
     
     public function update1()
