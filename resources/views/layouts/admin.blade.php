@@ -73,12 +73,12 @@
                             <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                 @if($lss_new==1)
                                 <li class="w-100">
-                                    <a href="/admin/category/create#submenu2" class="nav-link px-0"> <span class="d-none d-sm-inline">تعریف</span> </a>
+                                    <a href="/admin/category/create#submenu2" class="nav-link px-0"> <span class="d-none d-sm-inline">تعریف گروه</span> </a>
                                 </li>
                                 @endif
                                 @if($lss_edit==1)
                                 <li>
-                                    <a href="/admin/category/update#submenu2" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش</span> </a>
+                                    <a href="/admin/category/update#submenu2" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش گروه</span> </a>
                                 </li>
                                 @endif
                                 <li>
@@ -210,7 +210,7 @@
                     <hr>
                     <div class="dropdown pb-4">
                         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                            <img src="https://avatars.githubusercontent.com/u/16451466?v=4" alt="hugenerd" width="30" height="30" class="rounded-circle">
                             <span class="d-none d-sm-inline mx-1">پروفایل من</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">

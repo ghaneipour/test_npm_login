@@ -21,7 +21,7 @@
                 foreach ($catlist as $dd => $catlist1) {
                     $catlist1->page_title = str_replace(array("\r\n", "\n", "\r"), '_', $catlist1->page_title);
                     $catlist1->page_str1 = str_replace(array("\r\n", "\n", "\r"), '_', $catlist1->page_str1);
-                    echo "<input type=radio class='p-2 m-2' name='id' id='id" . ($catlist1->id)  .
+                    echo $catlist1->id_page."-<input type=radio class='p-2 m-2' name='id' id='id" . ($catlist1->id)  .
                         "' value='" . ($catlist1->id)  .
                         "' onchange='rdoch(\""
                         . str_replace(array("\r\n", "\n", "\r"), '_', $catlist1->page_title) . ","

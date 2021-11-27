@@ -15,7 +15,8 @@ class sitepage extends Model
             'page_url', 
             'page_str2',
             'page_str1' ,
-            'page_seo',    
+            'page_seo',   
+            'id_page' 
     ];
     
     public static function getsitepage($id)
