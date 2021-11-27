@@ -24,10 +24,10 @@ class titels extends Model
         //dd($cat); 
         return $cat;
     }
+    
     public static function gettitels()
     {
-             return  titels::query()->get();       
-         
+             return  titels::query()->get();              
     }
      
  

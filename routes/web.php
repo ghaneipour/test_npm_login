@@ -48,7 +48,12 @@ Route::prefix("admin")->group(function(){
     Route::any('/users/edit'  ,[App\Http\Controllers\userscontrollers::class,'edit']);
 
     Route::any('/titels/edit'  ,[App\Http\Controllers\titelscontrollers::class,'edit']);
- 
+    Route::any('/titels/add'  ,[App\Http\Controllers\titelscontrollers::class,'add']);
+    Route::any('/titels/'  ,function(){return view('titels/titels');});
+    Route::any('/titelsed/'  ,function(){return view('titels/titelsed');});
+    
+    Route::any('/page/edit'  ,[App\Http\Controllers\sitepagecontroller::class,'edit']);
+    Route::any('/page/'  ,function(){return view('/page/pageed');});
 });
 
 Auth::routes();

@@ -28,6 +28,13 @@ class User extends Authenticatable
         'lss_grp1',
         'lss_grp2',
         'lss_grp3',
+        'mobile',
+        'expire',       
+        'address',       
+        'melicode',    
+        'postalcode',           
+        'companeyname',
+        'city',
     ];
 
     /**

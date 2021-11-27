@@ -22,7 +22,7 @@
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                     @if (Route::has('login'))
                     <?php
-
+                    $catlist = array("");
                     $lss_login =  explode('_', Auth::user()->user_lss)[0];
                     $lss_new =  explode('_', Auth::user()->user_lss)[1];
                     $lss_edit =  explode('_', Auth::user()->user_lss)[2];
@@ -48,9 +48,21 @@
                                 <li class="w-100">
                                     <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">قراردادها</span> </a>
                                 </li>
+                                <li class="bg-black m-1"></li>
                                 <li class="w-100">
-                                    <a href="/titels" class="nav-link px-0"> <span class="d-none d-sm-inline">عناوین سمت ها</span> </a>
+                                    <a href="/admin/titels/" class="nav-link px-0"> <span class="d-none d-sm-inline">تعریف عناوین سمت ها</span> </a>
                                 </li>
+                                <li class="w-100">
+                                    <a href="/admin/titelsed/" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش عناوین سمت ها</span> </a>
+                                </li>
+                                <li class="bg-black m-1"></li>
+                                <li class="w-100">
+                                    <a href="/admin/page/" class="nav-link px-0"> <span class="d-none d-sm-inline">تعریف صفحات</span> </a>
+                                </li>
+                                <li class="w-100">
+                                    <a href="/admin/page/" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش صفحات</span> </a>
+                                </li>
+                                <li class="bg-black m-1"></li>
 
                             </ul>
                         </li>
@@ -134,6 +146,9 @@
                             }
                             if (str_contains($_SERVER['REQUEST_URI'], 'user')) {
                                 echo '<h4 class="bg-light text-dark">کاربران</h4>';
+                            }
+                            if (str_contains($_SERVER['REQUEST_URI'], 'titels')) {
+                                echo '<h4 class="bg-light text-dark">عناوین</h4>';
                             }
 
 
@@ -247,73 +262,76 @@
                 @yield('content')
                 @if(str_contains($_SERVER['REQUEST_URI'], 'user'))
                 salam user
+                @elseif(str_contains($_SERVER['REQUEST_URI'], 'titels'))
+                salam titels
                 @elseif(str_contains($_SERVER['REQUEST_URI'], 'goods'))
                 صفحه مربوط به محصولات
                 <br>
-                <div class="bg-black text-dark p-1 m-1 g-1" style="width:100%;border-radius:15px;"> 
+                <div class="bg-black text-dark p-1 m-1 g-1" style="width:100%;border-radius:15px;">
                     <div class="card-group1 bg-white p-1 m-1 g-1 text-center">
-                       <?php 
+                        <?php
                         // foreach ($getgoods as $goodli => $gdl) {
-                       foreach ($catlist as $catlist1 => $p) { 
-                            if (str_contains($p ,'دسته اصلی')) {
+                        foreach ($catlist as $catlist1 => $p) {
+                            if (str_contains($p, 'دسته اصلی')) {
                             } else {
-                            if (!str_contains($p,">") ) {
-                                echo "<div style='display:block;width:100%;' class='bg-light'>";
-                                echo "<label for='id" . ($catlist1)  . "' class='text-dark' >" ;
-                                echo $p . "</label><br>";
-                                echo "</div>";
-                            } else {
-                                $target_file = "./uploadgood/" .$catlist1 . ".png";
-                                echo "<div class='card1 bg-white m-2 p-2 shadow'  style='display:inline-block;width:245px;border:1px solid #ececec;border-radius:15px; '>";
-                                if (file_exists($target_file)) {
-                                 echo "<img class='card-img-top m-2 p-2' style=' height:170px;border-radius:15px;' src='../." . $target_file . "' alt='". $gdl->goods_name ."'>"; }
-                                echo "  <div class='card-body'>";
-                                echo '   <h5 class="card-title">'. $p .'</h5>';
-                                echo "   <p class='card-text'>". $catlist1 .$p . " </p>";
-                                // echo '   <p class="card-text"><small class="text-muted">'.$catlist1.'</small></p>';
-                                echo ' <button class="btn btn-outline-info text-center">سفارش </button>';
-                                echo "  </div>";
-                                echo "</div>";
+                                if (!str_contains($p, ">")) {
+                                    echo "<div style='display:block;width:100%;' class='bg-light'>";
+                                    echo "<label for='id" . ($catlist1)  . "' class='text-dark' >";
+                                    echo $p . "</label><br>";
+                                    echo "</div>";
+                                } else {
+                                    $target_file = "./uploadgood/" . $catlist1 . ".png";
+                                    echo "<div class='card1 bg-white m-2 p-2 shadow'  style='display:inline-block;width:245px;border:1px solid #ececec;border-radius:15px; '>";
+                                    if (file_exists($target_file)) {
+                                        echo "<img class='card-img-top m-2 p-2' style=' height:170px;border-radius:15px;' src='../." . $target_file . "' alt='" . $gdl->goods_name . "'>";
+                                    }
+                                    echo "  <div class='card-body'>";
+                                    echo '   <h5 class="card-title">' . $p . '</h5>';
+                                    echo "   <p class='card-text'>" . $catlist1 . $p . " </p>";
+                                    // echo '   <p class="card-text"><small class="text-muted">'.$catlist1.'</small></p>';
+                                    echo ' <button class="btn btn-outline-info text-center">سفارش </button>';
+                                    echo "  </div>";
+                                    echo "</div>";
+                                }
                             }
-                        }     
-                    }               
-                        ?> 
+                        }
+                        ?>
                     </div>
                 </div>
 
                 <hr>
-               
-                    @elseif(str_contains($_SERVER['REQUEST_URI'], 'customers'))
-                    صفحه مربوط به مشتری ها
-                    @elseif(str_contains($_SERVER['REQUEST_URI'], 'category'))
-                    صفحه مربوط به گروه ها
-                    @else
-                    salam click on menu
-                    @endif
-                    <hr>
 
-                </div>
+                @elseif(str_contains($_SERVER['REQUEST_URI'], 'customers'))
+                صفحه مربوط به مشتری ها
+                @elseif(str_contains($_SERVER['REQUEST_URI'], 'category'))
+                صفحه مربوط به گروه ها
+                @else
+                salam click on menu
+                @endif
+                <hr>
+
             </div>
         </div>
+    </div>
 
-        <style>
-            ul li ul li {
-                background-color: #454545;
-                padding: 0 20px;
-                border-bottom: 1px solid #333;
-                margin-left: 20px;
-                width: 100%;
-            }
+    <style>
+        ul li ul li {
+            background-color: #454545;
+            padding: 0 20px;
+            border-bottom: 1px solid #333;
+            margin-left: 20px;
+            width: 100%;
+        }
 
-            ul {
-                border-bottom: 1px solid #B6B7B8;
-            }
+        ul {
+            border-bottom: 1px solid #B6B7B8;
+        }
 
-            .nav-link {
-                color: antiquewhite;
-            }
-        </style>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        .nav-link {
+            color: antiquewhite;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </body>
 

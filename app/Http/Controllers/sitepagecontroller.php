@@ -9,23 +9,23 @@ use app\Http\Requests\sitepageRQ;
 class sitepagecontroller extends Controller
 {
       // $catlist="-";
-      public function index()
-      {
-          $catlistg = sitepage::getCatListgood();
-          return  view("layouts.admin", ['catlist' => $catlistg,'getgoods'=>sitepage::getgoods()]);
-      }
+    //   public function index()
+    //   {
+    //       $catlistg = sitepage::getCatListgood();
+    //       return  view("layouts.admin", ['catlist' => $catlistg,'getgoods'=>sitepage::getgoods()]);
+    //   }
 
-      public function create()
-      {
-          $catlistg = sitepage::getCatListgood();
-          return view("goods.goods", ['catlist' => $catlistg,'getgoods'=>sitepage::getgoods()]);
-      }
+    //   public function create()
+    //   {
+    //       $catlistg = sitepage::getCatListgood();
+    //       return view("goods.goods", ['catlist' => $catlistg,'getgoods'=>sitepage::getgoods()]);
+    //   }
 
-      public function load(request $request)
-      {
+    //   public function load(request $request)
+    //   {
           
-      return $request;
-      }
+    //   return $request;
+    //   }
 
       public function save(request $request)
       {
@@ -51,14 +51,15 @@ class sitepagecontroller extends Controller
         } else {
             // $catid = customers::find($request->id); 
             $catid =  sitepage::where('id', $request->id)->update([
-                'goods_name' => $request->goods_name,
-                'goods_parentid' => $request->goods_parentid,
-                'goods_url' => $request->goods_url,
-                'goods_price' => $request->goods_price,
-                'goods_discount' => $request->goods_discount,
-                'goods_quanty' => $request->goods_quanty,
+                 
+                'page_title'=> $request->page_title,
+                'page_str1'=> $request->page_str1 ,
+                'page_str2'=> $request->page_str2,
+                'page_url'=> $request->page_url, 
+                'page_seo'=> $request->page_seo,   
             ]);
         }
+        return view("page.page");
     }
     
     public function update1()

@@ -8,11 +8,7 @@
     <div class="panel_content">
         لیست کاربر ها عبارتند از:
     </div>
-    <div class="w-50 form-control">
-        
-        
-        
-        
+    <div class="w-50 form-control">  
 
         {{ Form::open(['url'=>'admin/users/edit','files'=>true,'id'=>'myform'])}}
         <div class="form-control bg-light text-danger">
@@ -23,7 +19,22 @@
                 if ($catlist) {
                     foreach ($catlist as $catlist1 => $gdl) {
                         echo ("<input type=radio class='p-2 m-2' name='id' id='id" . $gdl->id . "' value='" . $gdl->id . "' onchange='rdoch(\"");
-                        echo ($gdl->name . "," . $gdl->email . "," . $gdl->id . "," . $gdl->user_lss . "," . $gdl->lss_grp1 . "," . $gdl->lss_grp2 . "," . $gdl->lss_grp3 . "\");'>");
+                        echo (
+                            $gdl->name . "," . 
+                            $gdl->email . "," . 
+                            $gdl->id . "," . 
+                            $gdl->user_lss . "," . 
+                            $gdl->lss_grp1 . "," . 
+                            $gdl->lss_grp2 . "," . 
+                            $gdl->lss_grp3 . "," . 
+                            $gdl->mobile . "," .
+                            $gdl->expire . "," .       
+                            $gdl->address . "," .       
+                            $gdl->melicode . "," .    
+                            $gdl->postalcode . "," .           
+                            $gdl->companeyname . "," .
+                            $gdl->city . "," .
+                            "\");'>");
                         echo ("<label for='id" . $gdl->id . "' class='text-dark' >" . $gdl->name . "</label><br>");
                     }
                 }
@@ -43,6 +54,22 @@
         </div>
 
         <div class="feild-group m-2">
+            {{ Form::label('melicode','کد ملی ')}}
+            {{ Form::text('melicode',null, array('class' => 'form-control'))}}
+            @if($errors->has('melicode'))
+            <span>{{ $errors->First('melicode') }}</span>
+            @endif
+        </div>
+        
+                <div class="feild-group m-2">
+                    {{ Form::label('companeyname','شرکت ')}}
+                    {{ Form::text('companeyname',null, array('class' => 'form-control'))}}
+                    @if($errors->has('companeyname'))
+                    <span>{{ $errors->First('companeyname') }}</span>
+                    @endif
+                </div>
+
+        <div class="feild-group m-2">
             {{ Form::label('email','ایمیل ')}}
             {{ Form::text('email',null, array('class' => 'form-control'))}}
             @if($errors->has('email'))
@@ -50,6 +77,47 @@
             @endif
         </div>
 
+        <div class="feild-group m-2">
+            {{ Form::label('mobile','موبایل ')}}
+            {{ Form::text('mobile',null, array('class' => 'form-control'))}}
+            @if($errors->has('mobile'))
+            <span>{{ $errors->First('mobile') }}</span>
+            @endif
+        </div>
+
+        <div class="feild-group m-2">
+            {{ Form::label('address','آدرس ')}}
+            {{ Form::text('address',null, array('class' => 'form-control'))}}
+            @if($errors->has('address'))
+            <span>{{ $errors->First('address') }}</span>
+            @endif
+        </div>
+
+
+        <div class="feild-group m-2">
+            {{ Form::label('postalcode','کد پستی ')}}
+            {{ Form::text('postalcode',null, array('class' => 'form-control'))}}
+            @if($errors->has('postalcode'))
+            <span>{{ $errors->First('postalcode') }}</span>
+            @endif
+        </div>
+
+        <div class="feild-group m-2">
+            {{ Form::label('city','شهر ')}}
+            {{ Form::text('city',null, array('class' => 'form-control'))}}
+            @if($errors->has('city'))
+            <span>{{ $errors->First('city') }}</span>
+            @endif
+        </div>
+
+        <div class="feild-group m-2">
+            {{ Form::label('expire','انقضاء ')}}
+            {{ Form::text('expire',null, array('class' => 'form-control'))}}
+            @if($errors->has('expire'))
+            <span>{{ $errors->First('expire') }}</span>
+            @endif
+        </div>
+<hr>
         <div class="feild-group m-2">
             <label>سطح دسترسی</label><br>
 
@@ -75,15 +143,15 @@
 <hr>
             <label for='lss_grp1' class='checkbox-inline'>
                 <input type=checkbox name='lss_grp1' id='lss_grp1'>
-                سرمایه گذار </label><br>
+                {{App\Models\titels::gettitelsid(['id'=>1])->titles}} </label><br>
 
             <label for='lss_grp2' class='checkbox-inline'>
                 <input type=checkbox name='lss_grp2' id='lss_grp2'>
-                کارآفرین </label><br>
+                {{App\Models\titels::gettitelsid(['id'=>2])->titles}} </label><br>
 
             <label for='lss_grp3' class='checkbox-inline'>
                 <input type=checkbox name='lss_grp3' id='lss_grp3'>
-                مشاور و منتور </label><br>
+                {{App\Models\titels::gettitelsid(['id'=>3])->titles}}</label><br>
 
 
         </div>
@@ -128,6 +196,14 @@
         document.getElementById('lss_grp1').checked = (((this1.replace('<', '').replace('>', '')).split(',')[4]) == 1 ? true : false);
         document.getElementById('lss_grp2').checked = (((this1.replace('<', '').replace('>', '')).split(',')[5]) == 1 ? true : false);
         document.getElementById('lss_grp3').checked = (((this1.replace('<', '').replace('>', '')).split(',')[6]) == 1 ? true : false);
+        document.getElementById('mobile').value = (this1.replace('<', '').replace('>', '')).split(',')[7];
+        document.getElementById('expire').value = (this1.replace('<', '').replace('>', '')).split(',')[8];
+        document.getElementById('address').value = (this1.replace('<', '').replace('>', '')).split(',')[9];
+        document.getElementById('melicode').value = (this1.replace('<', '').replace('>', '')).split(',')[10];
+        document.getElementById('postalcode').value = (this1.replace('<', '').replace('>', '')).split(',')[11];
+        document.getElementById('companeyname').value = (this1.replace('<', '').replace('>', '')).split(',')[12];
+        document.getElementById('city').value = (this1.replace('<', '').replace('>', '')).split(',')[13];
+          
     }
 
     function chclk(this1) {

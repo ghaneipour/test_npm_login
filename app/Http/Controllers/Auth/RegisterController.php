@@ -68,10 +68,17 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'expire' => $data['expire'] ,       
+            'address'  => $data['address'] ,       
+            'melicode'  => $data['melicode'] ,    
+            'postalcode' => $data['postalcode'] ,           
+            'companeyname'=> $data['companeyname'],
+            'city'=>$data['city'],
             'user_lss' => $data['user_lss'],
             'lss_grp1' => ($data['lss_grp1']=='on'?1:0),
             'lss_grp2' => ($data['lss_grp2']=='on'?1:0),
             'lss_grp3' => ($data['lss_grp3']=='on'?1:0),
+            'mobile' => $data['mobile'],
             'password' => Hash::make($data['password']),
         ]);
     }
