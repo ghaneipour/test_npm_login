@@ -22,7 +22,7 @@ class titelscontrollers extends Controller
     public static function add(request $request){
        
         (new titels($request->all()))->save();
-     
+        
         return view("titels.titelsed");
     }
 

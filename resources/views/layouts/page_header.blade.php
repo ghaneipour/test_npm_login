@@ -26,6 +26,15 @@
                 </a>
             </div>
 
+            <div class="bg-light d-inline-block" aria-labelledby="navbarDropdown1">
+                <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="my_service">
+                    سرویس های من
+                    <!-- </span> <span> -->
+                    <i class="bi bi-tools">
+                    </i>
+                </a>
+            </div>
+
             <div class="bg-light d-inline-block " aria-labelledby="navbarDropdown1">
                 <a class="bg-light mx-2 px-2 text-sm text-gray-700  text-decoration-none" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                     {{ __('Logout') }}
@@ -85,7 +94,7 @@
         @endsection
 
         @section('page_tbl_end')
-        <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+        <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg" style="z-index: 999999 !important;">
             <div class="grid grid-cols-1 md:grid-cols-2">
                 <div class="p-6">
                     <!-- box1 -->

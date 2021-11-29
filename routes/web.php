@@ -44,6 +44,12 @@ Route::prefix("admin")->group(function(){
     Route::any('/goods/update',[App\Http\Controllers\goodscontroller::class,'update1']);
     Route::any('/goods/edit',[App\Http\Controllers\goodscontroller::class,'edit']);
 
+    // Route::resource('advertising' ,'App\Http\Controllers\advertisingcontroller')->except("show");
+    Route::any('/advertising/add' ,[App\Http\Controllers\advertisingcontroller::class,'add']);
+    Route::any('/advertising/edit',[App\Http\Controllers\advertisingcontroller::class,'edit']);
+    Route::any('/advertising/new' ,function(){return view('advertising/advertising');});
+    Route::any('/advertising/'    ,function(){return view('advertising/advertisinged');});
+
     Route::any('/users/update',[App\Http\Controllers\userscontrollers::class,'update1']);
     Route::any('/users/edit'  ,[App\Http\Controllers\userscontrollers::class,'edit']);
 
@@ -54,6 +60,11 @@ Route::prefix("admin")->group(function(){
     
     Route::any('/page/edit'  ,[App\Http\Controllers\sitepagecontroller::class,'edit']);
     Route::any('/page/'  ,function(){return view('/page/pageed');});
+    
+    Route::any('/price/edit'  ,[App\Http\Controllers\pricecontroller::class,'edit']);
+    Route::any('/price/add'  ,[App\Http\Controllers\pricecontroller::class,'add']);
+    Route::any('/price/'  ,function(){return view('/price/priceed');});
+    Route::any('/price/new'  ,function(){return view('/price/price');});
 });
 
 Auth::routes();
@@ -66,6 +77,11 @@ Route::get('/saveorder', [App\Http\Controllers\shopcontroller::class, 'load'])->
 Route::get('/loads_shop' , function () {
     return view('./layouts/shop_list');
 })->name('loads_shop');
+
+
+Route::get('/my_service' , function () {
+    return view('./my_service');
+});
 
 Route::post('/savepage', [App\Http\Controllers\sitepagecontroller::class, 'Save']);
 Route::get('/savepage', [App\Http\Controllers\sitepagecontroller::class, 'load'])->name('loadspage');

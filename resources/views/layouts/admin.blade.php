@@ -18,11 +18,10 @@
     <div class="container-fluid">
         <div class="row flex-nowrap">
             <div class="col-auto col-md-3 col-xl-3 px-sm-2 px-0 bg-dark">
-
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                     @if (Route::has('login'))
                     <?php
-                    $catlist = array("");
+                    // $catlist = array();
                     $lss_login =  explode('_', Auth::user()->user_lss)[0];
                     $lss_new =  explode('_', Auth::user()->user_lss)[1];
                     $lss_edit =  explode('_', Auth::user()->user_lss)[2];
@@ -50,17 +49,31 @@
                                 </li>
                                 <li class="bg-black m-1"></li>
                                 <li class="w-100">
-                                    <a href="/admin/titels/" class="nav-link px-0"> <span class="d-none d-sm-inline">تعریف عناوین سمت ها</span> </a>
+                                    <a href="/admin/titels/" class="nav-link px-0"><i class="bi bi-award"></i> <span class="d-none d-sm-inline">تعریف عناوین سمت ها</span> </a>
                                 </li>
                                 <li class="w-100">
-                                    <a href="/admin/titelsed/" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش عناوین سمت ها</span> </a>
+                                    <a href="/admin/titelsed/" class="nav-link px-0"><i class="bi bi-award"></i> <span class="d-none d-sm-inline">ویرایش عناوین سمت ها</span> </a>
                                 </li>
                                 <li class="bg-black m-1"></li>
                                 <li class="w-100">
-                                    <a href="/admin/page/" class="nav-link px-0"> <span class="d-none d-sm-inline">تعریف صفحات</span> </a>
+                                    <a href="/admin/page/" class="nav-link px-0"> <i class="bi bi-window-stack"></i><span class="d-none d-sm-inline">تعریف صفحات</span> </a>
                                 </li>
                                 <li class="w-100">
-                                    <a href="/admin/page/" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش صفحات</span> </a>
+                                    <a href="/admin/page/" class="nav-link px-0"> <i class="bi bi-window-stack"></i><span class="d-none d-sm-inline">ویرایش صفحات</span> </a>
+                                </li>
+                                <li class="bg-black m-1"></li>
+                                <li class="w-100">
+                                    <a href="/admin/price/new" class="nav-link px-0"> <i class="fs-4 bi-currency-exchange"></i> <span class="d-none d-sm-inline">تعریف تعرفه ها</span> </a>
+                                </li>
+                                <li class="w-100">
+                                    <a href="/admin/price/" class="nav-link px-0"> <i class="fs-4 bi-currency-exchange"></i> <span class="d-none d-sm-inline">ویرایش تعرفه ها</span> </a>
+                                </li>
+                                <li class="bg-black m-1"></li>
+                                <li class="w-100">
+                                    <a href="/admin/advertising/new" class="nav-link px-0"> <i class="bi bi-film"></i> <span class="d-none d-sm-inline">تعریف تبلیغات ها</span> </a>
+                                </li>
+                                <li class="w-100">
+                                    <a href="/admin/advertising/" class="nav-link px-0"> <i class="bi bi-film"></i> <span class="d-none d-sm-inline">ویرایش تبلیغات ها</span> </a>
                                 </li>
                                 <li class="bg-black m-1"></li>
 
@@ -73,16 +86,16 @@
                             <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                 @if($lss_new==1)
                                 <li class="w-100">
-                                    <a href="/admin/category/create#submenu2" class="nav-link px-0"> <span class="d-none d-sm-inline">تعریف گروه</span> </a>
+                                    <a href="/admin/category/create#submenu2" class="nav-link px-0"><i class="fs-4 bi-card-checklist"></i> <span class="d-none d-sm-inline">تعریف گروه</span> </a>
                                 </li>
                                 @endif
                                 @if($lss_edit==1)
                                 <li>
-                                    <a href="/admin/category/update#submenu2" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش گروه</span> </a>
+                                    <a href="/admin/category/update#submenu2" class="nav-link px-0"><i class="fs-4 bi-card-checklist"></i> <span class="d-none d-sm-inline">ویرایش گروه</span> </a>
                                 </li>
                                 @endif
                                 <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"><i class="fs-4 bi-table"></i>گزارش</span> </a>
+                                    <a href="#" class="nav-link px-0"><i class="fs-4 bi-table"></i> <span class="d-none d-sm-inline">گزارش</span> </a>
                                 </li>
 
                             </ul>
@@ -94,16 +107,16 @@
                             <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                 @if($lss_new==1)
                                 <li class="w-100">
-                                    <a href="/admin/customers/create#submenu3" class="nav-link px-0"> <span class="d-none d-sm-inline">معرفی مشتری </span> </a>
+                                    <a href="/admin/customers/create#submenu3" class="nav-link px-0"><i class="fs-4 bi-people"></i>  <span class="d-none d-sm-inline">معرفی مشتری </span> </a>
                                 </li>
                                 @endif
                                 @if($lss_edit==1)
                                 <li>
-                                    <a href="/admin/customers/update#submenu3" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش</span> </a>
+                                    <a href="/admin/customers/update#submenu3" class="nav-link px-0"><i class="fs-4 bi-people"></i>  <span class="d-none d-sm-inline">ویرایش</span> </a>
                                 </li>
                                 @endif
                                 <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"><i class="fs-4 bi-table"></i>گزارش</span> </a>
+                                    <a href="#" class="nav-link px-0"><i class="fs-4 bi-table"></i> <span class="d-none d-sm-inline">گزارش</span> </a>
                                 </li>
                             </ul>
                         </li>
@@ -114,16 +127,16 @@
 
                                 @if($lss_new==1)
                                 <li class="w-100">
-                                    <a href="/admin/goods/create#submenu5" class="nav-link px-0"> <span class="d-none d-sm-inline">معرفی محصول</span> </a>
+                                    <a href="/admin/goods/create#submenu5" class="nav-link px-0"><i class="fs-4 bi-basket2"></i> <span class="d-none d-sm-inline">معرفی محصول</span> </a>
                                 </li>
                                 @endif
                                 @if($lss_edit==1)
                                 <li>
-                                    <a href="/admin/goods/update#submenu5" class="nav-link px-0"> <span class="d-none d-sm-inline">ویرایش</span> </a>
+                                    <a href="/admin/goods/update#submenu5" class="nav-link px-0"> <i class="fs-4 bi-basket2"></i> <span class="d-none d-sm-inline">ویرایش</span> </a>
                                 </li>
                                 @endif
                                 <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline"><i class="fs-4 bi-table"></i>گزارش</span> </a>
+                                    <a href="#" class="nav-link px-0"><i class="fs-4 bi-table"></i> <span class="d-none d-sm-inline">گزارش</span> </a>
                                 </li>
                             </ul>
                         </li>
@@ -151,7 +164,11 @@
                                 echo '<h4 class="bg-light text-dark">عناوین</h4>';
                             }
 
-
+                            if (!isset($catlist)) {
+                                // dd('not exist');
+                                $catlist=array();
+                            }
+                             
                             $xi = 0;
                             foreach ($catlist as $valno => $val) {
                                 if (str_contains($val, 'دسته اصلی')) {
@@ -283,7 +300,8 @@
                                     $target_file = "./uploadgood/" . $catlist1 . ".png";
                                     echo "<div class='card1 bg-white m-2 p-2 shadow'  style='display:inline-block;width:245px;border:1px solid #ececec;border-radius:15px; '>";
                                     if (file_exists($target_file)) {
-                                        echo "<img class='card-img-top m-2 p-2' style=' height:170px;border-radius:15px;' src='../." . $target_file . "' alt='" . $gdl->goods_name . "'>";
+                                        echo "<img class='card-img-top m-2 p-2' style=' height:170px;border-radius:15px;' src='../." . $target_file 
+                                        . "' alt='" . $getgoods->goods_name . "'>";
                                     }
                                     echo "  <div class='card-body'>";
                                     echo '   <h5 class="card-title">' . $p . '</h5>';

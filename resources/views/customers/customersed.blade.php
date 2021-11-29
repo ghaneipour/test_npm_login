@@ -24,6 +24,9 @@
                     // dd($catlist );
                     if (str_contains($p ,'دسته اصلی')) {
                     } else {
+                        if(str_contains($p,'<')){
+                            echo"  ```` ";
+                        }
                     echo "<input type=radio class='p-2 m-2' name='id' id='id" . ($catlist1)  . "' value='" . ($catlist1)  . "' onchange='rdoch(\"".$p."\");'> <label for='id" . ($catlist1)  . "' class='text-dark' >".$p."</label><br>";
                     }
                     

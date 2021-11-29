@@ -26,7 +26,7 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="../img/img_2.jpg" class="d-block w-100" alt="...">
+                        <img src="../uploadadve/img_2.jpg" class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>{{App\Models\sitepage::getsitepage(['id_page'=>9,'page'=>'9'])->page_title}}</h5>
                             <p>{{App\Models\sitepage::getsitepage(['id_page'=>9,'page'=>'9'])->page_str1}}.</p>

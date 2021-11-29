@@ -3,7 +3,7 @@
 @section('content')
 <div class="panel form-control p-3">
     <div class="header">
-    <h3><i class="fs-4 bi-people m-2 p-2"></i>ویرایش عنوان ها</h3>
+    <h3><i class="bi bi-award m-2 p-2"></i> </i>ویرایش عنوان ها</h3>
     </div>
     <div class="panel_content">
         لیست عنوان ها عبارتند از:
@@ -17,6 +17,7 @@
                 
                 <?php 
                 $catlist = App\Models\titels::gettitels();
+                // dd($catlist);
                 foreach ($catlist as $dd=> $catlist1 ) { 
                     $catlist1->titles=str_replace(array("\r\n", "\n", "\r"),'_',$catlist1->titles);
                     $catlist1->texts=str_replace(array("\r\n", "\n", "\r"),'_',$catlist1->texts);

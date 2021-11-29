@@ -10,33 +10,53 @@
     </div>
     <div class="w-75 w-md-50  form-control">
 
-
-
-
         {{ Form::open(['url'=>'admin/goods/edit','files'=>true])}}
         <div class="form-control bg-light text-danger">
             {{ Form::label('id','نام محصول برای ویرایش:')}}
             <div class="feild-group p-2 m-2 bg-light text-dark">
- 
+
                 <?php
-                foreach ($catlist as $catlist1 => $p) { 
+                foreach ($catlist as $catlist1 => $p) {
                     // dd($catlist1);
                     // dd($catlist );
-                    if (str_contains($p ,'دسته اصلی')) {
+                    if (str_contains($p, 'دسته اصلی')) {
                     } else {
-                    echo "<input type=radio class='p-2 m-2' name='id' id='id" . ($catlist1)  . "' value='" . ($catlist1)  . "' onchange='rdoch(\"".$p."\");'> <label for='id" . ($catlist1)  . "' class='text-dark' >".$p."</label><br>";
+                        if (str_contains($p, '<')) {
+                            echo "  ```` ";
+                        }
+                        $getgoods=App\Models\goods::getgoodsid(['id'=>$catlist1 ]);
+                        echo "<input type=radio class='p-2 m-2' name='id' id='id"
+                            . ($getgoods->id)
+                            . "' value='" . ($getgoods->id)
+                            . "' onchange='rdoch(\""
+                            . $getgoods->goods_name . ","
+                            . $getgoods->goods_url . ","
+                            . $getgoods->id . ","  
+                            . $getgoods->goods_price . ","  
+                            . $getgoods->goods_discount . ","  
+                            . $getgoods->goods_quanty . ","  
+                            . "\");'> <label for='id"
+                            . ($getgoods->id)  . "' class='text-dark' >" 
+                            . $getgoods->goods_name . "</label><br>";
                     }
                 }
-                
-                foreach ($getgoods as $goodli => $gdl) {
-                    echo ("<input type=radio class='p-2 m-2'  name='id' id='id" . ($gdl->id)  . "'  value='" . $gdl->id . "' onchange='rdoch(\"");
-                    echo ($gdl->goods_name . "," . $gdl->goods_url . "," . $gdl->id . "\");'>");
-                    if ($gdl->goods_parentid == 0) {
-                        echo ("<label for='id" . ($gdl->id)  . "' class='text-dark' >" . $gdl->goods_name . "</label><br>");
-                    } else {
-                        echo ("< <label for='id" . ($gdl->id)  . "' class='text-dark' >" . $gdl->goods_name . "</label> ><br>");
-                    }
-                }
+                echo "<hr>";
+
+                // foreach ($getgoods as $goodli => $gdl) {
+                //     echo ("<input type=radio class='p-2 m-2'  name='id' id='id"
+                //         . ($gdl->id)  . "'  value='"
+                //         . $gdl->id . "' onchange='rdoch(\"");
+                //     echo ($gdl->goods_name . ","
+                //         . $gdl->goods_url . ","
+                //         . $gdl->id . "\");'>");
+                //     if ($gdl->goods_parentid == 0) {
+                //         echo ("<label for='id" . ($gdl->id)  .
+                //             "' class='text-dark' >" . $gdl->goods_name . "</label><br>");
+                //     } else {
+                //         echo ("< <label for='id" . ($gdl->id)  .
+                //             "' class='text-dark' >" . $gdl->goods_name . "</label> ><br>");
+                //     }
+                // }
                 $lss_delete =  explode('_', Auth::user()->user_lss)[3];
                 ?>
             </div>
@@ -101,20 +121,20 @@
     grid-template-columns: repeat(2, auto-fill);
     grid-template-rows: auto;
   ">
-           
-                <div class="  m-2 p-2 col-md-4 col-sm-6">
 
-                    {{ Form::label('goods_ico','تصویر محصول')}}
-                    {{ Form::file ('goods_ico',null)}}
-                    @if($errors->has('goods_ico'))
-                    <br><span>{{ $errors->First('goods_ico') }}
-                    </span>
-                    @endif
-                </div>
-                <div class="text-center m-2 p-2 col-md-4 col-sm-6">
-                    <img src="" width=100px id="mp">
-                </div>
-             
+            <div class="  m-2 p-2 col-md-4 col-sm-6">
+
+                {{ Form::label('goods_ico','تصویر محصول')}}
+                {{ Form::file ('goods_ico',null)}}
+                @if($errors->has('goods_ico'))
+                <br><span>{{ $errors->First('goods_ico') }}
+                </span>
+                @endif
+            </div>
+            <div class="text-center m-2 p-2 col-md-4 col-sm-6">
+                <img src="" width=100px id="mp">
+            </div>
+
         </div>
 
         <div class="feild-group p-3">
@@ -131,8 +151,12 @@
         document.getElementById('goods_name').value = (this1.replace('<', '').replace('>', '')).split(',')[0];
         document.getElementById('goods_url').value = (this1.replace('<', '').replace('>', '')).split(',')[1];
         document.getElementById('mp').src = "../../uploadgood/" + (this1.replace('<', '').replace('>', '')).split(',')[2] + ".png";
+        document.getElementById('goods_price').value = (this1.replace('<', '').replace('>', '')).split(',')[3];
+        document.getElementById('goods_discount').value = (this1.replace('<', '').replace('>', '')).split(',')[4];
+        document.getElementById('goods_quanty').value = (this1.replace('<', '').replace('>', '')).split(',')[4];
     }
 
+    
     function chclk(this1) {
         document.getElementById('goods_name').value = this1.value;
     }

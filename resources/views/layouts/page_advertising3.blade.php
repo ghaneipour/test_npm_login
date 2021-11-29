@@ -50,7 +50,7 @@
                         // @dd($rec1);
                     ?>
                         <div class="carousel-item {{($xi==0?'active':'')}}">
-                            <img src="../img/img_{{ $rec1->id}}.jpg" class="d-block w-100" style="height:350px;" alt="...">
+                            <img src="../uploadadve/img_{{ $rec1->id}}.jpg" class="d-block w-100" style="height:350px;" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>{{$rec1->Advertising_title}}</h5>
                                 <p>{{$rec1->Advertising_str1}}.</p>

@@ -1,39 +1,43 @@
  
 @section('page_box')
     <!-- ___________________________ box __________________________ -->
+    <h3 dir=rtl class="align-middle m-2 p-2 align-self-center bg-dark text-light">
+    سرویس های من
+</h3>
+
     <div>
         <div style="display:flex;flex-direction:column; padding:10px;">
             <div class="container ">
                 <div class="row row-cols-2 row-cols-lg-5  row-cols-sm-3 g-2 g-lg-3">
                     <div class="col">
-                        <div class="p-3 border bg-light">.</div>
+                        <div class="p-3 border bg-light text-center"><a class="btn btn-outline-warning">تبلیغات سرمایه گذاری</a></div>
                     </div>
                     <div class="col">
-                        <div class="p-3 border bg-light">.</div>
+                        <div class="p-3 border bg-light text-center"><a class="btn btn-outline-warning">تبلیغات کارآفرینی</a></div>
                     </div>
                     <div class="col">
-                        <div class="p-3 border bg-light">.</div>
+                        <div class="p-3 border bg-light text-center"><a class="btn btn-outline-warning">تبلیغات منتوری و مشاور</a></div>
                     </div>
                     <div class="col">
-                        <div class="p-3 border bg-light">.</div>
+                        <div class="p-3 border bg-light text-center"><a class="btn btn-outline-warning">تبلیغات فروش غیره</a></div>
                     </div>
                     <div class="col">
-                        <div class="p-3 border bg-light">.</div>
+                        <div class="p-3 border bg-light text-center"><a class="btn btn-outline-warning">تبلیغات فروش غیره</a></div>
                     </div>
                     <div class="col">
-                        <div class="p-3 border bg-light">.</div>
+                        <div class="p-3 border bg-light text-center"><a class="btn btn-outline-warning">تبلیغات فروش غیره</a></div>
                     </div>
                     <div class="col">
-                        <div class="p-3 border bg-light">.</div>
+                        <div class="p-3 border bg-light text-center"><a class="btn btn-outline-warning">تبلیغات فروش غیره</a></div>
                     </div>
                     <div class="col">
-                        <div class="p-3 border bg-light">.</div>
+                        <div class="p-3 border bg-light text-center"><a class="btn btn-outline-warning">تبلیغات فروش غیره</a></div>
                     </div>
                     <div class="col">
-                        <div class="p-3 border bg-light">.</div>
+                        <div class="p-3 border bg-light text-center"><a class="btn btn-outline-warning">تبلیغات فروش غیره</a></div>
                     </div>
                     <div class="col">
-                        <div class="p-3 border bg-light">.</div>
+                        <div class="p-3 border bg-light text-center"><a class="btn btn-outline-warning">تبلیغات فروش غیره</a></div>
                     </div>
                 </div>
             </div>

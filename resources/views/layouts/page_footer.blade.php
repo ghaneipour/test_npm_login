@@ -22,9 +22,9 @@
 
                             <ul class="list-unstyled listbb">
                                 <li><a href="/register">عضویت</a></li>
-                                <li><a href="#about">درباره ما</a></li>
-                                <li><a href="#products">محصولات</a></li>
-                                <li><a href="#about2">گالری</a></li>
+                                <li><a href="/#about">درباره ما</a></li>
+                                <li><a href="/#products">محصولات</a></li>
+                                <li><a href="/#about2">گالری</a></li>
                             </ul>
                         </div>
                         
@@ -32,10 +32,10 @@
                             <h6 class="fw-bold borderfooter w-75">بخش های سامانه</h6>
 
                             <ul class="list-unstyled listbb">
-                                <li><a href="#Q1">{{App\Models\titels::gettitelsid(['id'=>1])->titles}}</a></li>
-                                <li><a href="#Q2">{{App\Models\titels::gettitelsid(['id'=>2])->titles}}</a></li>
-                                <li><a href="#Q3">{{App\Models\titels::gettitelsid(['id'=>3])->titles}}</a></li>
-                                <li><a href="#about3">فعالیت ها</a></li>
+                                <li><a href="/#Q1">{{App\Models\titels::gettitelsid(['id'=>1])->titles}}</a></li>
+                                <li><a href="/#Q2">{{App\Models\titels::gettitelsid(['id'=>2])->titles}}</a></li>
+                                <li><a href="/#Q3">{{App\Models\titels::gettitelsid(['id'=>3])->titles}}</a></li>
+                                <li><a href="/#about3">فعالیت ها</a></li>
                             </ul>
                         </div>
                         

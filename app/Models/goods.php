@@ -9,7 +9,17 @@ class goods extends Model
 {
     use HasFactory;
     protected $table = 'goods';
-    protected $fillable = ['goods_name', 'goods_url', 'goods_icon', 'goods_parentid', 'remember_token','id','goods_price','goods_discount','goods_quanty'];
+    protected $fillable = [
+        'goods_name', 
+        'goods_url', 
+        'goods_icon', 
+        'goods_parentid',
+         'remember_token',
+         'id',
+         'goods_price',
+         'goods_discount',
+         'goods_quanty'
+        ];
     public static function getCatListgood()
     {
         $array = array();
