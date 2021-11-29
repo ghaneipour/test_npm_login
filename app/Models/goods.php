@@ -49,6 +49,11 @@ class goods extends Model
              return  goods::query()->where('id',$id)->first();       
          
     }
+    public static function getgoodstopid($id)
+    {
+             return  goods::query()->where('goods_parentid',$id)->get();       
+         
+    }
 
     public function getchild()
     {

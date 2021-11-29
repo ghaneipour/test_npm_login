@@ -24,20 +24,28 @@
                         if (str_contains($p, '<')) {
                             echo "  ```` ";
                         }
-                        $getgoods=App\Models\goods::getgoodsid(['id'=>$catlist1 ]);
+                        $getgoods = App\Models\goods::getgoodsid(['id' => $catlist1]);
+
                         echo "<input type=radio class='p-2 m-2' name='id' id='id"
                             . ($getgoods->id)
                             . "' value='" . ($getgoods->id)
                             . "' onchange='rdoch(\""
                             . $getgoods->goods_name . ","
                             . $getgoods->goods_url . ","
-                            . $getgoods->id . ","  
-                            . $getgoods->goods_price . ","  
-                            . $getgoods->goods_discount . ","  
-                            . $getgoods->goods_quanty . ","  
+                            . $getgoods->id . ","
+                            . $getgoods->goods_price . ","
+                            . $getgoods->goods_discount . ","
+                            . $getgoods->goods_quanty . ","
                             . "\");'> <label for='id"
-                            . ($getgoods->id)  . "' class='text-dark' >" 
-                            . $getgoods->goods_name . "</label><br>";
+                            . ($getgoods->id)  . "' class='text-dark'  style='background-color:#ffecec;' >";
+                        if ($getgoods->goods_done) {
+                            echo "<span style='color:green; background-color:#ececff'>";
+                        }
+                        echo $getgoods->goods_name;
+                        if ($getgoods->goods_done) {
+                            echo "</span>";
+                        }
+                        echo "</label><br>";
                     }
                 }
                 echo "<hr>";
@@ -156,7 +164,7 @@
         document.getElementById('goods_quanty').value = (this1.replace('<', '').replace('>', '')).split(',')[4];
     }
 
-    
+
     function chclk(this1) {
         document.getElementById('goods_name').value = this1.value;
     }

@@ -16,23 +16,25 @@
                     echo str_replace('<', '', str_replace('>', '', $p)) . "</h2></label><br>";
                     echo "</div>";
                 } else {
-                    $target_file = "./uploadgood/" . $catlist1 . ".png";
-                    echo "<div class='card1 bg-white m-3 p-2 shadow'  style='display:inline-block;width:245px;border:1px solid #ececec;border-radius:15px; '>";
-                    if (file_exists($target_file)) {
-                        echo "<img class='card-img-top m-2 p-2' style=' height:170px;border-radius:15px;' 
-                                src='../." . $target_file . "' alt='" . str_replace('<', '', str_replace('>', '', $p))  . "'>";
-                    }
-                    echo "  <div class='card-body'>";
-                    echo '   <h5 class="card-title">' . str_replace('<', '', str_replace('>', '', $p))  . '</h5>';
                     $p2 = App\Models\goods::getCatListgood2($catlist1);
-                    echo "   <p class='card-text'>قیمت : " .  $p2->goods_price  . "تومان</p>";
-                    echo '   <p class="card-text"><small class="text-muted">موجودی انبار : ' . $p2->goods_quanty . '</small></p>';
-                    if ($p2->goods_discount > 0) {
-                        echo '   <p class="card-text text-warning bg-primary">حراج : ' . $p2->goods_discount . ' تخفیف</p>';
+                    if ($p2->goods_done) {
+                        $target_file = "./uploadgood/" . $catlist1 . ".png";
+                        echo "<div class='card1 bg-white m-3 p-2 shadow'  style='display:inline-block;width:245px;border:1px solid #ececec;border-radius:15px; '>";
+                        if (file_exists($target_file)) {
+                            echo "<img class='card-img-top m-2 p-2' style=' height:170px;border-radius:15px;' 
+                                src='../." . $target_file . "' alt='" . str_replace('<', '', str_replace('>', '', $p))  . "'>";
+                        }
+                        echo "  <div class='card-body'>";
+                        echo '   <h5 class="card-title">' . str_replace('<', '', str_replace('>', '', $p))  . '</h5>';
+                        echo "   <p class='card-text'>قیمت : " .  $p2->goods_price  . "تومان</p>";
+                        echo '   <p class="card-text"><small class="text-muted">موجودی انبار : ' . $p2->goods_quanty . '</small></p>';
+                        if ($p2->goods_discount > 0) {
+                            echo '   <p class="card-text text-warning bg-primary">حراج : ' . $p2->goods_discount . ' تخفیف</p>';
+                        }
+                        echo ' <button class="btn btn-outline-info text-center" onclick="submitedr(' . $catlist1 . ')" >سفارش </button>';
+                        echo "  </div>";
+                        echo "</div>";
                     }
-                    echo ' <button class="btn btn-outline-info text-center" onclick="submitedr(' . $catlist1 . ')" >سفارش </button>';
-                    echo "  </div>";
-                    echo "</div>";
                 }
             }
         }

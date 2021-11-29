@@ -8,6 +8,23 @@ use DateTime;
 
 class advertisingcontroller extends Controller
 { 
+
+    
+    public function advertisingok(request $request)
+    {
+        if ($request->done=='1') { 
+            // dd($request);
+            $catid =  advertising::where('id', $request->id)->update([
+                'advertising_done' => '1']);
+            }
+            else if ($request->done=='dell') { 
+                // dd($request);
+                $catid =  advertising::where('id', $request->id)->update([
+                    'advertising_done' => '0']);
+                }
+            return view('advertising.advisok');
+    }
+
     public function add(request $request)
     { 
         $ggg = new advertising();

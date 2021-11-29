@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -26,6 +26,7 @@ class UserController extends Controller
         return view('home');
     }
 
+    
     public function register1(Request $request)
     {
         $item = \App\Models\User::query()

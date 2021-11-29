@@ -45,7 +45,7 @@
                             <ul class="collapse  nav flex-column ms-1" id="submenu0" data-bs-parent="#menu">
                                 <li class="w-100">
                                     <a href="/admin/userok#submenu0" class="nav-link px-0"> <span class="d-none d-sm-inline">تایید افراد</span> </a>
-                                </li> 
+                                </li>
                                 <li class="w-100">
                                     <a href="/admin/goodsok#submenu0" class="nav-link px-0"><i class="bi bi-award"></i> <span class="d-none d-sm-inline">تایید محصول ها</span> </a>
                                 </li>
@@ -54,7 +54,7 @@
                                 </li>
                                 <li class="bg-black m-1"></li>
                             </ul>
-                        </li>   
+                        </li>
                         <li>
                             <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">تعاریف</span> </a>
@@ -122,12 +122,12 @@
                             <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                 @if($lss_new==1)
                                 <li class="w-100">
-                                    <a href="/admin/customers/create#submenu3" class="nav-link px-0"><i class="fs-4 bi-people"></i>  <span class="d-none d-sm-inline">معرفی مشتری </span> </a>
+                                    <a href="/admin/customers/create#submenu3" class="nav-link px-0"><i class="fs-4 bi-people"></i> <span class="d-none d-sm-inline">معرفی مشتری </span> </a>
                                 </li>
                                 @endif
                                 @if($lss_edit==1)
                                 <li>
-                                    <a href="/admin/customers/update#submenu3" class="nav-link px-0"><i class="fs-4 bi-people"></i>  <span class="d-none d-sm-inline">ویرایش</span> </a>
+                                    <a href="/admin/customers/update#submenu3" class="nav-link px-0"><i class="fs-4 bi-people"></i> <span class="d-none d-sm-inline">ویرایش</span> </a>
                                 </li>
                                 @endif
                                 <li>
@@ -171,6 +171,7 @@
                             }
                             if (str_contains($_SERVER['REQUEST_URI'], 'goods')) {
                                 echo '<h4 class="bg-light text-dark">محصولات</h4>';
+                                $catlist = App\Models\goods::query()->where('goods_parentid', 0)->get();
                             }
                             if (str_contains($_SERVER['REQUEST_URI'], 'user')) {
                                 echo '<h4 class="bg-light text-dark">کاربران</h4>';
@@ -178,12 +179,18 @@
                             if (str_contains($_SERVER['REQUEST_URI'], 'titels')) {
                                 echo '<h4 class="bg-light text-dark">عناوین</h4>';
                             }
+                            if (str_contains($_SERVER['REQUEST_URI'], 'page')) {
+                                echo '<h4 class="bg-light text-dark">page</h4>';
+                            }
+                            if (str_contains($_SERVER['REQUEST_URI'], 'price')) {
+                                echo '<h4 class="bg-light text-dark">price</h4>';
+                            }
 
                             if (!isset($catlist)) {
                                 // dd('not exist');
-                                $catlist=array();
+                                $catlist = array();
                             }
-                             
+
                             $xi = 0;
                             foreach ($catlist as $valno => $val) {
                                 if (str_contains($val, 'دسته اصلی')) {
@@ -215,8 +222,25 @@
                                         } else {
                                             echo (' <i class="fs-4 bi-grid"></i>');
                                         }
+
                                         if (str_contains($_SERVER['REQUEST_URI'], 'user')) {
                                             echo (' <span class="ms-1 d-none d-sm-inline">' . $val->name . '</span> </a>');
+                                            echo ('<ul class="collapse nav flex-column ms-1" id="submenuq' . $xi . '" data-bs-parent="#menu">');
+                                        } else 
+                                        if (str_contains($_SERVER['REQUEST_URI'], 'goods')) {
+                                            echo (' <span class="ms-1 d-none d-sm-inline">' . $val->goods_name . '</span> </a>');
+                                            echo ('<ul class="collapse nav flex-column ms-1" id="submenuq' . $xi . '" data-bs-parent="#menu">');
+                                        } else 
+                                        if (str_contains($_SERVER['REQUEST_URI'], 'titels')) {
+                                            echo (' <span class="ms-1 d-none d-sm-inline">' . $val->titles . '</span> </a>');
+                                            echo ('<ul class="collapse nav flex-column ms-1" id="submenuq' . $xi . '" data-bs-parent="#menu">');
+                                        } else 
+                                        if (str_contains($_SERVER['REQUEST_URI'], 'page')) {
+                                            echo (' <span class="ms-1 d-none d-sm-inline">' . $val->page_title . '</span> </a>');
+                                            echo ('<ul class="collapse nav flex-column ms-1" id="submenuq' . $xi . '" data-bs-parent="#menu">');
+                                        } else 
+                                        if (str_contains($_SERVER['REQUEST_URI'], 'price')) {
+                                            echo (' <span class="ms-1 d-none d-sm-inline">' . $val->price_title . '</span> </a>');
                                             echo ('<ul class="collapse nav flex-column ms-1" id="submenuq' . $xi . '" data-bs-parent="#menu">');
                                         } else {
                                             echo (' <span class="ms-1 d-none d-sm-inline">' . $val . '</span> </a>');
@@ -302,29 +326,35 @@
                 <div class="bg-black text-dark p-1 m-1 g-1" style="width:100%;border-radius:15px;">
                     <div class="card-group1 bg-white p-1 m-1 g-1 text-center">
                         <?php
-                        // foreach ($getgoods as $goodli => $gdl) {
-                        foreach ($catlist as $catlist1 => $p) {
-                            if (str_contains($p, 'دسته اصلی')) {
-                            } else {
-                                if (!str_contains($p, ">")) {
-                                    echo "<div style='display:block;width:100%;' class='bg-light'>";
-                                    echo "<label for='id" . ($catlist1)  . "' class='text-dark' >";
-                                    echo $p . "</label><br>";
-                                    echo "</div>";
-                                } else {
-                                    $target_file = "./uploadgood/" . $catlist1 . ".png";
-                                    echo "<div class='card1 bg-white m-2 p-2 shadow'  style='display:inline-block;width:245px;border:1px solid #ececec;border-radius:15px; '>";
-                                    if (file_exists($target_file)) {
-                                        echo "<img class='card-img-top m-2 p-2' style=' height:170px;border-radius:15px;' src='../." . $target_file 
-                                        . "' alt='" . $getgoods->goods_name . "'>";
+                         $catlist = App\Models\goods::query()->where('goods_parentid', 0)->get();
+                         foreach ($catlist as $catlist1) {
+                             $tmp = $catlist1->id;
+                             
+                                 echo "<div style='display:block;width:100%;' class='bg-light'>";
+                                 echo "<label for='id" . ($tmp)  . "' class='text-dark p-2' ><h2>";
+                                 echo  $catlist1->goods_name. "</h2></label><br>";
+                                 echo "</div>";
+                             $getgoods1 = App\Models\goods::getgoodstopid($tmp);
+                             if (isset($getgoods1)) {
+                                 foreach ($getgoods1 as $getgoods) { 
+                                   
+                                    $p2 = App\Models\goods::getCatListgood2($getgoods->id);
+                                    if ($p2->goods_done) {
+
+                                        $target_file = "./uploadgood/" . $p2->id . ".png";
+                                        echo "<div class='card1 bg-white m-2 p-2 shadow'  style='display:inline-block;width:245px;border:1px solid #ececec;border-radius:15px; '>";
+                                        if (file_exists($target_file)) {
+                                            echo "<img class='card-img-top m-2 p-2' style=' height:170px;border-radius:15px;' src='../." . $target_file
+                                                . "' alt='" . $getgoods->goods_name . "'>";
+                                        }
+                                        echo "  <div class='card-body'>";
+                                        echo '   <h5 class="card-title">' . $p2->goods_name . '</h5>';
+                                        echo "   <p class='card-text'>" . $p2->goods_price . " </p>";
+                                        // echo '   <p class="card-text"><small class="text-muted">'.$catlist1.'</small></p>';
+                                        echo ' <button class="btn btn-outline-info text-center">سفارش </button>';
+                                        echo "  </div>";
+                                        echo "</div>";
                                     }
-                                    echo "  <div class='card-body'>";
-                                    echo '   <h5 class="card-title">' . $p . '</h5>';
-                                    echo "   <p class='card-text'>" . $catlist1 . $p . " </p>";
-                                    // echo '   <p class="card-text"><small class="text-muted">'.$catlist1.'</small></p>';
-                                    echo ' <button class="btn btn-outline-info text-center">سفارش </button>';
-                                    echo "  </div>";
-                                    echo "</div>";
                                 }
                             }
                         }

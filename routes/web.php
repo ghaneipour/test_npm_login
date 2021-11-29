@@ -65,10 +65,14 @@ Route::prefix("admin")->group(function(){
     Route::any('/price/add'  ,[App\Http\Controllers\pricecontroller::class,'add']);
     Route::any('/price/'  ,function(){return view('/price/priceed');});
     Route::any('/price/new'  ,function(){return view('/price/price');});
-
+    
     Route::any('/advisok'  ,function(){return view('/advertising/advisok');});
     Route::any('/goodsok'  ,function(){return view('/goods/goodsok');});
     Route::any('/userok'  ,function(){return view('/layouts/userok');});
+
+    Route::any('/goodsok/goodsok'  ,[App\Http\Controllers\goodscontroller::class,'goodsok']);
+    Route::any('/userok/userok'  ,[App\Http\Controllers\userscontrollers::class,'userok']);
+    Route::any('/advertisingok/advertisingok'  ,[App\Http\Controllers\Advertisingcontroller::class,'advertisingok']);
 });
 
 Auth::routes();

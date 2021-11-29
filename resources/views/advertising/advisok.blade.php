@@ -9,10 +9,10 @@
 @section('content')
 <div class="panel form-control p-3">
     <div class="header">
-        <h3><i class="fs-4 bi-basket2 m-2 p-2"></i>ویرایش تبلیغ ها</h3>
+        <h3><i class="fs-4 bi-basket2 m-2 p-2"></i>تایید تبلیغ ها</h3>
     </div>
     <div class="panel_content">
-        لیست تبلیغ ها عبارتند از:
+        تایید تبلیغ ها عبارتند از:
     </div>
     <div class="w-75 w-md-50  form-control">
         <script type="text/javascript">
@@ -32,43 +32,20 @@
         </script>
 
 
-        {{ Form::open(['url'=>'admin/advertising/edit','files'=>true])}}
         <input class="example3" type="text">
         <div class="form-control bg-light text-danger">
-            {{ Form::label('id','نام تبلیغ برای ویرایش:')}}
+            {{ Form::label('id','نام تبلیغ برای تایید:')}}
 
             <div class="feild-group p-2 m-2 bg-light text-dark">
                 <?php
 
-
                 $getgoods = App\Models\advertising::query()->get();
-                // foreach ($catlist as $catlist1 => $p) { 
-                //     // dd($catlist1);
-                //     // dd($catlist );
-                //     if (str_contains($p ,'دسته اصلی')) {
-                //     } else {
-                //         if(str_contains($p,'<')){
-                //             echo"  ```` ";
-                //         }
-                //     echo "<input type=radio class='p-2 m-2' name='id' id='id" . ($catlist1)  . "' value='" . ($catlist1)  . "' onchange='rdoch(\"".$p."\");'> <label for='id" . ($catlist1)  . "' class='text-dark' >".$p."</label><br>";
-                //     }
-                // }
-
 
                 foreach ($getgoods as $goodli => $gdl) {
                     echo ("<input type=radio class='p-2 m-2'  name='id' id='id"
                         . ($gdl->id)  . "'  value='"
                         . $gdl->id . "' onchange='rdoch(\"");
 
-                    //$dx = explode('-', str_replace(' ', '-', $gdl->Advertising_expire));
-                    //
-                    //if ($dx[0] == '0000') {
-                    //} else {
-                        //$nd = App\Models\advertising::gregorian_to_jalali($dx[0], $dx[1], $dx[2]);
-                        // dd($nd);
-                        //$gdl->Advertising_expire = $nd[0] . '-' . $nd[1] . '-' . $nd[2] . ' ' . $dx[3];
-                        // dd($gdl);
-                    //}
                     echo ($gdl->Advertising_title .
                         "," . $gdl->Advertising_str1 .
                         "," . $gdl->id .
@@ -83,86 +60,61 @@
                         "," . $gdl->Advertising_pay .
                         "\");'>");
                     if ($gdl->goods_parentid == 0) {
-                        echo ("<label for='id" . ($gdl->id)  .
-                            "' class='text-dark' >" . $gdl->Advertising_title . "</label><br>");
+                        echo "<label for='id" . ($gdl->id)  . "' class='text-danger' style='  background-color:#ffecec;' >";
+                        if($gdl->advertising_done==1){echo "<span style='color:green; background-color:#ececff;'>";}
+                        echo $gdl->Advertising_title;
+                        if($gdl->advertising_done==1){echo "</span>";}
+                        echo "</label><br>";
                     } else {
-                        echo ("< <label for='id" . ($gdl->id)  .
-                            "' class='text-dark' >" . $gdl->Advertising_title . "</label> ><br>");
+                        echo  "< <label for='id" . ($gdl->id)  . "' class='text-dark' >";
+                        echo  $gdl->Advertising_title;
+                        echo "</label> ><br>";
                     }
                 }
                 $lss_delete =  explode('_', Auth::user()->user_lss)[3];
                 ?>
             </div>
-            @if($lss_delete==1)
-            <input id="dell" name="dell" value="حذف" type=submit>
-            @endif
+
+
         </div>
+        {{ Form::open(['url'=>'admin/advertisingok/advertisingok','id'=>'myform'])}}
+
+        <input id="id" name="id" value="0" type="hidden">
+        <input id="done" name="done" value="done" type="hidden">
+        <button class="btn btn-success" onclick="submited()">تایید</button>
+
+        <button class="btn btn-danger" onclick="submited2()">غیر فعال کردن </button>
+        {{ Form::close()}}
         <hr>
         <div class="feild-group  m-2">
-            {{ Form::label('Advertising_title','عنوان')}}
-            {{ Form::text('Advertising_title',0 , array('class' => 'form-control')) }}
-            @if($errors->has('Advertising_title'))
-            <span>{{ $errors->First('Advertising_title') }}</span>
-            @endif
+            عنوان: <span id='Advertising_title'></span>
         </div>
 
         <div class="feild-group m-2">
-            {{ Form::label('Advertising_str1','متن اول')}}
-            {{ Form::text('Advertising_str1',null, array('class' => 'form-control'))}}
-            @if($errors->has('Advertising_str1'))
-            <span>{{ $errors->First('Advertising_str1') }}</span>
-            @endif
+            متن اول: <span id='Advertising_str1'></span>
         </div>
 
         <div class="feild-group m-2">
-            {{ Form::label('Advertising_str2','متن دوم')}}
-            {{ Form::text('Advertising_str2',null, array('class' => 'form-control'))}}
-            @if($errors->has('Advertising_str2'))
-            <span>{{ $errors->First('Advertising_str2') }}</span>
-            @endif
+            متن دوم: <span id='Advertising_str2'></span>
         </div>
 
         <div class="feild-group m-2">
-            {{ Form::label('Advertising_seo','سئو')}}
-            {{ Form::text('Advertising_seo',null, array('class' => 'form-control'))}}
-            @if($errors->has('Advertising_seo'))
-            <span>{{ $errors->First('Advertising_seo') }}</span>
-            @endif
+            سئو:<span id='Advertising_seo'></span>
         </div>
 
         <div class="feild-group m-2">
-            {{ Form::label('Advertising_url','آدرس')}}
-            {{ Form::text('Advertising_url',null, array('class' => 'form-control'))}}
-            @if($errors->has('Advertising_url'))
-            <span>{{ $errors->First('Advertising_url') }}</span>
-            @endif
+            آدرس:<span id='Advertising_url'></span>
         </div>
 
 
         <div class="feild-group m-2">
+            انقضاء: <span id='Advertising_expire'></span>
 
-            امروز: <input type=text readonly disabled class="example2" style='width:300px'><br>
-            <input class="alt-field-example" /><br>
-
-            {{ Form::label('Advertising_expire','انقضاء')}}
-            
-            <input type="text" disabled class="form-control" id="Advertising_expirefa" name="Advertising_expirefa" dir="ltr" />
-            <input type="hidden"   class="form-control" id="Advertising_expire" name="Advertising_expire" dir="ltr" />
-            <a class='btn btn-info' onclick="expd(1)">1 روز</a>
-            <a class='btn btn-info' onclick="expd(10)">10 روز</a>
-            <a class='btn btn-info' onclick="expd(30)">30 روز</a>
-            @if($errors->has('Advertising_expire'))
-            <span>{{ $errors->First('Advertising_expire') }}</span>
-            @endif
         </div>
 
 
         <div class="feild-group m-2">
-            {{ Form::label('Advertising_pay','مبلغ قابل پرداخت')}}
-            {{ Form::text('Advertising_pay',null, array('class' => 'form-control'))}}
-            @if($errors->has('Advertising_pay'))
-            <span>{{ $errors->First('Advertising_pay') }}</span>
-            @endif
+            مبلغ قابل پرداخت:<span id='Advertising_pay'></span>
         </div>
 
 
@@ -208,68 +160,66 @@
                 <input id="Advertising_grp42" type="text" class="form-input" name="Advertising_grp_p4" value=' {{App\Models\price::getpriceid(['price_id'=>4])->price_fee}} ' readonly>
             </div>
         </div>
-        <input id="dt" value=1 type='hodden'>
+        <input id="dt" value=1 type='hodden1'>
 
 
 
         <div class="form-control p-2 " style="
          display: grid;
-    grid-template-columns: repeat(2, auto-fill);
-    grid-template-rows: auto;
-  ">
-
-            <div class="  m-2 p-2 col-md-4 col-sm-6">
-
-                {{ Form::label('goods_ico','تصویر محصول')}}
-                {{ Form::file ('goods_ico',null)}}
-                @if($errors->has('goods_ico'))
-                <br><span>{{ $errors->First('goods_ico') }}
-                </span>
-                @endif
-            </div>
+         grid-template-columns: repeat(2, auto-fill);
+         grid-template-rows: auto;
+         "> 
             <div class="text-center m-2 p-2 col-md-4 col-sm-6">
                 <img src="" width=100px id="mp">
             </div>
 
         </div>
 
-        <div class="feild-group p-3">
-            <button class="btn btn-success">ذخیره</button>
-        </div>
-        {{ Form::close()}}
-
     </div>
 </div>
 <div id="hhhh"></div>
 @endsection
+
 <body onload="expd(1)"></body>
-        
+
 <script>
+    function submited() {
+        document.getElementById('done').value = "1";
+        document.getElementById('myform').submit();
+        // alert("sssooo="+sss);
+    }
+
+    function submited2() {
+
+        document.getElementById('done').value = "dell";
+        document.getElementById('myform').submit();
+        // alert("sssooo="+sss);
+    }
+
     function rdoch(this1) {
-        document.getElementById('Advertising_title').value = (this1.replace('<', '').replace('>', '')).split(',')[0];
-        document.getElementById('Advertising_str1').value = (this1.replace('<', '').replace('>', '')).split(',')[1];
+        document.getElementById('Advertising_title').innerText = (this1.replace('<', '').replace('>', '')).split(',')[0];
+        document.getElementById('Advertising_str1').innerText = (this1.replace('<', '').replace('>', '')).split(',')[1];
         document.getElementById('mp').src = "../../uploadadve/img_" + (this1.replace('<', '').replace('>', '')).split(',')[2] + ".jpg";
-        document.getElementById('Advertising_str2').value = (this1.replace('<', '').replace('>', '')).split(',')[3];
-        document.getElementById('Advertising_seo').value = (this1.replace('<', '').replace('>', '')).split(',')[4];
-        document.getElementById('Advertising_url').value = (this1.replace('<', '').replace('>', '')).split(',')[5];
+        document.getElementById('id').value = (this1.replace('<', '').replace('>', '')).split(',')[2] ;
+        document.getElementById('Advertising_str2').innerText = (this1.replace('<', '').replace('>', '')).split(',')[3];
+        document.getElementById('Advertising_seo').innerText = (this1.replace('<', '').replace('>', '')).split(',')[4];
+        document.getElementById('Advertising_url').innerText = (this1.replace('<', '').replace('>', '')).split(',')[5];
 
         document.getElementById('Advertising_grp1').checked = ((this1.replace('<', '').replace('>', '')).split(',')[6] == 1 ? true : false);
         document.getElementById('Advertising_grp2').checked = ((this1.replace('<', '').replace('>', '')).split(',')[7] == 1 ? true : false);
         document.getElementById('Advertising_grp3').checked = ((this1.replace('<', '').replace('>', '')).split(',')[8] == 1 ? true : false);
         document.getElementById('Advertising_grp4').checked = ((this1.replace('<', '').replace('>', '')).split(',')[9] == 1 ? true : false);
-        
-         document.getElementById('Advertising_grp11').checked = document.getElementById('Advertising_grp1').checked;
+
+        document.getElementById('Advertising_grp11').checked = document.getElementById('Advertising_grp1').checked;
         document.getElementById('Advertising_grp21').checked = document.getElementById('Advertising_grp2').checked;
         document.getElementById('Advertising_grp31').checked = document.getElementById('Advertising_grp3').checked;
         document.getElementById('Advertising_grp411').checked = document.getElementById('Advertising_grp4').checked;
 
         var xx = (this1.replace('<', '').replace('>', '')).split(',')[10];
-        document.getElementById('Advertising_pay').value = (this1.replace('<', '').replace('>', '')).split(',')[11];
-
-        document.getElementById('Advertising_expirefa').value =new Date(xx).toLocaleDateString('fa-IR');
-        document.getElementById('Advertising_expire').value =new Date(xx).toLocaleDateString('en-us'); 
-
+        document.getElementById('Advertising_pay').innerText = (this1.replace('<', '').replace('>', '')).split(',')[11];
+        document.getElementById('Advertising_expire').innerText=xx;
     }
+
     function ckt(tt) {
         document.getElementById('Advertising_grp11').checked = document.getElementById('Advertising_grp1').checked;
         document.getElementById('Advertising_grp21').checked = document.getElementById('Advertising_grp2').checked;
@@ -278,22 +228,19 @@
 
         if (document.getElementById('Advertising_grp11').checked) {
             document.getElementById('Advertising_pay').value =
-                document.getElementById('dt').value * 
+                document.getElementById('dt').value *
                 document.getElementById('Advertising_grp12').value;
-        }
-        else if (document.getElementById('Advertising_grp21').checked) {
+        } else if (document.getElementById('Advertising_grp21').checked) {
             document.getElementById('Advertising_pay').value =
-                document.getElementById('dt').value * 
+                document.getElementById('dt').value *
                 document.getElementById('Advertising_grp22').value;
-        }         
-        else if (document.getElementById('Advertising_grp31').checked) {
+        } else if (document.getElementById('Advertising_grp31').checked) {
             document.getElementById('Advertising_pay').value =
-                document.getElementById('dt').value * 
+                document.getElementById('dt').value *
                 document.getElementById('Advertising_grp32').value;
-        }         
-        else if (document.getElementById('Advertising_grp411').checked) {
+        } else if (document.getElementById('Advertising_grp411').checked) {
             document.getElementById('Advertising_pay').value =
-                document.getElementById('dt').value * 
+                document.getElementById('dt').value *
                 document.getElementById('Advertising_grp42').value;
         }
         // alert(tt.checked);
@@ -301,9 +248,9 @@
 
     function expd(id) {
         // let tm1 = addDays(document.getElementById('Advertising_expire').value, id);
-        let today = new addDays(Date(),id);
+        let today = new addDays(Date(), id);
         document.getElementById('Advertising_expirefa').value = today.toLocaleDateString('fa-IR');
-        document.getElementById('Advertising_expire').value = today.toLocaleDateString('en-us'); 
+        document.getElementById('Advertising_expire').value = today.toLocaleDateString('en-us');
         document.getElementById('dt').value = id;
         ckt(1);
     }

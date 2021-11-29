@@ -60,6 +60,21 @@ class goodscontroller extends Goods
     }
 
 
+    public function goodsok(request $request)
+    {
+        if ($request->done=='1') { 
+            // dd($request);
+            $catid =  goods::where('id', $request->id)->update([
+                'goods_done' => '1']);
+            }
+            else if ($request->done=='dell') { 
+                // dd($request);
+                $catid =  goods::where('id', $request->id)->update([
+                    'goods_done' => '0']);
+                }
+            return view('goods.goodsok');
+    }
+
     public function edit(request $request)
     {
         if ($request->dell) {
