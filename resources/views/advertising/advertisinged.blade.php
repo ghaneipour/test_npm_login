@@ -158,7 +158,7 @@
 
 
         <div class="feild-group m-2">
-            {{ Form::label('Advertising_pay','مبلغ پرداختی')}}
+            {{ Form::label('Advertising_pay','مبلغ قابل پرداخت')}}
             {{ Form::text('Advertising_pay',null, array('class' => 'form-control'))}}
             @if($errors->has('Advertising_pay'))
             <span>{{ $errors->First('Advertising_pay') }}</span>
@@ -170,7 +170,9 @@
             <label for="Advertising_grp1" class="col-md-4 col-form-label text-md-right">{{App\Models\titels::gettitelsid(['id'=>1])->titles}}</label>
 
             <div class="col-md-6">
-                <input id="Advertising_grp1" type="checkbox" class="form-check-input" name="Advertising_grp1">
+                <input id="Advertising_grp1" type="radio" class="form-check-input" name="Advertising_grp11" onchange="ckt(1)">
+                <input id="Advertising_grp11" style="visibility:hidden;" type="checkbox" class="form-check-input" name="Advertising_grp1">
+                <input id="Advertising_grp12" type="text" class="form-input" name="Advertising_grp_p1" value=' {{App\Models\price::getpriceid(['price_id'=>1])->price_fee}} ' readonly>
             </div>
         </div>
 
@@ -178,7 +180,10 @@
             <label for="Advertising_grp2" class="col-md-4 col-form-label text-md-right">{{App\Models\titels::gettitelsid(['id'=>2])->titles}}</label>
 
             <div class="col-md-6">
-                <input id="Advertising_grp2" type="checkbox" class="form-check-input" name="Advertising_grp2">
+                <input id="Advertising_grp2" type="radio" class="form-check-input" name="Advertising_grp11" onchange="ckt(2)">
+                <input id="Advertising_grp21" style="visibility:hidden;" type="checkbox" class="form-check-input" name="Advertising_grp2">
+                <input id="Advertising_grp22" type="text" class="form-input" name="Advertising_grp_p2" value=' {{App\Models\price::getpriceid(['price_id'=>2])->price_fee}} ' readonly>
+
             </div>
         </div>
 
@@ -187,7 +192,10 @@
             <label for="Advertising_grp3" class="col-md-4 col-form-label text-md-right">{{App\Models\titels::gettitelsid(['id'=>3])->titles}}</label>
 
             <div class="col-md-6">
-                <input id="Advertising_grp3" type="checkbox" class="form-check-input" name="Advertising_grp3">
+                <input id="Advertising_grp3" type="radio" class="form-check-input" name="Advertising_grp11" onchange="ckt(3)">
+                <input id="Advertising_grp31" style="visibility:hidden;" type="checkbox" class="form-check-input" name="Advertising_grp3">
+                <input id="Advertising_grp32" type="text" class="form-input" name="Advertising_grp_p3" value=' {{App\Models\price::getpriceid(['price_id'=>3])->price_fee}} ' readonly>
+
             </div>
         </div>
 
@@ -195,9 +203,12 @@
             <label for="Advertising_grp4" class="col-md-4 col-form-label text-md-right">{{App\Models\titels::gettitelsid(['id'=>5])->titles}}</label>
 
             <div class="col-md-6">
-                <input id="Advertising_grp4" type="checkbox" class="form-check-input" name="Advertising_grp4">
+                <input id="Advertising_grp4" type="radio" class="form-check-input" name="Advertising_grp11" onchange="ckt(4)">
+                <input id="Advertising_grp411" style="visibility:hidden;" type="checkbox" class="form-check-input" name="Advertising_grp4">
+                <input id="Advertising_grp42" type="text" class="form-input" name="Advertising_grp_p4" value=' {{App\Models\price::getpriceid(['price_id'=>4])->price_fee}} ' readonly>
             </div>
         </div>
+        <input id="dt" value=1 type='hodden'>
 
 
 
@@ -241,10 +252,17 @@
         document.getElementById('Advertising_str2').value = (this1.replace('<', '').replace('>', '')).split(',')[3];
         document.getElementById('Advertising_seo').value = (this1.replace('<', '').replace('>', '')).split(',')[4];
         document.getElementById('Advertising_url').value = (this1.replace('<', '').replace('>', '')).split(',')[5];
+
         document.getElementById('Advertising_grp1').checked = ((this1.replace('<', '').replace('>', '')).split(',')[6] == 1 ? true : false);
         document.getElementById('Advertising_grp2').checked = ((this1.replace('<', '').replace('>', '')).split(',')[7] == 1 ? true : false);
         document.getElementById('Advertising_grp3').checked = ((this1.replace('<', '').replace('>', '')).split(',')[8] == 1 ? true : false);
         document.getElementById('Advertising_grp4').checked = ((this1.replace('<', '').replace('>', '')).split(',')[9] == 1 ? true : false);
+        
+         document.getElementById('Advertising_grp11').checked = document.getElementById('Advertising_grp1').checked;
+        document.getElementById('Advertising_grp21').checked = document.getElementById('Advertising_grp2').checked;
+        document.getElementById('Advertising_grp31').checked = document.getElementById('Advertising_grp3').checked;
+        document.getElementById('Advertising_grp411').checked = document.getElementById('Advertising_grp4').checked;
+
         var xx = (this1.replace('<', '').replace('>', '')).split(',')[10];
         document.getElementById('Advertising_pay').value = (this1.replace('<', '').replace('>', '')).split(',')[11];
 
@@ -252,13 +270,42 @@
         document.getElementById('Advertising_expire').value =new Date(xx).toLocaleDateString('en-us'); 
 
     }
+    function ckt(tt) {
+        document.getElementById('Advertising_grp11').checked = document.getElementById('Advertising_grp1').checked;
+        document.getElementById('Advertising_grp21').checked = document.getElementById('Advertising_grp2').checked;
+        document.getElementById('Advertising_grp31').checked = document.getElementById('Advertising_grp3').checked;
+        document.getElementById('Advertising_grp411').checked = document.getElementById('Advertising_grp4').checked;
+
+        if (document.getElementById('Advertising_grp11').checked) {
+            document.getElementById('Advertising_pay').value =
+                document.getElementById('dt').value * 
+                document.getElementById('Advertising_grp12').value;
+        }
+        else if (document.getElementById('Advertising_grp21').checked) {
+            document.getElementById('Advertising_pay').value =
+                document.getElementById('dt').value * 
+                document.getElementById('Advertising_grp22').value;
+        }         
+        else if (document.getElementById('Advertising_grp31').checked) {
+            document.getElementById('Advertising_pay').value =
+                document.getElementById('dt').value * 
+                document.getElementById('Advertising_grp32').value;
+        }         
+        else if (document.getElementById('Advertising_grp411').checked) {
+            document.getElementById('Advertising_pay').value =
+                document.getElementById('dt').value * 
+                document.getElementById('Advertising_grp42').value;
+        }
+        // alert(tt.checked);
+    }
 
     function expd(id) {
         // let tm1 = addDays(document.getElementById('Advertising_expire').value, id);
         let today = new addDays(Date(),id);
         document.getElementById('Advertising_expirefa').value = today.toLocaleDateString('fa-IR');
         document.getElementById('Advertising_expire').value = today.toLocaleDateString('en-us'); 
-
+        document.getElementById('dt').value = id;
+        ckt(1);
     }
 
     function addDays(date, days) {
