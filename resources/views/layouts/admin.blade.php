@@ -39,41 +39,56 @@
                             </a>
                         </li>
                         <!-- show -->
-
+                        <li>
+                            <a href="#submenu0" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">تایید</span> </a>
+                            <ul class="collapse  nav flex-column ms-1" id="submenu0" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="/admin/userok#submenu0" class="nav-link px-0"> <span class="d-none d-sm-inline">تایید افراد</span> </a>
+                                </li> 
+                                <li class="w-100">
+                                    <a href="/admin/goodsok#submenu0" class="nav-link px-0"><i class="bi bi-award"></i> <span class="d-none d-sm-inline">تایید محصول ها</span> </a>
+                                </li>
+                                <li class="w-100">
+                                    <a href="/admin/advisok/#submenu0" class="nav-link px-0"><i class="bi bi-award"></i> <span class="d-none d-sm-inline">تایید تبلیغات ها</span> </a>
+                                </li>
+                                <li class="bg-black m-1"></li>
+                            </ul>
+                        </li>   
                         <li>
                             <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">تعاریف</span> </a>
                             <ul class="collapse  nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">قراردادها</span> </a>
+                                    <a href="#submenu1" class="nav-link px-0"> <span class="d-none d-sm-inline">قراردادها</span> </a>
                                 </li>
                                 <li class="bg-black m-1"></li>
                                 <li class="w-100">
-                                    <a href="/admin/titels/" class="nav-link px-0"><i class="bi bi-award"></i> <span class="d-none d-sm-inline">تعریف عناوین سمت ها</span> </a>
+                                    <a href="/admin/titels/#submenu1" class="nav-link px-0"><i class="bi bi-award"></i> <span class="d-none d-sm-inline">تعریف عناوین سمت ها</span> </a>
                                 </li>
                                 <li class="w-100">
-                                    <a href="/admin/titelsed/" class="nav-link px-0"><i class="bi bi-award"></i> <span class="d-none d-sm-inline">ویرایش عناوین سمت ها</span> </a>
-                                </li>
-                                <li class="bg-black m-1"></li>
-                                <li class="w-100">
-                                    <a href="/admin/page/" class="nav-link px-0"> <i class="bi bi-window-stack"></i><span class="d-none d-sm-inline">تعریف صفحات</span> </a>
-                                </li>
-                                <li class="w-100">
-                                    <a href="/admin/page/" class="nav-link px-0"> <i class="bi bi-window-stack"></i><span class="d-none d-sm-inline">ویرایش صفحات</span> </a>
+                                    <a href="/admin/titelsed/#submenu1" class="nav-link px-0"><i class="bi bi-award"></i> <span class="d-none d-sm-inline">ویرایش عناوین سمت ها</span> </a>
                                 </li>
                                 <li class="bg-black m-1"></li>
                                 <li class="w-100">
-                                    <a href="/admin/price/new" class="nav-link px-0"> <i class="fs-4 bi-currency-exchange"></i> <span class="d-none d-sm-inline">تعریف تعرفه ها</span> </a>
+                                    <a href="/admin/page/#submenu1" class="nav-link px-0"> <i class="bi bi-window-stack"></i><span class="d-none d-sm-inline">تعریف صفحات</span> </a>
                                 </li>
                                 <li class="w-100">
-                                    <a href="/admin/price/" class="nav-link px-0"> <i class="fs-4 bi-currency-exchange"></i> <span class="d-none d-sm-inline">ویرایش تعرفه ها</span> </a>
+                                    <a href="/admin/page/#submenu1" class="nav-link px-0"> <i class="bi bi-window-stack"></i><span class="d-none d-sm-inline">ویرایش صفحات</span> </a>
                                 </li>
                                 <li class="bg-black m-1"></li>
                                 <li class="w-100">
-                                    <a href="/admin/advertising/new" class="nav-link px-0"> <i class="bi bi-film"></i> <span class="d-none d-sm-inline">تعریف تبلیغات ها</span> </a>
+                                    <a href="/admin/price/new#submenu1" class="nav-link px-0"> <i class="fs-4 bi-currency-exchange"></i> <span class="d-none d-sm-inline">تعریف تعرفه ها</span> </a>
                                 </li>
                                 <li class="w-100">
-                                    <a href="/admin/advertising/" class="nav-link px-0"> <i class="bi bi-film"></i> <span class="d-none d-sm-inline">ویرایش تبلیغات ها</span> </a>
+                                    <a href="/admin/price/#submenu1" class="nav-link px-0"> <i class="fs-4 bi-currency-exchange"></i> <span class="d-none d-sm-inline">ویرایش تعرفه ها</span> </a>
+                                </li>
+                                <li class="bg-black m-1"></li>
+                                <li class="w-100">
+                                    <a href="/admin/advertising/new#submenu1" class="nav-link px-0"> <i class="bi bi-film"></i> <span class="d-none d-sm-inline">تعریف تبلیغات ها</span> </a>
+                                </li>
+                                <li class="w-100">
+                                    <a href="/admin/advertising/#submenu1" class="nav-link px-0"> <i class="bi bi-film"></i> <span class="d-none d-sm-inline">ویرایش تبلیغات ها</span> </a>
                                 </li>
                                 <li class="bg-black m-1"></li>
 
@@ -141,7 +156,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="/admin/users/update#submenu5" class="nav-link px-0 align-middle">
+                            <a href="/admin/users/update#submenu6" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">کاربران سیستم</span> </a>
                         </li>
                         <li>

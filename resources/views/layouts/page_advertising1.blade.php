@@ -14,22 +14,20 @@
                     <div class="row text-center text-light">
                         <h4>
                             {{App\Models\titels::gettitelsid(['id'=>1])->titles}}
-
                         </h4>
                         <p>
                             {{App\Models\titels::gettitelsid(['id'=>1])->texts}}
                         </p>
                     </div>
                     <div class="row text-center ">
-
-                        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                        <div id="carouselExampleCaptions1" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-indicators">
                                 <?php
                                 $req = App\Models\Advertising::getAdvertising1();
                                 $xi = 0;
                                 // dd(1);
                                 foreach ($req as $rex) {
-                                    echo '<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="';
+                                    echo '<button type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide-to="';
                                     echo $xi;
                                     echo '" aria-label="Slide ';
                                     $xi++;
@@ -51,8 +49,8 @@
                                     // @dd($rec1);
                                 ?>
                                     <div class="carousel-item {{($xi==0?'active':'')}}">
-                                        <img src="../uploadadve/img_{{ $rec1->id}}.jpg" class="d-block w-100" style="height:350px;" alt="...">
-                                        <div class="carousel-caption d-none d-md-block">
+                                        <img src="../uploadadve/img_{{ $rec1->id}}.jpg" class="d-block w-100" style="height:70vh;" alt="...">
+                                        <div class="carousel-caption d-none d-md-block  shadow text-black" style="background-color:#ececec;opacity: 0.6;">
                                             <h5>{{$rec1->Advertising_title}}</h5>
                                             <p>{{$rec1->Advertising_str1}}.</p>
                                         </div>
@@ -61,11 +59,11 @@
                                 } ?>
 
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">قبل</span>
                             </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">بعد</span>
                             </button>
